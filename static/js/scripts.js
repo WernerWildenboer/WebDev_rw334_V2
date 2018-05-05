@@ -10,7 +10,7 @@ $(document).ready(function() {
 	//			email : $('#emailInput').val()
 	//		},
 	//		type : 'POST',
-	//		url : '/process'
+	//		url : '/process'  //hier kom die .py file, miskien kan mens net 'n funksie hier probeer call
 	//	})
 	//	
 	//	//.done is wanneer die ajax call complete is. 
