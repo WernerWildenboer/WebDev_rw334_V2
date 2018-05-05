@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block body %}
+
+      <div class="container">
+            <div class="panel panel-body">
+               <div id="topics">
+                  <h2>Pick a topic</h2>
+                  <div class="btn-group-vertical">
+                      <button type="button" class="btn btn-primary">Life</button>
+                      <button type="button" class="btn btn-primary">School</button>
+                      <button type="button" class="btn btn-primary">Taxes</button>
+                      <button type="button" class="btn btn-primary">Music</button>
+                      <button type="button" class="btn btn-primary">Gaming</button>
+               </div>
+            </div>
+         </div>
+       </div>
+         <div class="container-fluid-quest">
+            <div class="question">
+               <h2>Questions:</h2>
+            </div>
+         </div>
+
+         <div class="container">
+            <div id="questions_list">
+               <div class="panel">
+                  <label id="topic1">Topic 1</label>
+                  <p id="Q1">Question1</p>
+               </div>
+               <div class="panel">
+                  <label id="topic2">Topic 2</label>
+                  <p id="Q2">Question2</p>
+               </div>
+               <div class="panel">
+                  <label id="topic3">Topic 3</label>
+                  <p id="Q3">Question3</p>
+               </div>
+               <div class="panel">
+                  <label id="topic4">Topic 4</label>
+                  <p id="Q4">Question4</p>
+               </div>
+               <div class="panel">
+                  <label id="topic5">Topic 5</label>
+                  <p id="Q5">Question5</p>
+               </div>
+            </div>
+            <footer>
+               <input type="button" class= "btn btn-primary" name="name" value="Logout">
+            </footer>
+         </div>
+
+{% endblock %}

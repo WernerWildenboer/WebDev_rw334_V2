@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="panel-body">
+                <div class="col-sm-12">
+                  <form action="{{ url_for('changePassword') }}" method="post" id="psw_form">
+                      <div class="reg_container">
+                      <h1>Change Password</h1>
+                      <p>Please enter your old and new password</p>
+
+                      <hr>
+
+                          <label for="old_psw"><b>Old password</b></label>
+                          <input type="password" placeholder="Enter old password" name="old_psw" required>
+                          <br><br>
+                          <label for="new_psw"><b>New password</b></label>
+                          <input type="password" placeholder="Enter new password" name="new_psw" required>
+                          <br><br>
+
+                      <hr>
+
+                      <button type="button" class="btn btn-primary"name="changepsw" onclick="">Change</button>
+                      </div>
+
+                  </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

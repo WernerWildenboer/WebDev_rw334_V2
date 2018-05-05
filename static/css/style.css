@@ -1,0 +1,48 @@
+body {
+  background-image: url(../img/background.jpg);
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+ .panel{
+  opacity: 0.8;
+  filter: alpha : opacity(50);
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 150px;
+  border-style: solid;
+  border-color: #404040;
+  border-radius: 10px;
+}
+
+ .panel-body{
+  opacity: 0.8;
+  filter: alpha : opacity(50);
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 250px;
+}
+.container-fluid {
+  background-color: #404040;
+    opacity: 0.9;
+    filter: alpha : opacity(50);
+      height: 150px;
+}
+.head {
+   height: 40px;
+   font-family: Sansation;
+   font-weight: bold;
+   font-size: 21px;
+
+}
+h1 {
+  color: #f2f2f2;
+}
+.container-fluid-quest{
+  background-color: #404040;
+  opacity: 0.9;
+  filter: alpha : opacity(50);
+  height: 100px;
+  color: #f2f2f2;
+}
