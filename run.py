@@ -5,14 +5,14 @@ import os
 
 app = Flask(__name__)
 
-from py2neo import Graph, Node, Relationship
+from py2neo import Graph, Node, Relationship, authenticate
 from passlib.hash import bcrypt
 from datetime import datetime
 import uuid
 
-username = 'neo4j'
-password = 'WebDev'
-graph = Graph('http://localhost:7474/db/data/', username=username, password=password)
+
+authenticate("hobby-ogikmifabjnfgbkeflkddeal.dbs.graphenedb.com:24780", "cs334", "b.soC0X1oY5V3W.npSyseCrhtODLqgc")
+graph = Graph("https://hobby-ogikmifabjnfgbkeflkddeal.dbs.graphenedb.com:24780/db/data/", bolt = False)
 
 def create_uniqueness_constraint(label, property):
 	query = "CREATE CONSTRAINT ON (n:{label}) ASSERT n.{property} IS UNIQUE"
@@ -145,5 +145,7 @@ def changePassword():
 	
 ###################################  Run app  ###################################
 
+
+port = int(os.environ.get('PORT', 5000))
 app.secret_key = os.urandom(24)
-app.run(debug=True)
+app.run(host='0.0.0.0', port=port)
