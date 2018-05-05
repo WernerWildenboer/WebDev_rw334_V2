@@ -144,7 +144,7 @@ def changePassword():
 	
 @app.route('/profile')
 def profile():
-	return render_template('profile.html', title="Profile")
+	return render_template('Profile.html', title="Profile")
 
 	
 ###################################  Run app  ###################################
