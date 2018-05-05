@@ -142,9 +142,9 @@ def logout():
 def changePassword():
 	return render_template('Changepsw.html', title="Change Password")
 	
-@app.route('/profile')
-def profile():
-	return render_template('Profile.html', title="Profile")
+@app.route('/profile/<username>')
+def profile(username):
+	return render_template('Profile.html', title="Profile", username=)
 
 	
 ###################################  Run app  ###################################

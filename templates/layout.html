@@ -19,7 +19,7 @@
                <button type="submit" class="searchbtn" onclick="">Search</button>
             </form>
 			{% if session.username %}
-            <a href="{{ url_for('profile') }}" id="my_profile"> My profile </a>
+            <a href="{{ url_for('profile', username=session.username) }}" id="my_profile"> My profile </a>
 			<a href="{{ url_for('logout') }}" id="logout">Log out</a>
 			{% else %}
 			<a href="{{ url_for('login') }}" id="login">Login</a>
