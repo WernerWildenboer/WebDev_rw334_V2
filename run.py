@@ -82,7 +82,7 @@ def date():
 
 @app.route('/')
 def index():
-	return render_template('index.html')
+	return render_template('index.html', title="Quora-lite")
 
 @app.route('/register', methods=['GET','POST'])
 def register():
@@ -103,7 +103,7 @@ def register():
 			flash('Logged in.')
 			return redirect(url_for('index'))
 
-	return render_template('register.html')
+	return render_template('register.html', title="Register")
 	
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -118,7 +118,7 @@ def login():
 			flash('Logged in.')
 			return redirect(url_for('index'))
 
-	return render_template('login.html')
+	return render_template('login.html', title="Login")
 	
 @app.route('/add_question', methods=['POST'])
 def add_question():
@@ -140,7 +140,11 @@ def logout():
 	
 @app.route('/changePassword')
 def changePassword():
-	return render_template('Changepsw.html')
+	return render_template('Changepsw.html', title="Change Password")
+	
+@app.route('/profile')
+def profile():
+	return render_template('profile.html', title="Profile")
 
 	
 ###################################  Run app  ###################################
