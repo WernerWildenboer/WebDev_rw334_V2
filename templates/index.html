@@ -41,6 +41,14 @@
                     <label>Posted: 00/00/00 @12pm </label>
                   </div>
 
+                  <div class="answer_btn">
+                    <button onclick="answers()">Answers</button>
+                  </div>
+
+                    <div class="answer_area">
+                    This is my DIV element.
+                    </div>
+
                </div>
                <div class="panel">
                   <div class="topic">
@@ -110,6 +118,8 @@
                   <div class="timestamp">
                     <label>Posted: 00/00/00 @12pm </label>
                   </div>
+
+
                </div>
             </div>
                      <form id = "add_question" class="form" action="{{ url_for('add_question') }}" method="post">

@@ -63,5 +63,11 @@ h1 {
 }
 .timestamp{
   position: relative;
-  top: 50px;
+  top: 60px;
+  float: right;
+}
+.answer_btn{
+  position: relative;
+  top: 60px;
+  float: left;
 }
