@@ -5,8 +5,8 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
 		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="screen">
+		<script src="https://use.fontawesome.com/31c2b43b39.js"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 		<script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 	</head>
@@ -29,7 +29,7 @@
 			<a href="{{ url_for('login') }}" id="login" class="w3-bar-item w3-button w3-right">Login</a>
 			{% endif %}
 			<form action="{{ url_for('search') }}">
-				<button type="submit" class="w3-bar-item w3-button w3-red w3-right"><i class="fa fa-search"></i>
+				<button type="submit" class="w3-bar-item w3-button w3-red w3-right"><i class="fa fa-search"></i></button>
 				<input type="text" class="w3-bar-item w3-input w3-right" placeholder="Search...">
 			</form>
 		</div>
