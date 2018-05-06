@@ -164,13 +164,13 @@ def logout():
 	
 @app.route('/changePassword')
 def changePassword():
-	return render_template('Changepsw.html', title="Change Password")
+	return render_template('change_password.html', title="Change Password")
 	
-@app.route('/profile/<username>')
+@app.route('/profile')
 def profile(username):
-	return render_template('Profile.html', title="Profile", username=username)
+	return render_template('profile.html', title="Profile", username=username)
 	
-@app.route('/followTopic/<topic>')
+@app.route('/followTopic')
 def followTopic(topic):
 	User(session['username']).follow_topic(topic)
 	return redirect(request.referrer)
@@ -184,7 +184,7 @@ def answer(question):
 @app.route('/question/<question>')
 def question(question):
 	question = graph.find_one("Question", "id", question)
-	return render_template('Questions.html', title="Question", question=question)
+	return render_template('question.html', title="Question", question=question)
 
 	
 ###################################  Run app  ###################################
