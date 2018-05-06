@@ -3,17 +3,23 @@
 <!-- Login page-->
 <div class="w3-container w3-half w3-round-xlarge w3-display-middle">	
     <form class="w3-container w3-card-4">
+      <h2 class="w3-center">Welcome</h2> 
         
         <label>Username :</label><br> 
-            <div class="w3-left"><i class="w3-xlarge fa fa-user"></i></div>   
-            <input class="w3-left w3-padding-2 w3-input" type="text" style="width:96%" name="username" placeholder="John Doe" required>
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:5%"><i class="w3-xxlarge fa fa-user"></i></div>
+            <div class="w3-rest">
+                <input class="w3-input w3-border" name="username" type="text" placeholder="John Doe" required>
+            </div>
+        </div>
+            
         <br><br>
         <label>Password :</label><br>
             <div class="w3-left"><i class="w3-xlarge fa fa-lock"></i></div>   
             <input class="w3-left w3-padding-2 w3-input" type="password" style="width:96%" name="psw" placeholder="•••••••••" required>
         
         <span class="w3-right w3-hide-small w3-padding-4" style="width:100%">Forgot <a href="#">password?</a></span>
-        <br><br>br>
+        <br><br>
         <button class=" w3-button w3-section w3-red w3-ripple"> Log in </button>
         
         <button class="w3-right w3-button w3-section w3-red w3-ripple"> Register </button>
