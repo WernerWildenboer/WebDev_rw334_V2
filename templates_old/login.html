@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block body %}
+
+      <div class="container">
+          <div class="row">
+                <div class="col-xs-12">
+                    <div class="panel-body">
+                      <form id = "loginform" class="form" action="{{ url_for('login') }}" method="post">
+                            <fieldset>
+                              <legend>Log in</legend>
+                                <label for="username">Username</label>
+                                <input type="text" placeholder="username" name="username" value="">
+                                <br>
+                                <br>
+                                <label for="password">Password</label>
+                                <input type="password" name="psw" placeholder="enter password">
+                                <br>
+                                <br>
+                                <label for="password">Password</label>
+                                <input type="submit" class="btn btn-primary" name="Login" value="Sign in">
+                                <br>
+                                <br>
+                                <label for="agree">Do you agree with our terms and conditions?</label>
+                                <input type="checkbox" name="checkbox" value = "agree"/>
+                            </fieldset>
+                      </form>
+
+                    </div>
+                    <div class="panel-body">
+                      Don't have an account? <a href="{{ url_for('register') }}">register here</a> as a new user.
+                      <br>Click here if you <a href="{{ url_for('changePassword') }}">forgot password</a>.
+                    </div>
+                </div>
+          </div>
+      </div>
+
+{% endblock %}
