@@ -69,7 +69,6 @@ class User:
 			topic = graph.merge_one("Topic", "name", t)
 			rel = Relationship(topic, "TAGGED", question)
 			graph.create(rel)
-            return True
 			
 	def follow_topic(self, name):
 		user = self.find()
