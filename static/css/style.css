@@ -50,6 +50,7 @@ h1 {
 #topic {
   position: relative;
   float: left;
+  color: rgb(fff);
 }
 #bookmark {
   position: relative;
