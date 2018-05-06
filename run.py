@@ -70,6 +70,11 @@ class User:
 			rel = Relationship(topic, "TAGGED", question)
 			graph.create(rel)
 			
+	def follow_topic(self, name):
+		user = self.find()
+		topic = graph.find_one("Topic", "name", name)
+		rel = Relationship(user, "FOLLOWING", topic)
+			
 def timestamp():
 	epoch = datetime.utcfromtimestamp(0)
 	now = datetime.now()
@@ -147,6 +152,11 @@ def changePassword():
 @app.route('/profile/<username>')
 def profile(username):
 	return render_template('Profile.html', title="Profile", username=username)
+	
+@app.route('/followTopic/<topic>')
+def followTopic(topic):
+	User(session['username']).follow_topic(topic)
+	return redirect(request.referrer)
 
 	
 ###################################  Run app  ###################################
