@@ -151,7 +151,7 @@ def profile(username):
 
 @app.route('/test/<username>')
 def profile(username):
-return render_template('post_test.html', title="Test", username=username)
+    return render_template('post_test.html', title="Test", username=username)
 
 
 	
