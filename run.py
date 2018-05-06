@@ -200,7 +200,7 @@ def question(question):
 	return render_template('question.html', title="Question", question=question)
 	
 @app.route('/search/<query>')
-def search(<query>):
+def search(query):
 	return render_template('search.html', title="Search")
 
 	
