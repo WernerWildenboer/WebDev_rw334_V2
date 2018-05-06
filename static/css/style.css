@@ -14,6 +14,7 @@ img {
   border-style: solid;
   border-color: #404040;
   border-radius: 10px;
+  padding: 20px;
 }
 
  .panel-body{
@@ -58,5 +59,9 @@ h1 {
 }
 .question {
   position: relative;
-  width: 60%
+  width: 60%;
+}
+.timestamp{
+  position: relative;
+  top: 50px;
 }
