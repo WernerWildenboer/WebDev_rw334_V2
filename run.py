@@ -182,7 +182,7 @@ def answer(question):
 @app.route('/question/<question>')
 def question(question):
 	question = graph.find_one("Question", "id", question)
-	return render_template('Question.html', title="Question", question=question)
+	return render_template('Questions.html', title="Question", question=question)
 
 	
 ###################################  Run app  ###################################
