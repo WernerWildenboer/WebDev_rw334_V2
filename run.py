@@ -91,6 +91,16 @@ class User:
 		graph.create(rel)
 		rel = Relationship(answer, "TO", question)
 		graph.create(rel)
+		
+	def get_timeline(self):
+		
+	
+	def get_topics(self):
+		
+	
+	def get_suggestions(self):
+		
+		
 			
 def timestamp():
 	epoch = datetime.utcfromtimestamp(0)
@@ -146,13 +156,14 @@ def login():
 	
 @app.route('/add_question', methods=['POST'])
 def add_question():
-	text = request.form['question']
-	topics = request.form['topics']
+	if request.method == 'POST':
+		text = request.form['question']
+		topics = request.form['topics']
 
-	if not text:
-		flash('You must give your question text.')
-	else:
-		User(session['username']).add_question(text, topics)
+		if not text:
+			flash('You must give your question text.')
+		else:
+			User(session['username']).add_question(text, topics)
 
 	return redirect(url_for('index'))
 	
@@ -166,19 +177,21 @@ def logout():
 def changePassword():
 	return render_template('change_password.html', title="Change Password")
 	
-@app.route('/profile')
+@app.route('/profile/<username>')
 def profile(username):
 	return render_template('profile.html', title="Profile", username=username)
 	
-@app.route('/followTopic')
+@app.route('/followTopic/<topic>')
 def followTopic(topic):
-	User(session['username']).follow_topic(topic)
+	if has_key(session['username']):
+		User(session['username']).follow_topic(topic)
 	return redirect(request.referrer)
 	
-@app.route('/answer/<question>')
+@app.route('/answer/<question>', methods=['GET', 'POST'])
 def answer(question):
-	answer = request.form['answer']
-	User(session['username']).answer_question(question, answer)
+	if request.method == 'POST':
+		answer = request.form['answer']
+		User(session['username']).answer_question(question, answer)
 	return redirect(request.referrer)
 	
 @app.route('/question/<question>')
@@ -186,8 +199,8 @@ def question(question):
 	question = graph.find_one("Question", "id", question)
 	return render_template('question.html', title="Question", question=question)
 	
-@app.route('/search')
-def search():
+@app.route('/search/<query>')
+def search(<query>):
 	return render_template('search.html', title="Search")
 
 	
