@@ -47,3 +47,12 @@ h1 {
   height: 100px;
   color: #f2f2f2;
 }
+.topic {
+  position: relative;
+  float: right;
+  color: rgb(fff);
+}
+.bookmark {
+  position: relative;
+  right: 200px;
+}
