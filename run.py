@@ -133,8 +133,7 @@ def add_question():
 		User(session['username']).add_question(text, topics)
 
 	return redirect(url_for('index'))
-
-
+	
 @app.route('/logout')
 def logout():
 	session.pop('username', None)
@@ -148,8 +147,6 @@ def changePassword():
 @app.route('/profile/<username>')
 def profile(username):
 	return render_template('Profile.html', title="Profile", username=username)
-
-
 
 	
 ###################################  Run app  ###################################

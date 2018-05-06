@@ -20,13 +20,10 @@
             </form>
 			{% if session.username %}
             <a href="{{ url_for('profile', username=session.username) }}" id="my_profile"> My profile </a>
-             
-             <!--*__Will remove this later__*-->
+              <!--*__Will remove this later__*-->
              <!--================================================================================
               <a href="{{ url_for('test', username=session.username) }}" id="test"> Test Link </a>
              <!--================================================================================-->
-             
-             
 			<a href="{{ url_for('logout') }}" id="logout">Log out</a>
 			{% else %}
 			<a href="{{ url_for('login') }}" id="login">Login</a>
