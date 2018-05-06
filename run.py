@@ -148,7 +148,7 @@ def add_question():
 	topics = request.form['topics']
 
 	if not text:
-		flash('You must give your post a title.')
+		flash('You must give your question text.')
 	else:
 		User(session['username']).add_question(text, topics)
 
