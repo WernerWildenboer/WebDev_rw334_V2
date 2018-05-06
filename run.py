@@ -92,13 +92,13 @@ class User:
 		rel = Relationship(answer, "TO", question)
 		graph.create(rel)
 		
-	def get_timeline(self):
+	# def get_timeline(self):
 		
 	
-	def get_topics(self):
+	# def get_topics(self):
 		
 	
-	def get_suggestions(self):
+	# def get_suggestions(self):
 		
 		
 			
