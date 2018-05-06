@@ -185,6 +185,10 @@ def answer(question):
 def question(question):
 	question = graph.find_one("Question", "id", question)
 	return render_template('question.html', title="Question", question=question)
+	
+@app.route('/search')
+def search():
+	return render_template('search.html', title="Search")
 
 	
 ###################################  Run app  ###################################
