@@ -66,7 +66,7 @@ class User:
 
 		topics = [x.strip() for x in topics.lower().split(',')]
 		for t in set(topics):
-			topic = graph.merge_one("Topic", "name", t)
+			topic = graph.run("Topic", "name", t)
 			rel = Relationship(topic, "TAGGED", question)
 			graph.create(rel)
 			
