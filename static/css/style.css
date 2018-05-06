@@ -49,7 +49,7 @@ h1 {
 }
 #topic {
   position: relative;
-  float: left;
+  float: right;
   color: rgb(fff);
 }
 #bookmark {
