@@ -70,6 +70,26 @@ class User:
 			rel = Relationship(topic, "TAGGED", question)
 			graph.create(rel)
 			
+	def follow_topic(self, name):
+		user = self.find()
+		topic = graph.find_one("Topic", "name", name)
+		rel = Relationship(user, "FOLLOWING", topic)
+		
+	def answer_question(self, question, answer):
+		user = self.find()
+		question = graph.find_one("Question", "id", question)
+		answer = Node(
+			"Answer",
+			id=str(uuid.uuid4()),
+			text=answer,
+			timestamp=timestamp(),
+			date=date()
+		)
+		rel = Relationship(user, "WROTE", answer)
+		graph.create(rel)
+		rel = Relationship(answer, "TO", question)
+		graph.create(rel)
+			
 def timestamp():
 	epoch = datetime.utcfromtimestamp(0)
 	now = datetime.now()
@@ -147,6 +167,22 @@ def changePassword():
 @app.route('/profile/<username>')
 def profile(username):
 	return render_template('Profile.html', title="Profile", username=username)
+	
+@app.route('/followTopic/<topic>')
+def followTopic(topic):
+	User(session['username']).follow_topic(topic)
+	return redirect(request.referrer)
+	
+@app.route('/answer/<question>')
+def answer(question):
+	answer = request.form['answer']
+	User(session['username']).answer_question(question, answer)
+	return redirect(request.referrer)
+	
+@app.route('/question/<question>')
+def question(question):
+	question = graph.find_one("Question", "id", question)
+	return render_template('Question.html', title="Question", question=question)
 
 	
 ###################################  Run app  ###################################
