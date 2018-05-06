@@ -71,3 +71,6 @@ h1 {
   top: 60px;
   float: left;
 }
+.answer_area{
+  position: relative;
+}
