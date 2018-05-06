@@ -49,10 +49,15 @@ h1 {
 }
 .topic {
   position: relative;
-  float: right;
-  color: rgb(fff);
+  float: left;
+  width: 20%;
 }
 .bookmark {
   position: relative;
-  right: 200px;
+  float: right;
+  width: 20%;
+}
+.question {
+  position: relative;
+  width: 60%
 }
