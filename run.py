@@ -66,7 +66,12 @@ class User:
 
 		topics = [x.strip() for x in topics.lower().split(',')]
 		for t in set(topics):
+<<<<<<< HEAD
 			topic = graph.merge"Topic", "name", t)
+=======
+			topic = Node("Topic", "name", t)
+			topic = graph.merge(topic)
+>>>>>>> f23fc1bfbed7f08d78fa7c34fae96542e96af3db
 			rel = Relationship(topic, "TAGGED", question)
 			graph.create(rel)
 			
