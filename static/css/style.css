@@ -54,5 +54,5 @@ h1 {
 }
 .bookmark {
   position: relative;
-  float: right;
+  right: 200px;
 }
