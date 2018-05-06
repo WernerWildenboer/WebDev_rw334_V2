@@ -1,4 +1,43 @@
 {% extends "layout.html" %}
 {% block body %}
-	<!-- main content -->
+<div class="w3-container w3-half w3-round-xlarge w3-display-middle">	
+    <form class="w3-container w3-card-4" id = "register_form" class="form" action="{{ url_for('register') }}" method="post">
+       
+        <u><h2 class="w3-center">Registration Page</h2></u>
+        
+        <div class="w3-center"><br>
+            <img src="img_avatar4.png" alt="Avatar" style="width:30%" class="w3-circle w3-margin-top">
+            <input id="image" type="file" name="profile_photo" placeholder="Upload Profile" required="" capture>
+        </div>
+        
+        <label>Username :</label><br> 
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:5%"><i class="w3-xxlarge fa fa-user"></i></div>
+            <div class="w3-rest">
+                <input class="w3-input w3-border" name="username" type="text" placeholder="John Doe" required>
+            </div>
+        </div>
+            
+        <label>Password :</label><br>
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:5%"><i class="w3-xxlarge fa fa-lock"></i></div>
+            <div class="w3-rest">
+                <input class="w3-input w3-border" name="psw" type="text" placeholder="•••••••••" required>
+            </div>
+        </div>
+        
+        <label>Email :</label><br>
+        <div class="w3-row w3-section">
+            <div class="w3-col" style="width:5%"><i class="w3-xxlarge fa fa-envelope"></i></div>
+            <div class="w3-rest">
+                <input class="w3-input w3-border" name="email" type="text" placeholder="example@gmail.com" required>
+            </div>
+        </div>
+        
+        <br>
+        <button type="submit" class="w3-button w3-section w3-red w3-ripple"> Log in </button>     
+    </form>
+    
+    <p>Already have an account? <a href="{{ url_for('login') }}">Sign in</a>.</p>
+</div>
 {% endblock %}
