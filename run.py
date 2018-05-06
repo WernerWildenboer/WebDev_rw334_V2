@@ -106,11 +106,7 @@ def date():
 
 @app.route('/')
 def index():
-	if session['username']:
-		user = User.find(session['username'])
-		return render_template('index.html', title="What He Said", user=user)
-	else:
-		return render_template('index.html', title="What He Said")
+	return render_template('index.html', title="What He Said")
 
 @app.route('/register', methods=['GET','POST'])
 def register():
