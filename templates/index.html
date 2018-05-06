@@ -37,11 +37,27 @@
                     <p>Question1</p>
                   </div>
 
-                  <div>
-                    <label id="timestamp">Posted: 00/00/00 @12pm </label>
+                  <div class="timestamp">
+                    <label>Posted: 00/00/00 @12pm </label>
+                  </div>
+
+                  <div class="answer_btn">
+                    <button onclick="answers()">Answers</button>
                   </div>
 
                </div>
+
+               <div class="answer_area">
+                    <form action="/html/tags/html_form_tag_action.cfm" method="post">
+                      <div>
+                      <textarea name="comments" id="comments">
+                      Hey... say something!
+                      </textarea>
+                      </div>
+                      <input type="submit" value="Submit">
+                      </form>
+                    </div>
+               
                <div class="panel">
                   <div class="topic">
                   <label>Topic </label>
@@ -55,8 +71,8 @@
                     <p>Question2</p>
                   </div>
 
-                  <div>
-                    <label id="timestamp">Posted: 00/00/00 @12pm </label>
+                  <div class="timestamp">
+                    <label>Posted: 00/00/00 @12pm </label>
                   </div>
                </div>
                <div class="panel">
@@ -72,10 +88,11 @@
                     <p>Question3</p>
                   </div>
 
-                  <div>
-                    <label id="timestamp">Posted: 00/00/00 @12pm </label>
+                  <div class="timestamp">
+                    <label>Posted: 00/00/00 @12pm </label>
                   </div>
                </div>
+
                <div class="panel">
                   <div class="topic">
                   <label>Topic </label>
@@ -89,8 +106,8 @@
                     <p>Question4</p>
                   </div>
 
-                  <div>
-                    <label id="timestamp">Posted: 00/00/00 @12pm </label>
+                  <div class="timestamp">
+                    <label>Posted: 00/00/00 @12pm </label>
                   </div>
                </div>
                <div class="panel">
@@ -106,9 +123,11 @@
                     <p>Question5</p>
                   </div>
 
-                  <div>
-                    <label id="timestamp">Posted: 00/00/00 @12pm </label>
+                  <div class="timestamp">
+                    <label>Posted: 00/00/00 @12pm </label>
                   </div>
+
+
                </div>
             </div>
                      <form id = "add_question" class="form" action="{{ url_for('add_question') }}" method="post">
