@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html lang = "en">
+   <head>
+      <title>{{ title }}</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+	  <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}">
+      <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="screen">
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	  <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+   </head>
+   <body>
+   
+	  <div class="container-fluid">
+         <header class="head">
+            <h1>{{ title }}</h1>
+            <form>
+               <input placeholder="Search users" type="search" name="user_search">
+               <button type="submit" class="searchbtn" onclick="">Search</button>
+            </form>
+			{% if session.username %}
+            <a href="{{ url_for('profile', username=session.username) }}" id="my_profile"> My profile </a>
+			<a href="{{ url_for('logout') }}" id="logout">Log out</a>
+			{% else %}
+			<a href="{{ url_for('login') }}" id="login">Login</a>
+			{% endif %}
+         </header>
+      </div>
+   
+   {% block body %}{% endblock %}
+   </body>
+</html>
