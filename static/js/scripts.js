@@ -31,8 +31,6 @@ $(document).ready(function() {
 	//
 	//});
 
-});
-
 function answers() {
     var x = document.getElementById("answer_area");
     if (x.style.display === "none") {
@@ -41,3 +39,8 @@ function answers() {
         x.style.display = "none";
     }
 }
+
+
+
+});
+
