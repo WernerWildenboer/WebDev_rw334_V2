@@ -41,28 +41,28 @@ function answers() {
 }
 
 //show dropdown jQuery equivalent.
-// $("#dropdownBtn").click(function() {
-// 	alert("just testing");
+$("#dropdownBtn").click(function() {
+	alert("just testing");
 
-// 	var temp = $("#navDropdown");
-// 	if( !temp.hasClass("w3-show") ) {
-// 		temp.addClass("w3-show");
-// 		temp.removeClass("w3-hide");
-// 	} else {
-// 		temp.addClass("w3-hide");
-// 		temp.removeClass("w3-show");
-// 	}
-// });
+	// var temp = $("#navDropdown");
+	// if( !temp.hasClass("w3-show") ) {
+	// 	temp.addClass("w3-show");
+	// 	temp.removeClass("w3-hide");
+	// } else {
+	// 	temp.addClass("w3-hide");
+	// 	temp.removeClass("w3-show");
+	// }
+});
 
 });
 
 // //show dropdown menu from index.html
-function showDropdown() {
-    var x = document.getElementById("navDropdown");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else { 
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
+// function showDropdown() {
+//     var x = document.getElementById("navDropdown");
+//     if (x.className.indexOf("w3-show") == -1) {
+//         x.className += " w3-show";
+//     } else { 
+//         x.className = x.className.replace(" w3-show", "");
+//     }
+// }
 
