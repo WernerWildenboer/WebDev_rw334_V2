@@ -187,12 +187,12 @@ def followTopic(topic):
 		User(session['username']).follow_topic(topic)
 	return redirect(request.referrer)
 	
-@app.route('/answer/<question>', methods=['GET', 'POST'])
-def answer(question):
+@app.route('/add_answer/<question>', methods=['GET', 'POST'])
+def add_answer(question):
 	if request.method == 'POST':
 		answer = request.form['answer']
 		User(session['username']).answer_question(question, answer)
-	return redirect(request.referrer)
+	return render_template('add_answer.html')
 	
 @app.route('/question/<question>')
 def question(question):
