@@ -1,8 +1,5 @@
 {% extends "layout.html" %} {% block body %}
-<!-- profile page V1 -->
-<div class="w3-container w3-display-middle">
-	<h1>toets</h1>
-</div>
+<!-- profile page V3 -->
 
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
@@ -12,7 +9,7 @@
 			<!-- Profile -->
 			<div class="w3-card-2 w3-round w3-white">
 				<div class="w3-container">
-					<h1 class="w3-center">Session username?</h1>
+					<h1 class="w3-center">{{ session.username }}</h1>
 					<p class="w3-center">
 						<img src="{{ url_for('static', filename='img/user.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
 					</p>
