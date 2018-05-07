@@ -40,6 +40,15 @@ function answers() {
     }
 }
 
+// //show dropdown jQuery equivalent.
+// $("#dropdownBtn").click(function() {
+// 	if($("#navDropdown").attr('class')) {
+
+// 	}
+// });
+
+});
+
 //show dropdown menu from index.html
 function showDropdown() {
     var x = document.getElementById("navDropdown");
@@ -49,6 +58,4 @@ function showDropdown() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-
-});
 
