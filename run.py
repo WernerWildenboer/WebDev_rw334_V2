@@ -209,7 +209,6 @@ def show_topics(username):
 	topics = []
 	if not username:
 		query = "MATCH (otherTopic:Topic) WITH otherTopic.name as other RETURN other;"
-		query = query.format(label=label, property=property)
 		topics = graph.run(query)
 	return render_template('show_topics.html', topics=topics)
 	
