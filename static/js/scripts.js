@@ -42,7 +42,7 @@ function answers() {
 
 //show dropdown menu from index.html
 function showDropdown() {
-    var x = document.getElementById("btnShowDropdown");
+    var x = document.getElementById("navDropdown");
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
     } else { 

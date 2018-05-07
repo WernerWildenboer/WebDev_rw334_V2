@@ -1,24 +1,27 @@
 <!DOCTYPE HTML>
-<html lang = "en">
-	<head>
-		<title>{{ title }}</title>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
-		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="screen">
-		<script src="https://use.fontawesome.com/31c2b43b39.js"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
-		<script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
-	</head>
+<html lang="en">
+
+<head>
+	<title>{{ title }}</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="screen">
+	<script src="https://use.fontawesome.com/31c2b43b39.js"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</head>
+
 <body>
-	
+
 	<div class="w3-top">
 		<div class="w3-bar w3-border-bottom w3-light-gray">
 			<a href="{{ url_for('index') }}" class="w3-bar-item w3-button">What He Said</a>
 			{% if session.username %}
 			<div class="w3-dropdown-click">
-				<button class="w3-button" id="btnShowDropdown">
-					<img src="{{ image_url }}" class="w3-circle">
+				<button class="w3-button" onclick="showDropdown()">
+					<i class="fa fa-bars w3-large"></i>
+					<!-- <img src="{{ image_url }}" class="w3-circle"> -->
 				</button>
 				<div id="navDropdown" class="w3-dropdown-content w3-bar-block w3-card-4">
 					<a href="{{ url_for('profile', username=session.username) }}" class="w3-bar-item w3-button">Profile</a>
@@ -29,15 +32,18 @@
 			<a href="{{ url_for('login') }}" id="login" class="w3-bar-item w3-button w3-right">Login</a>
 			{% endif %}
 			<form action="{{ url_for('search') }}">
-				<button type="submit" class="w3-bar-item w3-button w3-red w3-right"><i class="fa fa-search w3-large"></i></button>
+				<button type="submit" class="w3-bar-item w3-button w3-red w3-right">
+					<i class="fa fa-search w3-large"></i>
+				</button>
 				<input type="text" class="w3-bar-item w3-input w3-right" placeholder="Search...">
 			</form>
 		</div>
 	</div>
-	
+
 	<div id="placeholder"></div>
-	
+
 	{% block body %}{% endblock %}
 
 </body>
+
 </html>
