@@ -28,7 +28,7 @@
 			{% else %}
 			<a href="{{ url_for('login') }}" id="login" class="w3-bar-item w3-button w3-right">Login</a>
 			{% endif %}
-			<button type="submit" class="w3-bar-item w3-button w3-green w3-right">profile</i></button>
+			<a href="{{ url_for('profile') }}" id="profile_link" class="w3-bar-item w3-button w3-green w3-right">profile</a>
 			<form action="{{ url_for('search') }}">
 				<button type="submit" class="w3-bar-item w3-button w3-red w3-right"><i class="fa fa-search w3-large"></i></button>
 				<input type="text" class="w3-bar-item w3-input w3-right" placeholder="Search...">
