@@ -42,7 +42,7 @@ class Question:
 	def find(self):
 		query = "MATCH (n:Question) WHERE ID(n)={id} RETURN n;"
 		query = query.format(id=self.id)
-		question = graph.run(query)
+		question = graph.evaluate(query)
 		return question
 
 class User:
