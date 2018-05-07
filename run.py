@@ -43,7 +43,7 @@ class Question:
 		query = "MATCH (n:Question) WHERE ID(n)={id} RETURN n;"
 		query = query.format(id=self.id)
 		question = graph.evaluate(query)
-		return question
+		return question.n
 
 class User:
 	def __init__(self, username):
