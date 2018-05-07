@@ -95,7 +95,7 @@ class User:
 		
 	def answer_question(self, question, answer):
 		user = self.find()
-		question = Question(question).find().Question
+		question = Question(question).find()
 		answer = Node(
 			"Answer",
 			id=str(uuid.uuid4()),
