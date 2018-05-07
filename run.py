@@ -86,7 +86,7 @@ class User:
 		
 	def answer_question(self, question, answer):
 		user = self.find()
-		question = graph.node(question)
+		question = graph.node(int(question))
 		answer = Node(
 			"Answer",
 			id=str(uuid.uuid4()),
