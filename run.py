@@ -165,7 +165,7 @@ def add_question():
 		else:
 			User(session['username']).add_question(text, topics)
 
-	return redirect(url_for('index'))
+	return render_template('add_question.html')
 	
 @app.route('/logout')
 def logout():
@@ -202,6 +202,17 @@ def question(question):
 @app.route('/search')
 def search():
 	return render_template('search.html', title="Search")
+
+@app.route('/show_topics', defaults={'username': False})	
+@app.route('/show_topics/<username>')
+def show_topics(username):
+	topics = []
+	if not username:
+		query = "MATCH (otherTopic:Topic) WITH otherTopic.name as other RETURN other;"
+		query = query.format(label=label, property=property)
+		topics = graph.run(query)
+	return render_template('show_topics.html', topics=topics)
+	
 
 	
 ###################################  Run app  ###################################
