@@ -206,7 +206,7 @@ def search():
 @app.route('/show_topics')
 def show_topics():
 	topics = []
-	query = "MATCH ()<-[n:TAGGED]-(topic:Topic) WITH topic.name as name, count(n) AS rank RETURN name ORDER BY rank DESC;"
+	query = "MATCH ()<-[n:TAGGED]-(topic:Topic) WITH topic.name as name, count(n) AS rank RETURN name, rank ORDER BY rank DESC;"
 	topics = graph.run(query)
 	return render_template('show_topics.html', topics=topics)
 	
