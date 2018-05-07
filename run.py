@@ -7,7 +7,7 @@ UPLOAD_FOLDER = '/static/img'
 #ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 from py2neo import Graph, Node, Relationship, authenticate
 from passlib.hash import bcrypt
 from datetime import datetime
@@ -196,7 +196,7 @@ def add_answer(question):
 	if request.method == 'POST':
 		answer = request.form['answer']
 		User(session['username']).answer_question(question, answer)
-	return render_template('add_answer.html')
+	return render_template('add_answer.html', question=question)
 	
 @app.route('/question/<question>')
 def question(question):
