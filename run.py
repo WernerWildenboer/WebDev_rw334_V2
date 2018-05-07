@@ -7,6 +7,7 @@ UPLOAD_FOLDER = '/static/img'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 from py2neo import Graph, Node, Relationship, authenticate
 from passlib.hash import bcrypt
