@@ -11,7 +11,7 @@
 				<div class="w3-container">
 					<h1 class="w3-center">{{ session.username }}</h1>
 					<p class="w3-center">
-						<img src="{{ url_for('static', filename='img/Emile2.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
+						<img src="{{ url_for('static', filename='img/Emile2.png') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
 
 						<form action="{{ url_for('upload_image') }}" method=post enctype=multipart/form-data>
 							<input type="file" name="file">
