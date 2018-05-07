@@ -154,7 +154,7 @@ def login():
 
 	return render_template('login.html', title="Login")
 	
-@app.route('/add_question', methods=['POST'])
+@app.route('/add_question', methods=['GET', 'POST'])
 def add_question():
 	if request.method == 'POST':
 		text = request.form['question']
