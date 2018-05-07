@@ -217,6 +217,11 @@ def show_suggestions():
 	suggestions = graph.run(query)
 	return render_template('show_suggestions.html', suggestions=suggestions)
 	
+@app.route('/user')
+def user():
+	return render_template('user.html')
+	
+	
 
 	
 ###################################  Run app  ###################################
