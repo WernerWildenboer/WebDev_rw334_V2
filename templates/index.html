@@ -2,32 +2,38 @@
 {% block body %}
 
 <div class="w3-panel w3-twothird">
-	<div class="w3-container w3-red">
-		<h2>Questions</h2>
-		<!-- maybe add sort by dropdown (ajax) -->
+	<div class="w3-card w3-margin-bottom">
+		<div class="w3-container w3-red">
+			<h2>Questions</h2>
+			<!-- maybe add sort by dropdown (ajax) -->
+		</div>
+
+		<!-- show questions -->
+		<div id="show_questions"></div>
+		<!-- might be difficult, needs answers as well, but will show question, maybe show answer of person you're following and have title explaining relation -->
 	</div>
-	
-	<!-- show questions -->
-	<div id="show_questions"></div>
-	<!-- might be difficult, needs answers as well, but will show question, maybe show answer of person you're following and have title explaining relation -->
 </div>
 
 <div class="w3-panel w3-third">
-	<div class="w3-container w3-red">
-		<h2>Topics</h2>
+	<div class="w3-card w3-margin-bottom">
+		<div class="w3-container w3-red">
+			<h2>Topics</h2>
+		</div>
+		
+		<!-- show topics, first followed topics, then other topics, differentiating between the 2 -->
+		<div id="show_topics"></div>
+		<!-- AJAX: replace show_topics div's innerHTML with content of /show_topic and then remove iframe if it works -->
+		<iframe src="{{ url_for('show_topics') }}"></iframe>
 	</div>
 	
-	<!-- show topics, first followed topics, then other topics, differentiating between the 2 -->
-	<div id="show_topics"></div>
-	<!-- AJAX: replace show_topics div's innerHTML with content of /show_topic and then remove iframe if it works -->
-	<iframe src="{{ url_for('show_topics') }}"></iframe>
-	
-	<div class="w3-container w3-red">
-		<h2>Suggested People</h2>
+	<div class="w3-card w3-margin-bottom">
+		<div class="w3-container w3-red">
+			<h2>Suggested People</h2>
+		</div>
+		<!-- show suggested by people -->
+		<div id="show_suggestions"></div>
+		<iframe src="{{ url_for('show_suggestions') }}"></iframe>
 	</div>
-	<!-- show suggested by people -->
-	<div id="show_suggestions"></div>
-	<iframe src="{{ url_for('show_suggestions') }}"></iframe>
 </div>
 
 {% endblock %}

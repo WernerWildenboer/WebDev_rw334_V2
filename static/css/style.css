@@ -15,3 +15,8 @@
 .w3-tag {
 	margin-bottom: 4px;
 }
+
+iframe {
+	border: none;
+	width: 100%;
+}
