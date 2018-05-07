@@ -1,4 +1,38 @@
-{% extends "layout.html" %}
-{% block body %}
-	<!-- main content -->
-{% endblock %}
+    {% extends "layout.html" %}
+    {% block body %}
+        <!-- main content -->
+    <title>W3.CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        ul#menu li {
+            clear: left;
+            float:right ;
+            }
+    </style>
+    <body>
+        <div class="w3-container w3-center">
+            <div class="w3-border">
+                
+                <div class="w3-container w3-black">
+                <h1 id = "THIS IS MY NAME">This Is My Profile</h1>
+                </div>
+                
+                <div class = "w3-container w3-center-left">
+                    <img src="PICTURE_SOURCE" alt="profile_pic" id = "profile_pic" class="w3-circle" style="width:80%;max-width:320px">
+                    <p id= "my_bio">Who am I?</p>
+                    <p><button href = "THERE IS NO LINK HERE" id= "follow_me_button" class="w3-button w3-black w3-round-xxlarge">Follow Me</button></p>
+                </div>
+                
+                <div>
+                    <ul id="follow" class="w3-ul w3-hoverable">
+                      <li id = "likes">Likes</li>
+                      <li id = "followers">Followers</li>
+                      <li id = "following">Following</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    {% endblock %}
