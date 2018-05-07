@@ -162,7 +162,7 @@ def login():
 @app.route('/add_question', methods=['GET', 'POST'])
 def add_question():
 	if request.method == 'POST':
-		text = request.form['question']
+		text = request.form['add_question_box']
 		topics = request.form['topics']
 
 		if not text:
@@ -195,7 +195,7 @@ def followTopic(topic):
 @app.route('/add_answer/<question>', methods=['GET', 'POST'])
 def add_answer(question):
 	if request.method == 'POST':
-		answer = request.form['answer']
+		answer = request.form['add_answer_box']
 		User(session['username']).answer_question(question, answer)
 	return render_template('add_answer.html', question=question)
 	
