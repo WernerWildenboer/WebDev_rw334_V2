@@ -235,13 +235,13 @@ def upload_image():
 		# check if the post request has the file part
 		if 'file' not in request.files:
 			flash('No file')
-			return redirect(request.url)
+			#return redirect(request.url)
 
 		file = request.files['file']
 
 		if file.filename == '':
 			flash('No selected file')
-			return redirect(request.url)
+			#return redirect(request.url)
 
 		else:
 			filename = secure_filename(file.filename)
