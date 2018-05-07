@@ -35,6 +35,16 @@ create_uniqueness_constraint("Answer", "id")
 
 ##################################  Functions  ##################################
 
+class Question:
+	def __init__(self, id):
+		self.id = id
+		
+	def find(self):
+		query = "MATCH (n:Question) WHERE ID(n)={id} RETURN n;"
+		query = query.format(id=id)
+		question = graph.run(query)
+		return question
+
 class User:
 	def __init__(self, username):
 		self.username = username
@@ -85,7 +95,7 @@ class User:
 		
 	def answer_question(self, question, answer):
 		user = self.find()
-		question = graph.find_one("Question", "id", question)
+		question = Question(question).find()
 		answer = Node(
 			"Answer",
 			id=str(uuid.uuid4()),
