@@ -8,7 +8,8 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-red.css">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/w3.css') }}">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" media="screen">
-	<script src="https://use.fontawesome.com/31c2b43b39.js"></script>
+	<!-- <script src="https://use.fontawesome.com/31c2b43b39.js"></script> -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.12/css/all.css" integrity="sha384-G0fIWCsCzJIMAVNQPfjH08cyYaUtMwjJwqiRKxxE/rx96Uroj1BtIQ6MLJuheaO9" crossorigin="anonymous">
 	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
 	<script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
 </head>
@@ -32,7 +33,7 @@
 			<a href="{{ url_for('login') }}" id="login" class="w3-bar-item w3-button w3-right">Login</a>
 			{% endif %}
 			<form action="{{ url_for('search') }}">
-				<button type="submit" class="w3-bar-item w3-button w3-red w3-right">
+				<button type="submit" class="w3-bar-item w3-button w3-theme-d1 w3-right">
 					<i class="fa fa-search w3-large"></i>
 				</button>
 				<input type="text" class="w3-bar-item w3-input w3-right" placeholder="Search users...">

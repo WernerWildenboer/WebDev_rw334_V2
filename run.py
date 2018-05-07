@@ -3,6 +3,9 @@
 from flask import Flask, request, session, redirect, url_for, render_template, flash
 import os
 
+UPLOAD_FOLDER = '/static/img'
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+
 app = Flask(__name__)
 
 from py2neo import Graph, Node, Relationship, authenticate
@@ -10,6 +13,7 @@ from passlib.hash import bcrypt
 from datetime import datetime
 import uuid
 from urllib.parse import urlparse, urlunparse
+from werkzeug.utils import secure_filename
 
 ################################  Database Link  ################################
 
@@ -220,9 +224,29 @@ def show_suggestions():
 @app.route('/user')
 def user():
 	return render_template('user.html')
-	
-	
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/upload_image', methods=['GET', 'POST'])
+def upload_image():
+	if request.method == 'POST':
+		# check if the post request has the file part
+		if 'file' not in request.files:
+			flash('No file')
+			return redirect(request.url)
+
+		file = request.files['file']
+
+		if file.filename == '':
+			flash('No selected file')
+			return redirect(request.url)
+
+		if file and allowed_file(file.filename):
+			filename = secure_filename(file.filename)
+			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+			return redirect(url_for('uploaded_file',filename=filename))
 	
 ###################################  Run app  ###################################
 

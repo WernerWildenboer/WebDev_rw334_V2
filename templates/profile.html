@@ -1,8 +1,132 @@
-{% extends "layout.html" %}
-{% block body %}
-	<!-- profile page V1 -->
-	<div class="w3-container w3-display-middle">
-		<h1>toets</h1>
+{% extends "layout.html" %} {% block body %}
+<!-- profile page V3 -->
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+	<!-- Start of grid -->
+	<div class="w3-row">
+		<div class="w3-col">
+			<!-- Profile -->
+			<div class="w3-card-2 w3-round w3-white">
+				<div class="w3-container">
+					<h1 class="w3-center">{{ session.username }}</h1>
+					<p class="w3-center">
+						<img src="{{ url_for('static', filename='img/user.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px"
+						 alt="Avatar">
+
+						<form method=post enctype=multipart/form-data>
+							<p>
+								<input type="file" name="file">
+								<input type="submit" value="Upload">
+							</p>
+
+						</form>
+
+					</p>
+					<hr>
+					<p class="w3-center">
+						<i class="fas fa-briefcase w3-margin-right w3-text-theme"></i>Ask and answer questions</p>
+					<p class="w3-center">
+						<i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>Stellenbosch</p>
+				</div>
+			</div>
+			<br>
+
+			<!-- following, followers, pinned topics -->
+			<div class="w3-card-4 w3-round">
+				<div class="w3-white">
+					<button onclick="myProfileFunction('myProfileFollowing')" class="w3-button w3-block w3-theme-l1 w3-left-align">
+						<i class="fas fa-address-book w3-margin-right"></i>Following</button>
+					<div id="myProfileFollowing" class="w3-hide w3-container">
+						<p>list of people following..</p>
+					</div>
+					<button onclick="myProfileFunction('myProfileFollowers')" class="w3-button w3-block w3-theme-l1 w3-left-align">
+						<i class="fas fa-users w3-margin-right"></i>Followers</button>
+					<div id="myProfileFollowers" class="w3-hide w3-container">
+						<p>list of followers..</p>
+					</div>
+
+					<button onclick="myProfileFunction('myProfilePinnedTopics')" class="w3-button w3-block w3-theme-l1 w3-left-align">
+						<i class="fas fa-thumbtack w3-margin-right"></i>Pinned topics</button>
+					<div id="myProfilePinnedTopics" class="w3-card w3-round w3-white w3-hide w3-container">
+
+						<div class="w3-container w3-padding">
+
+							<a class="w3-small" href="#">News</a>
+							<a class="w3-small" href="#">Games</a>
+							<a class="w3-small" href="#">Friends</a>
+							<a class="w3-small" href="#">Food</a>
+							<a class="w3-small" href="#">Art</a>
+
+							<a class="w3-small" href="#">News</a>
+							<a class="w3-small" href="#">Games</a>
+							<a class="w3-small" href="#">Friends</a>
+							<a class="w3-small" href="#">Food</a>
+							<a class="w3-small" href="#">Art</a>
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
+
+	<div class="w3-col w3-margin-top">
+		<div class="w3-row-padding">
+			<div class="w3-col m12">
+				<div class=" w3-round w3-white">
+					<div class="w3-container w3-padding">
+						<h1 class="w3-opacity">Questions &amp; answers of followed topics &amp; people</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="w3-container w3-card-4 w3-theme-l4 w3-round w3-margin">
+			<h4>Asked by: John Doe</h4>
+			<hr class="w3-clear">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<div class="w3-container w3-card w3-theme-l3 w3-round w3-margin-bottom">
+				<h3>Replies: </h3>
+				<div class="w3-container w3-theme-l2 w3-round w3-margin-bottom">
+					<h4>JEFF</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+						aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+			</div>
+			<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom">
+				<i class="fas fa-reply"></i> reply </button>
+		</div>
+
+		<div class="w3-container w3-card-4 w3-theme-l4 w3-round w3-margin">
+			<h4>Asked by: JEFF Doe</h4>
+			<hr class="w3-clear">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<div class="w3-container w3-card w3-theme-l3 w3-round w3-margin-bottom">
+				<h3>Replies: </h3>
+				<div class="w3-container w3-theme-l2 w3-round w3-margin-bottom">
+					<h4>user1</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+						aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+				<div class="w3-container w3-theme-l2 w3-round w3-margin-bottom">
+					<h4>user2</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+						aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				</div>
+			</div>
+			<button type="button" class="w3-button w3-theme-d2 w3-margin-bottom">
+				<i class="fas fa-reply"></i> reply </button>
+		</div>
+	</div>
+
+	<!-- End Grid -->
+</div>
+
+<!-- End Page Container -->
+</div>
 
 {% endblock %}
