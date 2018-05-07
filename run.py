@@ -203,13 +203,11 @@ def question(question):
 def search():
 	return render_template('search.html', title="Search")
 
-@app.route('/show_topics', defaults={'username': False})	
-@app.route('/show_topics/<username>')
-def show_topics(username):
+@app.route('/show_topics')
+def show_topics():
 	topics = []
-	if not username:
-		query = "MATCH (otherTopic:Topic) WITH otherTopic.name as other RETURN other;"
-		topics = graph.run(query)
+	query = "MATCH ()<-[n:TAGGED]-(topic:Topic) WITH topic.name as name, count(n) AS rank RETURN name ORDER BY rank DESC;"
+	topics = graph.run(query)
 	return render_template('show_topics.html', topics=topics)
 	
 
