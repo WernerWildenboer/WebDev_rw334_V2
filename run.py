@@ -4,7 +4,7 @@ from flask import Flask, request, session, redirect, url_for, render_template, f
 import os
 
 UPLOAD_FOLDER = '/static/img'
-#ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -14,6 +14,7 @@ from datetime import datetime
 import uuid
 from urllib.parse import urlparse, urlunparse
 from werkzeug.utils import secure_filename
+from flask import send_from_directory
 
 ################################  Database Link  ################################
 
@@ -225,9 +226,9 @@ def show_suggestions():
 def user():
 	return render_template('user.html')
 
-# def allowed_file(filename):
-#     return '.' in filename and \
-#            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 @app.route('/upload_image', methods=['GET', 'POST'])
 def upload_image():
@@ -235,22 +236,27 @@ def upload_image():
 		# check if the post request has the file part
 		if 'file' not in request.files:
 			flash('No file')
-			#return redirect(request.url)
+			return redirect(request.url)
 
 		file = request.files['file']
 
 		if file.filename == '':
 			flash('No selected file')
-			#return redirect(request.url)
+			return redirect(request.url)
 
-		else:
+		if file and allowed_file(file.filename):
 			filename = secure_filename(file.filename)
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			#return redirect(url_for('uploaded_file',filename=filename))
-			return render_template('profile.html', title="Profile", username=session.username)
+			return redirect(url_for('uploaded_file',filename=filename))
+		#return render_template('profile.html', title="Profile", username=session.username)
 	
 ###################################  Run app  ###################################
 
+
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
 port = int(os.environ.get('PORT', 5000))
 app.secret_key = os.urandom(24)
