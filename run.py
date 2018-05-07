@@ -210,6 +210,13 @@ def show_topics():
 	topics = graph.run(query)
 	return render_template('show_topics.html', topics=topics)
 	
+@app.route('/show_suggestions')
+def show_suggestions():
+	suggestions = []
+	query = "MATCH ()<-[n:TAGGED]-(topic:Topic) WITH topic.name as name, count(n) AS rank RETURN name, rank ORDER BY rank DESC;"
+	suggestions = graph.run(query)s
+	return render_template('show_suggestions.html', suggestions=suggestions)
+	
 
 	
 ###################################  Run app  ###################################
