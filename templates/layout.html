@@ -17,7 +17,7 @@
 			<a href="{{ url_for('index') }}" class="w3-bar-item w3-button">What He Said</a>
 			{% if session.username %}
 			<div class="w3-dropdown-click">
-				<button class="w3-button" onclick="myFunction()">
+				<button class="w3-button" id="btnShowDropdown">
 					<img src="{{ image_url }}" class="w3-circle">
 				</button>
 				<div id="navDropdown" class="w3-dropdown-content w3-bar-block w3-card-4">
