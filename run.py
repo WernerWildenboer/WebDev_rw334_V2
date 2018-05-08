@@ -84,7 +84,7 @@ class User:
 			change_password = graph.run(query)
 			return True
 
-	return render_template('login.html', title="Login")  
+	return render_template('login.html', title="Login")   
 
     
     
