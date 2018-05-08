@@ -174,7 +174,7 @@ def login():
 	return render_template('login.html', title="Login")
 
 #==============================================================================================================
-@app.route('/changePassword', methods=['GET', 'POST'])
+@app.route('/changePwassword', methods=['GET', 'POST'])
 def changePassword():
 	if request.method == 'POST':
 		password_old = request.form['password_old']
@@ -193,7 +193,7 @@ def changePassword():
 			
 			change_password = graph.run(query)
 			
-	return redirect(url_for('index'))
+	return redirect(url_for('changePwassword'))
 
 #==============================================================================================================	
 	
