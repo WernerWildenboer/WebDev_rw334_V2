@@ -60,6 +60,11 @@ class User:
 			return bcrypt.verify(password, user['password'])
 		else:
 			return False
+        
+	def change_password_in_DB(self, password):
+		user = self.find()
+			user = Node("User", username=self.username, email=email, password=bcrypt.encrypt(password), Uploaded_pp="0")
+			graph.create(user)        
 			
 	def add_question(self, text, topics):
 		user = self.find()
@@ -171,7 +176,8 @@ def login():
 
 	return render_template('login.html', title="Login")
 
-@app.route('/change_password/w')
+#==============================================================================================================
+@app.route('/change_password/')
 def change_password():
 	
 		password_old = request.form['password_old']
@@ -183,9 +189,16 @@ def change_password():
 			session['username'] = username
 			user = User(session['username']).find()
 			password = password_new
+			query ='''MATCH (n:User)
+WHERE n.username='{username}'
+SET n.password = '{password_q}''''
+			query = query.format(username=session['username'],password_q=password)
+			
+			change_password = graph.run(query)
+			
 			return redirect(url_for('profile'))
 
-	
+#==============================================================================================================	
 	
 @app.route('/add_question', methods=['GET', 'POST'])
 def add_question():
@@ -208,9 +221,7 @@ def logout():
 	flash('Logged out.')
 	return redirect(url_for('index'))
 	
-@app.route('/changePassword')
-def changePassword():
-	return render_template('change_password.html', title="Change Password")
+
 
 @app.route('/forgotPassword')
 def forgotPassword():
