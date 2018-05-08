@@ -1,5 +1,15 @@
 {% extends "layout.html" %}
 {% block body %}
+<script>
+	function myFunction() {
+    var x = document.getElementById("Demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
+</script>
 <div class="w3-container">
   <h2>Clickable Dropdown</h2>
   <p>Click on the button to open the dropdown menu.</p>
