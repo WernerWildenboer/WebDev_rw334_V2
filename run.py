@@ -263,7 +263,7 @@ def upload_image():
 		if file and allowed_file(file.filename):
 			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.jpg')
 			file.save(full_filename)
-			#return "successfully uploaded"
+			return "successfully uploaded"
 			
 
 @app.route('/uploads/<filename>')
