@@ -228,8 +228,8 @@ def show_topics():
 @app.route('/show_suggestions')
 def show_suggestions():
 	suggestions = []
-	query = "MATCH ()<-[n:TAGGED]-(topic:Topic) WITH topic.name as name, count(n) AS rank RETURN name, rank ORDER BY rank DESC;"
-	suggestions = graph.run(query)
+   
+
 	return render_template('show_suggestions.html', suggestions=suggestions)
 	
 @app.route('/user')
@@ -255,15 +255,10 @@ def upload_image():
 			return redirect(request.url)
 
 		if file and allowed_file(file.filename):
-			#filename = secure_filename(file.filename)
-			#latestfile.save(os.path.join(app.root_path, app.config['STATIC_FOLDER'], 'customlogos', 'logo.png'))
-			#uploads//app/static/img/userTemp.png
-			#http://sleepy-plains-17562.herokuapp.com/static/img/userTemp.png
 			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.jpg')
 			file.save(full_filename)
-			return "successfully uploaded"
-			#redirect(url_for('uploaded_file', filename=full_filename))
-		#return render_template('profile.html', title="Profile", username=session.username)
+			#return "successfully uploaded"
+			
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
