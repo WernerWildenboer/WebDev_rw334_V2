@@ -261,7 +261,8 @@ def upload_image():
 			return redirect(request.url)
 
 		if file and allowed_file(file.filename):
-			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.jpg')
+			temp = session['username'] + ".jpg" #save as users name .jpg
+			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], temp)
 			file.save(full_filename)
 			return "successfully uploaded"
 			
