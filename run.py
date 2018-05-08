@@ -68,21 +68,20 @@ class User:
             password_new = password_new 
             user = self.find()
 
-		if not User(username).verify_password(password_old):
-			flash('Invalid login.')
-            return False
-		else:
-			session['username'] = username
-			user = User(session['username']).find()
-			password = password_new
-			query ='''MATCH (n:User)
-            WHERE n.username='{username}'
-            SET n.password = "{password_q}"'''
-			query = query.format(username=session['username'],password_q=password)
+			if not User(username).verify_password(password_old):
+				flash('Invalid login.')
+				return False
+			else:
+				session['username'] = username
+				user = User(session['username']).find()
+				password = password_new
+				query ='''MATCH (n:User)
+				WHERE n.username='{username}'
+				SET n.password = "{password_q}"'''
+				query = query.format(username=session['username'],password_q=password)
 			
-			change_password = graph.run(query)        
-            return True
-        
+				change_password = graph.run(query)        
+				return True
       
 			
 	def add_question(self, text, topics):
