@@ -30,7 +30,14 @@ $(document).ready(function() {
 	if ($("#show_suggestions").length) {
 		replaceSuggestions();
 	}
-	
+	function dropDownTopics() {
+    var x = document.getElementById("Demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
 	// Home Page update questions function
 	function update() {
 		var frm = $("select[name=from]").val();
@@ -54,14 +61,7 @@ $(document).ready(function() {
 	}
 });
 
-function dropDownTopics() {
-    var x = document.getElementById("Demo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else { 
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
+
 
 function myProfileFunction(id) {
 	var x = document.getElementById(id);
