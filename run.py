@@ -185,7 +185,16 @@ def change_password():
 		if not User(username).verify_password(password_old):
 			flash('Invalid login.')
 		else:
-
+			session['username'] = username
+			user = User(session['username']).find()
+			password = password_new
+			query ='''MATCH (n:User)
+            WHERE n.username='{username}'
+            SET n.password = "{password_q}"'''
+			query = query.format(username=session['username'],password_q=password)
+			
+			change_password = graph.run(query)
+			return redirect(url_for('index'))
         
 	return render_template('change_password.html', title="Change Password")
 
