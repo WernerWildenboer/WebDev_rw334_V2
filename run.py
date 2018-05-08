@@ -82,6 +82,7 @@ class User:
 			
 			change_password = graph.run(query)        
             return True
+        
       
 			
 	def add_question(self, text, topics):
