@@ -185,7 +185,7 @@ def change_password():
 			password = password_new
 			return redirect(url_for('profile'))
 
-	return render_template('login.html', title="Login")
+	
 	
 @app.route('/add_question', methods=['GET', 'POST'])
 def add_question():
