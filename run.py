@@ -266,15 +266,11 @@ def upload_image():
 		if file and allowed_file(file.filename):
 			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.jpg')
 			file.save(full_filename)
-
             query ='''MATCH (n:User)
             WHERE n.username='{username}'
             SET n.Uploaded_pp = 1;'''
             query = query.format(username=session['username'])
             session['uploaded'] = "1"
-
-			session['uploaded'] = "1"
-
 			return "successfully uploaded"
         
 			
