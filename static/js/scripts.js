@@ -54,7 +54,7 @@ $(document).ready(function() {
 	}
 });
 
-	function dropDownTopics() {
+function dropDownTopics() {
     var x = document.getElementById("Demo");
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
