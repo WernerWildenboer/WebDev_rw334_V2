@@ -19,10 +19,16 @@
 
     	alert(topics[i] + "ite" +i);
 	var para = document.createElement("P");
-	var inp = document.createElement("input");
+	    		alert("hello1");
+
+	var inp = document.createElement("input");		
+	    alert("hello2");
+
 	inp.type = "checkbox";
         inp.class = "w3-check";
 	var topc = document.createTextNode(topic[i]+"topic");
+	    		alert("hello3");
+
 	inp.appendChild(topc);
 	para.appendChild(inp);    
 	drop.appendChild(para);
@@ -45,7 +51,7 @@
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
 		
 		
-			<h2 class="w3-left-align">Topicc: </h2>
+			<h2 class="w3-left-align">Topic: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click" >
     <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "float:right; clear:left;">Click Me</button>
