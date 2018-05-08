@@ -3,7 +3,7 @@
 from flask import Flask, request, session, redirect, url_for, render_template, flash
 import os
 
-UPLOAD_FOLDER = 'static/img'
+UPLOAD_FOLDER = 'app/static/img'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 
 app = Flask(__name__)
