@@ -21,15 +21,12 @@
 	var para = document.createElement("P");
 	    		alert("hello1");
 
-	var inp = document.createElement("input");		
+	var inp = document.createElement("INPUT");		
 
-	inp.type = "checkbox";
-	    alert("hello2");
+	inp.setAttribute("type","checkbox");
+	inp.setAttribute("class","w3-check");
 	    
-        inp.class = "w3-check";
-	    alert("hello3");
-	    
-	var topc = document.createTextNode(topic[i]);
+	var topc = document.createTextNode(topics[i]);
 	    alert("hello4");
 
 	inp.appendChild(topc);
@@ -54,7 +51,7 @@
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
 		
 		
-			<h2 class="w3-left-align">Topic: </h2>
+			<h2 class="w3-left-align">Topicc: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click" >
     <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "float:right; clear:left;">Click Me</button>
