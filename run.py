@@ -272,9 +272,9 @@ def topic(topic):
 	#questions = get_questions(topic)
 	return render_template('topic.html', topic=topic)
 	
-@app.route('/show_questions/<type>/<amount>', defaults={'topic': None})
-@app.route('/show_questions/<type>/<amount>/<topic>')
-def show_questions(type, amount, topic):
+@app.route('/show_questions/<type>/<amount>/<qa>', defaults={'topic': None})
+@app.route('/show_questions/<type>/<amount>/<qa>/<topic>')
+def show_questions(type, amount, qa, topic):
 	if (type == 'mainSignedOutTime'):
 		query = '''MATCH (q:Question)
 OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
@@ -342,6 +342,7 @@ RETURN DISTINCT q, extract(x IN relationships(r)| type(x)) AS types, count(upvot
 ORDER BY q.timestamp DESC LIMIT {amount};'''
 		query = query.format(username=topic, amount=amount)
 		questions = graph.run(query)
+	render_template('show_questions.html', questions=questions, qa=qa)
 	
 ###################################  Run app  ###################################
 
