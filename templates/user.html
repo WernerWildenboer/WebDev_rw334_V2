@@ -1,35 +1,50 @@
     {% extends "layout.html" %}
     {% block body %}
         <!-- main content -->
-    
-    <style>
-        ul#menu li {
-            clear: left;
-            float:right ;
-            }
-    </style>
+    <title>W3.CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   
     <body>
-        <div class="w3-container w3-center">
-            <div class="w3-border">
-                
-                <div class="w3-container w3-black">
-                <h1 id = "THIS IS MY NAME">This Is My Profile</h1>
+        <div class="w3-container w3-content" style = "max-width:1400px;margin-top:80px">
+            <div class="w3-row">
+                <div class ="w3-card-2 w3-round w3-white">
+                <div class="w3-container w3-theme-l3">
+                <h1 id = "userName" style = "text-align: center">My Profile</h1>
                 </div>
                 
-                <div class = "w3-container w3-center-left">
-                    <img src="PICTURE_SOURCE" alt="profile_pic" id = "profile_pic" class="w3-circle" style="width:80%;max-width:320px">
+                <div class = "w3-container w3-center">
+                    <img src="PICTURE_SOURCE" alt="profile_pic" id = "profile_pic" class="w3-circle" style="width:80%;max-width:320px; align-items: center;">
                     <p id= "my_bio">Who am I?</p>
-                    <p><button href = "THERE IS NO LINK HERE" id= "follow_me_button" class="w3-button w3-black w3-round-xxlarge">Follow Me</button></p>
+                    <p><button href = "TODO" id= "follow_me_button" class="w3-button w3-theme-l3 w3-round-xxlarge">Follow Me</button></p>
                 </div>
                 
-                <div>
-                    <ul id="follow" class="w3-ul w3-hoverable">
-                      <li id = "likes">Likes</li>
-                      <li id = "followers">Followers</li>
-                      <li id = "following">Following</li>
-                    </ul>
-                </div>
+                <div class="w3-card-4 w3-round">
+				<div class="w3-white">
+					<button onclick="TODO" class="w3-button w3-block w3-theme-l1 w3-left-align">
+						<i class="fas fa-address-book w3-margin-right"></i>Following</button>
+					<div id="userProfileFollowing" class="w3-hide w3-container">
+						<p>list of people following..</p>
+					</div>
+					<button onclick="TODO" class="w3-button w3-block w3-theme-l1 w3-left-align">
+						<i class="fas fa-users w3-margin-right"></i>Followers</button>
+					<div id="userProfileFollowers" class="w3-hide w3-container">
+						<p>list of followers..</p>
+					</div>
+
+					<button onclick="TODO" class="w3-button w3-block w3-theme-l1 w3-left-align">
+						<i class="fas fa-thumbtack w3-margin-right"></i>Pinned topics</button>
+					<div id="userProfilePinnedTopics" class="w3-card w3-round w3-white w3-hide w3-container">
+
+						<div class="w3-container w3-padding">
+						</div>
+
+					</div>
+				</div>
+			</div>
             </div>
+                </div>
+                
         </div>
     </body>
 
