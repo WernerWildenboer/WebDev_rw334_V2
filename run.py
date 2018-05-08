@@ -271,7 +271,7 @@ def upload_image():
             SET n.Uploaded_pp = 1;'''
             query = query.format(username=session['username'])
             session['uploaded'] = "1"
-			return "successfully uploaded"
+			return redirect(url_for('profile'))
         
 			
 
