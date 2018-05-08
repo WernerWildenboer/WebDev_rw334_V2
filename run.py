@@ -265,8 +265,7 @@ def upload_image():
 		
 @app.route('/uplaod_bio', methods=['GET', 'POST'])
 def upload_image():
-	if request.method == 'POST':
-		bio = request.form['message']
+	
 		
 		
 @app.route('/uploads/<filename>')
