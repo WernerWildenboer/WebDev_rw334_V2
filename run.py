@@ -4,7 +4,7 @@ from flask import Flask, request, session, redirect, url_for, render_template, f
 import os
 
 #UPLOAD_FOLDER = 'app/static/img'
-ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+ALLOWED_EXTENSIONS = set(['png', 'jpg'])
 APP_ROOT = os.path.dirname(os.path.abspath(__file__))
 UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static', 'img')
 
@@ -257,15 +257,13 @@ def upload_image():
 			#latestfile.save(os.path.join(app.root_path, app.config['STATIC_FOLDER'], 'customlogos', 'logo.png'))
 			#uploads//app/static/img/userTemp.png
 			#http://sleepy-plains-17562.herokuapp.com/static/img/userTemp.png
-			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.jpg')
+			temp = session['username'] + ".jpg" #save as users name .jpg
+			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], temp)
 			file.save(full_filename)
 			return "successfully uploaded"
 			#redirect(url_for('uploaded_file', filename=full_filename))
 		#return render_template('profile.html', title="Profile", username=session.username)
 
-	
-		
-		
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
