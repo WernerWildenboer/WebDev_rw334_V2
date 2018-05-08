@@ -193,7 +193,7 @@ def changePassword():
 			
 			change_password = graph.run(query)
 			
-			return redirect(url_for('index'))
+	return redirect(url_for('index'))
 
 #==============================================================================================================	
 	
