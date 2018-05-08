@@ -26,8 +26,9 @@
 	var par = document.createElement("P");
 	var topc = document.createTextNode(topics[i]);
 	label.appendChild(topc);
-	inp.prepend(label);   
-	drop.appendChild(inp);
+	inp.prepend(label); 
+	par.appendChild(inp);
+	drop.appendChild(par);
     }
     var x = document.getElementById("Demo");
     if (x.className.indexOf("w3-show") == -1) {
@@ -47,7 +48,7 @@
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
 		
 		
-			<h2 class="w3-left-align">Topicc: </h2>
+			<h2 class="w3-left-align">Topic: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click" >
     <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "float:right; clear:left;">Click Me</button>
