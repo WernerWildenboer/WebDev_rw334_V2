@@ -4,28 +4,37 @@
 	function myFunction() {
 		
     var strComma = document.getElementById('topics').innerHTML;
-		var topics = str.split(',');
-		alert("hello0");
+		var topics = strComma.split(',');
+		
 		
 		var i ;
 		var drop = document.getElementById("Demo");
-		alert("hello1");
+		
 		
 		alert(topics.length);
-		alert("hello2");
 		
-    for(i = 0; i < topics.length;i++){
-	    		alert("hello3");
+		
+    for(i = 0; i <=topics.length;i++){
+	    		
 
-    	alert(topics[i]);
-	/*var para = document.createElement("P");
-	var inp = document.createElement("input");
+    	alert(topics[i] + "ite" +i);
+	var para = document.createElement("P");
+	    		alert("hello1");
+
+	var inp = document.createElement("input");		
+
 	inp.type = "checkbox";
+	    alert("hello2");
+	    
         inp.class = "w3-check";
-	var topc = document.createTextNode(topic[i]+"topic");
+	    alert("hello3");
+	    
+	var topc = document.createTextNode(topic[i]);
+	    alert("hello4");
+
 	inp.appendChild(topc);
 	para.appendChild(inp);    
-	drop.appendChild(para);*/
+	drop.appendChild(para);
     }
     var x = document.getElementById("Demo");
     if (x.className.indexOf("w3-show") == -1) {
