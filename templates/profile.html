@@ -15,13 +15,12 @@
 						<!-- word ge upload maar onder  http://sleepy-plains-17562.herokuapp.com/uploads/Emile2.png -->
                         <form action="TODO" method=post enctype=multipart/form-data>        
                             <h3 class="w3-center">My Bio</h3>
-
-                                  <div class= "w3-center" style="width:50px"><i class="w3-xlarge "></i></div>
-                                    <div class="w3-rest">
-                                      <input class="w3-input w3-center" style = "width:30%" name="message" type="text" placeholder="Write a short bio">
+                                    <div class="w3-center">
+                                      <input class=" w3-center" style = "width:30%" name="message" type="text" placeholder="Write a short bio">
                                         <button class="w3-theme-l1 w3-button w3-section  w3-ripple w3-padding">Post</button>
-                                    </div>
+                                    
                             <p id = "bio" style = "fa fa-pencil w3-text-theme  w3-margin-right">MY BIO SHOULD BE HERE</p>
+                            </div>
                         </form>
                     </div>	
                         <form action="{{ url_for('upload_image') }}" method=post enctype=multipart/form-data>
