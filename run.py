@@ -177,7 +177,7 @@ def login():
 
 #==============================================================================================================
 @app.route('/change_password',methods=['GET', 'POST'])
-def changePassword():
+def change_password():
 	if request.method == 'POST':
 		password_old = request.form['password_old']
 		password_new = request.form['password_new']
