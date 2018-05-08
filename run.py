@@ -184,10 +184,6 @@ def logout():
 def changePassword():
 	return render_template('change_password.html', title="Change Password")
 
-@app.route('/forgotPassword')
-def changePassword():
-	return render_template('forgot_password.html', title="Forgot Password")
-
 @app.route('/profile/<username>')
 def profile(username):
 	return render_template('profile.html', title="Profile", username=username)
