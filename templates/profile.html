@@ -11,22 +11,20 @@
 				<div class="w3-container">
 					<h1 class="w3-center">{{ session.username }}</h1>
 					<div class="w3-center">
-
-						{% if session.userimage %}
-						<img src="{{ url_for('static', filename='img/{{ session.username }}.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px">
-
-						{% else %} 
+						<img src="{{ url_for('static', filename='img/user.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px">
+						<!-- word ge upload maar onder  http://sleepy-plains-17562.herokuapp.com/uploads/Emile2.png -->
+						
 						<form action="{{ url_for('upload_image') }}" method=post enctype=multipart/form-data>
 							<input type="file" name="file">
 							<input type="submit" value="Upload">
 						</form>
-						{% endif %} 
-
-						<form action="TODO" method=post enctype=multipart/form-data>        
+						
+			<form action="/" method=post enctype=multipart/form-data>        
                             <h4 class="w3-center">My Bio</h4>
                                     <div class="w3-center">
                                       <input class=" w3-center" style = "width:30%" name="message" type="text" placeholder="Write a short bio">
-                                        <button class="w3-theme-l1 w3-button w3-section  w3-ripple w3-padding">Post</button>
+                                      <input type = "submit" class="w3-theme-l1 w3-button w3-section  w3-ripple w3-padding">
+
                                     
                             <p id = "myProfileBio"><i class="fas fa-pencil-alt w3-margin-right w3-text-theme"></i>Short bio goes here. Change id: myProfileBio, to bio from DB using current session username</p>
                             </div>
