@@ -39,24 +39,41 @@ $(document).ready(function() {
     }
 }
 	// Home Page update questions function
-	function update() {
-		var frm = $("select[name=from]").val();
-		var qa = $("select[name=qa]").val();
-		var order = $("select[name=order]").val();
-		var amount = $("select[name=amount]").val();
+	function update(first) {
 		var url = "/show_questions";
-		if (frm = "main") {
-			url += "/main"
+		if (first) {
+			var loggedin = $('#loggedin').val();
+			if (loggedin) {
+				url += "mainSignedInTime/10/qa";
+			} else {
+				url += "/mainSignedOutTime/10/qa";
+			}
+		} else {
+			var order = $("select[name=order]").val();
+			var amount = $("select[name=amount]").val();
+			var loggedin = $('#loggedin').val();
+			
+			if (loggedin) {
+				var frm = $("select[name=from]").val();
+				var qa = $("select[name=qa]").val();
+				if (frm = "main") {
+					url += "/mainSignedIn" + order + "/" + amount + "/" + qa;
+				} else {
+					url += "/" + frm + order + "/" + amount + "/" + qa;
+				}
+			} else {
+				url += "/mainSignedOut" + order + "/" + amount + "/qa";
+			}
 		}
-		$.get('/show_questions').done(
+		$.get(url).done(
 		function(response) {
 			$("#show_questions").html(response);
 		});
 	}
 	if ($("#update").length) {
-		//update();
+		update(True);
 		$("#update").click(function() {
-			update();
+			update(False);
 		});
 	}
 });
