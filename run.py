@@ -226,7 +226,15 @@ def show_topics():
 @app.route('/show_suggestions')
 def show_suggestions():
 	suggestions = []
-	query = "MATCH ()<-[n:TAGGED]-(topic:Topic) WITH topic.name as name, count(n) AS rank RETURN name, rank ORDER BY rank DESC;"
+    query = query.format(username=session['username'], amount=amount)
+   
+	query = '''MATCH a=((user_1:User {username:'{username}'})-[r1:FOLLOWS]->
+(user_2:User)-[r2:FOLLOWS]->(user_3:User))
+WHERE user_1.username<>user_3.username
+AND NOT (user_1)-[:FOLLOWS]->(user_3)
+MATCH (user_3)-[:WROTE]->()<-[upvotes:UPVOTE]-()
+RETURN user_3.username AS Username,COUNT(upvotes) AS Rank ORDER BY Rank DESC;'''
+    query = query.format(username=session['username'])
 	suggestions = graph.run(query)
 	return render_template('show_suggestions.html', suggestions=suggestions)
 	
