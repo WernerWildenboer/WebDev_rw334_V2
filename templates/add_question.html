@@ -12,7 +12,10 @@
 </script>
 <<<<<<< HEAD
 <div class="w3-container">
-  <input id="topics" type="hidden" val="{{ topics }}">
+{% for topic in topics %}
+{% set value += topic.name + ',' %}
+{% endfor %}
+  <input id="topics" type="hidden" val="{{ value }}">
 =======
 
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
