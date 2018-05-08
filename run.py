@@ -3,8 +3,10 @@
 from flask import Flask, request, session, redirect, url_for, render_template, flash
 import os
 
-UPLOAD_FOLDER = 'app/static/img'
+#UPLOAD_FOLDER = 'app/static/img'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
+APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(APP_ROOT, 'static', 'img')
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -251,11 +253,18 @@ def upload_image():
 			return redirect(request.url)
 
 		if file and allowed_file(file.filename):
-			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-			return redirect(url_for('uploaded_file',filename=filename))
+			#filename = secure_filename(file.filename)
+			#latestfile.save(os.path.join(app.root_path, app.config['STATIC_FOLDER'], 'customlogos', 'logo.png'))
+			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.png')
+			file.save(full_filename)
+			return redirect(url_for('uploaded_file', filename=full_filename))
 		#return render_template('profile.html', title="Profile", username=session.username)
-		
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+
 @app.route('/topic/<topic>')
 def topic(topic):
 	#questions = get_questions(topic)
@@ -263,11 +272,6 @@ def topic(topic):
 	
 ###################################  Run app  ###################################
 
-
-
-@app.route('/uploads/<filename>')
-def uploaded_file(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'],filename)
 
 port = int(os.environ.get('PORT', 5000))
 app.secret_key = os.urandom(24)
