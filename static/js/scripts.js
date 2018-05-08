@@ -15,8 +15,17 @@ $(document).ready(function() {
 			$("#show_topics").html(response);
 		});
 	}
+	function replaceSuggestions() {
+		$.get('/show_suggestions').done(
+		function(response) {
+			$("#show_suggestions").html(response);
+		});
+	}
 	if ($("#show_topics").length) {
 		replaceTopic();
+	}
+	if ($("#show_suggestions").length) {
+		replaceSuggestions();
 	}
 });
 

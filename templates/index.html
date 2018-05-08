@@ -50,14 +50,15 @@
 		<div id="show_topics" class="w3-container container"></div>
 	</div>
 	
+	{% if session.username %}
 	<div class="w3-card w3-margin-bottom">
 		<div class="w3-container w3-theme-d1">
 			<h2>Suggested People</h2>
 		</div>
 		<!-- show suggested by people -->
-		<div id="show_suggestions"></div>
-		<iframe src="{{ url_for('show_suggestions') }}"></iframe>
+		<div id="show_suggestions" class="w3-container container"></div>
 	</div>
+	{% endif %}
 </div>
 
 {% endblock %}
