@@ -1,6 +1,6 @@
 
 <div class="w3-container w3-card">
 	{% for topic in topics %}
-		<a href="{{ url_for('show_topics') }}"><div class="w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ topic.name }} <span class="w3-tag w3-round w3-deep-orange">{{ topic.rank }}</span></div></a>
+		<a href="{{ url_for('show_topics') }}" class="tag"><div class="w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ topic.name }} <span class="w3-tag w3-round w3-deep-orange">{{ topic.rank }}</span></div></a>
 	{% endfor %}
 </div>
