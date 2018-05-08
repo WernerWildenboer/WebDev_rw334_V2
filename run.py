@@ -226,8 +226,6 @@ def show_topics():
 @app.route('/show_suggestions')
 def show_suggestions():
 	suggestions = []
-    query = query.format(username=session['username'], amount=amount)
-   
 	query = '''MATCH a=((user_1:User {username:'{username}'})-[r1:FOLLOWS]->
 (user_2:User)-[r2:FOLLOWS]->(user_3:User))
 WHERE user_1.username<>user_3.username
