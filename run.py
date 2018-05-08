@@ -264,14 +264,23 @@ def upload_image():
 			return redirect(request.url)
 
 		if file and allowed_file(file.filename):
-			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.jpg')
+			
+			temp = session['username'] + ".jpg"
+			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], temp)
 			file.save(full_filename)
+<<<<<<< HEAD
             query ='''MATCH (n:User)
             WHERE n.username='{username}'
             SET n.Uploaded_pp = 1;'''
             query = query.format(username=session['username'])
             session['uploaded'] = "1"
 			return redirect(url_for('profile'))
+=======
+			query ='''MATCH (n:User) WHERE n.username='{username}' SET n.Uploaded_pp = 1;'''
+			query = query.format(username=session['username'])
+			session['uploaded'] = "1"
+			return "successfully uploaded"
+>>>>>>> 5fecf0a13ded2ee4188603291715e77d5cdca9a6
         
 			
 
