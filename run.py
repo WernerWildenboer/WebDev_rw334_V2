@@ -257,7 +257,7 @@ def upload_image():
 		#return render_template('profile.html', title="Profile", username=session.username)
 		
 @app.route('/topic/<topic>')
-def topic(topic)
+def topic(topic):
 	#questions = get_questions(topic)
 	return render_template('topic.html', topic=topic)
 	
