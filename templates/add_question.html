@@ -19,7 +19,7 @@
 =======
 
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
-		<form class="w3-container w3-card-4" id = "add_question_form" class="form" action="{{ url_for('add_question') }}" method="post">
+		
 		
 			<h2 class="w3-left-align">Topic: </h2>
 			<div class="w3-container">
@@ -46,6 +46,7 @@
     </div>
 </div>
 </div>
+<form class="w3-container w3-card-4" id = "add_question_form" class="form" action="{{ url_for('add_question') }}" method="post">
 			<textarea class="w3-input w3-border" rows="4" cols="50" name="add_question_box" form="add_question" resize="none" placeholder="Ask your question"></textarea>
 			
 			<button type="submit" class="w3-button w3-section w3-red w3-ripple"> Ask Question </button>
