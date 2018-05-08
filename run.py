@@ -61,6 +61,27 @@ class User:
 		else:
 			return False
         
+	def change_password_DB(self,password_old,password_new):
+        if password_old == password_old:
+            
+            password_old = password_old
+            password_new = password_new 
+            user = self.find()
+
+		if not User(username).verify_password(password_old):
+			flash('Invalid login.')
+            return False
+		else:
+			session['username'] = username
+			user = User(session['username']).find()
+			password = password_new
+			query ='''MATCH (n:User)
+            WHERE n.username='{username}'
+            SET n.password = "{password_q}"'''
+			query = query.format(username=session['username'],password_q=password)
+			
+			change_password = graph.run(query)        
+            return True
       
 			
 	def add_question(self, text, topics):
@@ -174,26 +195,18 @@ def login():
 	return render_template('login.html', title="Login")
 
 #==============================================================================================================
-@app.route('/changePassword', methods=['GET', 'POST'])
+@app.route('/changePassword')
 def changePassword():
-	if request.method == 'POST':
+	
 		password_old = request.form['password_old']
 		password_new = request.form['password_new']
 
 		if not User(username).verify_password(password_old):
 			flash('Invalid login.')
 		else:
-			session['username'] = username
-			user = User(session['username']).find()
-			password = password_new
-			query ='''MATCH (n:User)
-            WHERE n.username='{username}'
-            SET n.password = "{password_q}"'''
-			query = query.format(username=session['username'],password_q=password)
+	           change_password_DB(password_old,password_new)
 			
-			change_password = graph.run(query)
-			
-	return redirect(url_for('changePassword'))
+	return redirect(url_for('profile'))
 
 #==============================================================================================================	
 	
