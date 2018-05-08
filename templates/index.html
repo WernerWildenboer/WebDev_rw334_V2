@@ -16,8 +16,32 @@
 
 <div class="w3-panel w3-third">
 	<div class="w3-card w3-margin-bottom">
-		<div class="w3-container w3-theme-d1">
-			<h2>Topics</h2>
+		<div class="w3-container w3-theme-d1 w-cell-row">
+			<h2 class="w3-cell">Topics</h2>
+			<div class="w3-cell">
+				{% if session.username %}
+				<select class="w3-select">
+					<option>All</option>
+					<option>Users</option>
+					<option>Topics</option>
+				</select>
+				{% endif %}
+				<select class="w3-select">
+					<option>Q & A</option>
+					<option>Questions</option>
+					<option>Answers</option>
+				</select>
+				<select class="w3-select">
+					<option>Most Recent</option>
+					<option>Most Upvoted</option>
+				</select>
+				<select class="w3-select">
+					<option>10</option>
+					<option>20</option>
+					<option>50</option>
+					<option>100</option>
+				</select>
+			</div>
 		</div>
 		
 		<!-- show topics, first followed topics, then other topics, differentiating between the 2 -->
