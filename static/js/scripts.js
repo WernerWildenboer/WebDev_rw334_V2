@@ -1,6 +1,7 @@
 $(document).ready(function() {
 	
 	function myFunction() {
+		alert("myFunction");
     		var x = document.getElementById("Demo");
    		 if (x.className.indexOf("w3-show") == -1) {
        			 x.className += " w3-show";
