@@ -255,6 +255,11 @@ def upload_image():
 			file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 			return redirect(url_for('uploaded_file',filename=filename))
 		#return render_template('profile.html', title="Profile", username=session.username)
+		
+@app.route('/topic/<topic>')
+def topic(topic)
+	#questions = get_questions(topic)
+	return render_template('topic.html', topic=topic)
 	
 ###################################  Run app  ###################################
 

@@ -9,7 +9,15 @@ $(document).ready(function() {
 			temp.addClass("w3-hide").removeClass("w3-show");
 		 }
 	});
-
+	function replaceTopic() {
+		$.get('/show_topics').done(
+		function(response) {
+			$("#show_topics").html(response);
+		});
+	}
+	if ($("#show_topics").length) {
+		replaceTopic();
+	}
 });
 
 function myProfileFunction(id) {
