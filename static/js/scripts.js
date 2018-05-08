@@ -1,5 +1,12 @@
+
+
+var getTopics_array=[];
+
 $(document).ready(function() {
 	
+    	function getTopics() {
+
+		}
 	
 	//show dropdown on home page.
 	$("#dropdownBtn").click(function() {

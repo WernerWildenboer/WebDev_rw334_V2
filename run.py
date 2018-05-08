@@ -235,8 +235,7 @@ MATCH (user_3)-[:WROTE]->()<-[upvotes:UPVOTE]-()
 RETURN user_3.username AS Username,COUNT(upvotes) AS Rank ORDER BY Rank DESC;'''
     query = query.format(username=session['username'])
     suggestions = graph.run(query)
-
-	return render_template('show_suggestions.html', suggestions=suggestions)
+    return render_template('show_suggestions.html', suggestions=suggestions)
 	
 @app.route('/user')
 def user():
