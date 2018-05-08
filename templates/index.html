@@ -4,9 +4,11 @@
 <div class="w3-panel w3-twothird">
 	<div class="w3-card w3-margin-bottom ">
 		<div class="w3-container w3-theme-d1  w-cell-row">
-			<h2 class="w3-cell">Questions</h2>
-			<!-- maybe add sort by dropdown (ajax) -->
 			<div class="w3-cell">
+				<h2>Questions</h2>
+			</div>
+			<!-- maybe add sort by dropdown (ajax) -->
+			<div class="w3-cell w3-right">
 				{% if session.username %}
 				<select class="w3-select">
 					<option>All</option>
@@ -41,7 +43,7 @@
 <div class="w3-panel w3-third">
 	<div class="w3-card w3-margin-bottom">
 		<div class="w3-container w3-theme-d1">
-			<h2 class="w3-cell">Topics</h2>
+			<h2>Topics</h2>
 		</div>
 		
 		<!-- show topics, first followed topics, then other topics, differentiating between the 2 -->
