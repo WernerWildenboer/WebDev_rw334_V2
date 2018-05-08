@@ -262,9 +262,6 @@ def upload_image():
 			return "successfully uploaded"
 			#redirect(url_for('uploaded_file', filename=full_filename))
 		#return render_template('profile.html', title="Profile", username=session.username)
-@app.route('/uplaod_bio', methods=['GET', 'POST']) 
-def upload_image(): 
-	
 
 	
 		
