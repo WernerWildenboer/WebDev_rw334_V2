@@ -7,14 +7,18 @@
 	<div class="w3-row">
 		<div class="w3-col">
 			<!-- Profile -->
-			<div class="w3-card-2 w3-round w3-theme-l1 w3-margin w3-padding">
+			<div class="w3-card-2 w3-round w3-theme-l3 w3-margin w3-padding">
 				<div class="w3-container">
 					<h1 class="w3-center">{{ session.username }}</h1>
 					<div class="w3-center">
 
 						{% if session.userimage %}
-						<img src="{{ url_for('static', filename='img/{{ session.username }}.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px"> {% else %}
-						<div class="w3-card w3-theme-l4 w3-margin w3-padding">
+						<!-- if have a user image -->
+						<img src="{{ url_for('static', filename='img/{{ session.username }}.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px"> 
+						
+						<!-- else : ask for image upload -->
+						{% else %}
+						<div class="w3-card w3-theme-l4 w3-margin w3-padding w3-round">
 							<img src="{{ url_for('static', filename='img/user.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px">
 							<h3>Please upload profile picture</h3>
 							<form action="{{ url_for('upload_image') }}" method=post enctype=multipart/form-data>
@@ -22,30 +26,33 @@
 								<input type="submit" value="Upload">
 							</form>
 						</div>
-
-						{% endif %} {% if session.userbio %}
-						<div></div>
+						<!-- end if -->
+						{% endif %} 
+						
+						{% if session.userbio %}
+						<!-- if have a user bio -->
+						<p id="myProfileBio" class="w3-center">
+						<i class="fas fa-pencil-alt w3-margin-right w3-text-theme"></i>Short bio goes here. Use id: myProfileBio, to change</p>
+						<!-- else : ask for bio upload -->
 						{% else %}
-						<form action="/" method=post enctype=multipart/form-data>
-							<h4 class="w3-center">My Bio</h4>
-							<div class="w3-center">
-								<input class=" w3-center" style="width:30%" name="message" type="text" placeholder="Write a short bio">
-								<input type="submit" class="w3-theme-l1 w3-button w3-section w3-ripple w3-padding">
-							</div>
-						</form>
+						<div class="w3-card w3-theme-l4 w3-margin w3-padding w3-round">
+							<form action="/" method=post enctype=multipart/form-data>
+								<h4 class="w3-center">My Bio</h4>
+								<div class="w3-center">
+									<input class=" w3-center" style="width:30%" name="message" type="text" placeholder="Write a short bio">
+									<input type="submit" class="w3-theme-l1 w3-button w3-section w3-ripple w3-padding">
+								</div>
+							</form>
+						</div>
+						<!-- end if -->
 						{% endif %}
 					</div>
-
 					<hr>
-					<p id="myProfileBio" class="w3-center">
-						<i class="fas fa-pencil-alt w3-margin-right w3-text-theme"></i>Short bio goes here. Change id: myProfileBio, to bio from DB using current session username</p>
-
+					
 					<p class="w3-center">
-						<i class="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>Stellenbosch</p>
-					<p class="w3-center">
-						<i class="fa fa-key w3-margin-right w3-text-theme"></i>
-						Reset
-						<a href="{{ url_for('changePassword') }}">password?</a>
+						<i class="fas fa-key w3-margin-right w3-text-theme"></i>
+						Change password
+						<a href="{{ url_for('changePassword') }}">here</a>
 					</p>
 
 				</div>
@@ -58,12 +65,12 @@
 					<button onclick="myProfileFunction('myProfileFollowing')" class="w3-button w3-block w3-theme-l1 w3-left-align">
 						<i class="fas fa-address-book w3-margin-right"></i>Following</button>
 					<div id="myProfileFollowing" class="w3-hide w3-container">
-						<p>list of people following..</p>
+						<p>list of people following. Use id: <strong>myProfileFollowing</strong> to change!</p>
 					</div>
 					<button onclick="myProfileFunction('myProfileFollowers')" class="w3-button w3-block w3-theme-l1 w3-left-align">
 						<i class="fas fa-users w3-margin-right"></i>Followers</button>
 					<div id="myProfileFollowers" class="w3-hide w3-container">
-						<p>list of followers..</p>
+						<p>list of followers. Use id: <strong>myProfileFollowers</strong> to change!</p>
 					</div>
 
 					<button onclick="myProfileFunction('myProfilePinnedTopics')" class="w3-button w3-block w3-theme-l1 w3-left-align">
@@ -71,8 +78,9 @@
 					<div id="myProfilePinnedTopics" class="w3-card w3-round w3-white w3-hide w3-container">
 
 						<div class="w3-container w3-padding">
-
+							<span>Use id <strong>myProfilePinnedTopics</strong></span>
 							<a class="w3-small" href="#">News</a>
+							
 							<a class="w3-small" href="#">Games</a>
 							<a class="w3-small" href="#">Friends</a>
 							<a class="w3-small" href="#">Food</a>
@@ -101,6 +109,10 @@
 					</div>
 				</div>
 			</div>
+		</div>
+		
+		<div id="myProfileQuestionsAnswers" class="w3-container w3-card-4 w3-theme-l4 w3-round w3-margin" >
+		temp div, use id: <strong>myProfileQuestionsAnswers</strong> to change with ajax<br> the rest is just an example
 		</div>
 
 		<div class="w3-container w3-card-4 w3-theme-l4 w3-round w3-margin">
