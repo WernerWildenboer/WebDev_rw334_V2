@@ -176,7 +176,7 @@ def login():
 	return render_template('login.html', title="Login")
 
 #==============================================================================================================
-@app.route('/changePassword',methods=['GET', 'POST'])
+@app.route('/change_password',methods=['GET', 'POST'])
 def changePassword():
 	if request.method == 'POST':
 		password_old = request.form['password_old']
