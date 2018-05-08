@@ -1,14 +1,6 @@
 $(document).ready(function() {
 	
-	function myFunction() {
-		alert("myFunction");
-    		var x = document.getElementById("Demo");
-   		 if (x.className.indexOf("w3-show") == -1) {
-       			 x.className += " w3-show";
-   		 } else { 
-       			 x.className = x.className.replace(" w3-show", "");
-    		}
-	}
+	
 	//show dropdown on home page.
 	$("#dropdownBtn").click(function() {
 		 var temp = this.id;
@@ -38,6 +30,14 @@ $(document).ready(function() {
 	}
 });
 
+	function dropDownTopics() {
+    var x = document.getElementById("Demo");
+    if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+    } else { 
+        x.className = x.className.replace(" w3-show", "");
+    }
+}
 
 function myProfileFunction(id) {
 	var x = document.getElementById(id);
