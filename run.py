@@ -177,7 +177,7 @@ def login():
 	return render_template('login.html', title="Login")
 
 #==============================================================================================================
-@app.route('/change_password')
+@app.route('/changePassword')
 def change_password():
 	
 		password_old = request.form['password_old']
