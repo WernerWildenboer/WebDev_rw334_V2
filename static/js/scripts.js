@@ -76,8 +76,6 @@ $(document).ready(function() {
 	}
 });
 
-
-
 function myProfileFunction(id) {
 	var x = document.getElementById(id);
 	if (x.className.indexOf("w3-show") == -1) {
