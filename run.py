@@ -193,7 +193,7 @@ SET n.password = "{password_q}"'''
 			
 			change_password = graph.run(query)
 			
-			return redirect(url_for('profile'))
+			return redirect(url_for('index'))
 
 #==============================================================================================================	
 	
