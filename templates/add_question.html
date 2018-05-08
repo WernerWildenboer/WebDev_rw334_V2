@@ -10,24 +10,12 @@
 		var i ;
 		var drop = document.getElementById("Demo");
 		
-		var fake =document.getElementById("add_question_form");
-		
 		
     for(i = 0; i <topics.length;i++){
 	
-	var inp = document.createElement("INPUT");		
-	var label = document.createElement("LABEL");
-	inp.setAttribute("type","checkbox");
-	inp.setAttribute("class","w3-check");
-	inp.setAttribute("name",topics[i]);
-	var par = document.createElement("P");
-	var topc = document.createTextNode(topics[i]);
-	label.appendChild(topc);
-	inp.appendChild(label); 
-	par.appendChild(inp);
-	fake.appendChild(par);
+	
 	    		
-	//My longlived but unsuccesful attemp at a dropdown list >> only displays blanks
+	//My longlived but unsuccessful attemp at a dropdown list >> only displays blanks
 	/*var inp = document.createElement("INPUT");		
 	var label = document.createElement("LABEL");
 	inp.setAttribute("type","checkbox");
@@ -58,12 +46,12 @@
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
 		
 		
-			<h2 class="w3-left-align">Topicc: </h2>
+			<h2 class="w3-left-align">Topic: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click" >
-    <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "width = 35%;margin-left: 50%; float:right; clear:left;">Click Me</button>
+    <button onclick="myFunction()" class="w3-button w3-xxlarge w3-black w3-center" style= "width = 75%;margin-left: 50%; float:right; clear:left;">Click Me</button>
     <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-      <!--<p>
+      <p>
       <input class="w3-check"type="checkbox" checked="checked">      
       <label>News</label></p>
       <p>
@@ -77,7 +65,7 @@
       <label>Food</label></p>
       <p>
       <input class="w3-check" type="checkbox" >
-      <label>Art</label></p>-->
+      <label>Art</label></p>
 	
     </div>
 </div>
