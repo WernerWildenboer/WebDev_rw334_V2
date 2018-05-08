@@ -5,19 +5,19 @@
 		
     var strComma = document.getElementById('topics').innerHTML;
 		var topics = strComma.split(',');
-		alert("hello0");
+		
 		
 		var i ;
 		var drop = document.getElementById("Demo");
-		alert("hello1");
+		
 		
 		alert(topics.length);
-		alert("hello2");
 		
-    for(i = 0; i < topics.length;i++){
-	    		alert("hello3");
+		
+    for(i = 0; i <=topics.length;i++){
+	    		
 
-    	alert(topics[i]);
+    	alert(topics[i] + ite +i);
 	var para = document.createElement("P");
 	var inp = document.createElement("input");
 	inp.type = "checkbox";
@@ -45,7 +45,7 @@
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
 		
 		
-			<h2 class="w3-left-align">Topicc: </h2>
+			<h2 class="w3-left-align">Topic: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click" >
     <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "float:right; clear:left;">Click Me</button>
