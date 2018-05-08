@@ -263,9 +263,7 @@ def upload_image():
 			#redirect(url_for('uploaded_file', filename=full_filename))
 		#return render_template('profile.html', title="Profile", username=session.username)
 		
-@app.route('/upload_bio',methods=['GET','POST'])
-def upload_bio():
-	
+
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
