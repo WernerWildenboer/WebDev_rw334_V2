@@ -257,9 +257,10 @@ def upload_image():
 			#latestfile.save(os.path.join(app.root_path, app.config['STATIC_FOLDER'], 'customlogos', 'logo.png'))
 			#uploads//app/static/img/userTemp.png
 			#http://sleepy-plains-17562.herokuapp.com/static/img/userTemp.png
-			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.png')
+			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.jpg')
 			file.save(full_filename)
-			return redirect(url_for('uploaded_file', filename=full_filename))
+			return "successfully uploaded"
+			#redirect(url_for('uploaded_file', filename=full_filename))
 		#return render_template('profile.html', title="Profile", username=session.username)
 
 @app.route('/uploads/<filename>')

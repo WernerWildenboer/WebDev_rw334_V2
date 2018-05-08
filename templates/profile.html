@@ -11,7 +11,7 @@
 				<div class="w3-container">
 					<h1 class="w3-center">{{ session.username }}</h1>
 					<div class="w3-center">
-						<img src="{{ url_for('static', filename='static/img/userTemp.png') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
+						<img src="{{ url_for('static', filename='static/img/userTemp.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
 						<!-- word ge upload maar onder  http://sleepy-plains-17562.herokuapp.com/uploads/Emile2.png -->
 						
 						<form action="{{ url_for('upload_image') }}" method=post enctype=multipart/form-data>
