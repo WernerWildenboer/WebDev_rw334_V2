@@ -14,7 +14,7 @@
 						<img src="{{ url_for('static', filename='uploads/Emile2.png') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar">
 						<!-- word ge upload maar onder  http://sleepy-plains-17562.herokuapp.com/uploads/Emile2.png -->
                         <form action="{{ url_for('upload_bio') }}" method=post enctype=multipart/form-data>        
-                            <h1 class="w3-center">My Bio</h1>
+                            <h3 class="w3-center">My Bio</h3>
 
                                   <div class="w3-col" style="width:50px"><i class="w3-xlarge fa fa-pencil"></i></div>
                                     <div class="w3-rest">
@@ -29,6 +29,7 @@
 					       
 							<input type="file" name="file">
 							<input type="submit" value="Upload">
+                            </div>
 						</form>
 
 					</p>
