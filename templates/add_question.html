@@ -11,13 +11,11 @@
 		var drop = document.getElementById("Demo");
 		
 		
-		alert(topics.length);
 		
 		
     for(i = 0; i <=topics.length;i++){
 	    		
 
-    	alert(topics[i] + "ite" +i);
 	var para = document.createElement("P");
 	    		
 
@@ -27,7 +25,7 @@
 	inp.setAttribute("class","w3-check");
 	var par = document.createElement("P");
 	var topc = document.createTextNode(topics[i]);
-	    alert("hello4");
+	inp.value = topics[i];
 	par.appendChild(topc);
 	inp.appendChild(par);
 	para.appendChild(inp);    
