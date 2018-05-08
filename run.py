@@ -272,7 +272,7 @@ def upload_image():
 			query ='''MATCH (n:User) WHERE n.username='{username}' SET n.Uploaded_pp = 1;'''
 			query = query.format(username=session['username'])
 			session['uploaded'] = "1"
-            upload_image = graph.run(query)
+			upload_image = graph.run(query)
 			return render_template('profile.html', title="Profile",upload_image=upload_image)
 
         

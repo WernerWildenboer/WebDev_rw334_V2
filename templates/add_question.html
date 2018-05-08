@@ -19,20 +19,17 @@
 
     	alert(topics[i] + "ite" +i);
 	var para = document.createElement("P");
-	    		alert("hello1");
+	    		
 
-	var inp = document.createElement("input");		
+	var inp = document.createElement("INPUT");		
 
-	inp.type = "checkbox";
-	    alert("hello2");
-	    
-        inp.class = "w3-check";
-	    alert("hello3");
-	    
-	var topc = document.createTextNode(topic[i]);
+	inp.setAttribute("type","checkbox");
+	inp.setAttribute("class","w3-check");
+	var par = document.createElement("P");
+	var topc = document.createTextNode(topics[i]);
 	    alert("hello4");
-
-	inp.appendChild(topc);
+	par.appendChild(topc);
+	inp.appendChild(par);
 	para.appendChild(inp);    
 	drop.appendChild(para);
     }
@@ -59,7 +56,7 @@
   <div class="w3-dropdown-click" >
     <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "float:right; clear:left;">Click Me</button>
     <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-      <p>
+      <!--<p>
       <input class="w3-check"type="checkbox" checked="checked">      
       <label>News</label></p>
       <p>
@@ -73,7 +70,7 @@
       <label>Food</label></p>
       <p>
       <input class="w3-check" type="checkbox" >
-      <label>Art</label></p>
+      <label>Art</label></p>-->
 	
     </div>
 </div>
