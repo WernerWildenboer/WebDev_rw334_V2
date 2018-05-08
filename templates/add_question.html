@@ -11,6 +11,11 @@
 }
 </script>
 <div class="w3-container">
+{% set tpcs = "" %}
+{% for topic in topics %}
+{% tpcs = tpcs + topic.name + ',' %}
+{% endfor %}
+  <input id="topics" type="hidden" val="{{ tpcs }}">
   <h2>Clickable Dropdown</h2>
   <p>Click on the button to open the dropdown menu.</p>
   <div class="w3-dropdown-click" style = "float:right ;clear: left">

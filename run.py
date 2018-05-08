@@ -167,16 +167,19 @@ def login():
 	
 @app.route('/add_question', methods=['GET', 'POST'])
 def add_question():
+	suggestions = []
+	query ='''MATCH (topic:Topic) RETURN topic.name as name ORDER BY topic.name DESC;'''
+	topics = graph.run(query)
 	if request.method == 'POST':
 		text = request.form['add_question_box']
 		topics = request.form['topics']
-
 		if not text:
 			flash('You must give your question text.')
 		else:
 			User(session['username']).add_question(text, topics)
 
-	return render_template('add_question.html')
+	return render_template('add_question.html', topics=topics)
+	)
 	
 @app.route('/logout')
 def logout():
