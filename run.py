@@ -268,6 +268,7 @@ def upload_image():
 			file.save(full_filename)
             session['uploaded'] = "1"
 			return "successfully uploaded"
+        
 			
 
 @app.route('/uploads/<filename>')
