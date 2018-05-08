@@ -63,8 +63,8 @@ class User:
         
 	def change_password_in_DB(self, password):
 		user = self.find()
-			user = Node("User", username=self.username, email=email, password=bcrypt.encrypt(password), Uploaded_pp="0")
-			graph.create(user)        
+		user = Node("User", username=self.username, email=email, password=bcrypt.encrypt(password), Uploaded_pp="0")
+		graph.create(user)        
 			
 	def add_question(self, text, topics):
 		user = self.find()
