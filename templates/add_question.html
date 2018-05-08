@@ -19,11 +19,10 @@
     var strComma = document.getElementById('topics').innerHTML;
 		var topics = strComma.split(',');
 		
-		
+		/*
 		var i ;
 		var drop = document.getElementById("Demo");
-		
-	/*	
+			
     for(i = 0; i <topics.length;i++){
 	
 	
@@ -41,8 +40,8 @@
 	label.appendChild(topc);
 	inp.appendChild(label); 
 	par.appendChild(inp);
-	drop.appendChild(par);*/
-    }
+	drop.appendChild(par);
+    }*/
     var x = document.getElementById("Demo");
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
@@ -61,10 +60,10 @@
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
 		
 		
-			<h2 class="w3-left-align">Topicc: </h2>
+			<h2 class="w3-left-align">Topic: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click" >
-    <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "width :200%;margin-left: 100%; float:right; clear:left;">Click Me</button>
+    <button onclick="myFunction()" class="w3-button w3-black w3-right" style= "width :200%;margin-left: 100%; float:right; clear:left;">Click Me</button>
     <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
       <p>
       <input name= "News" class="w3-check"type="checkbox">      
