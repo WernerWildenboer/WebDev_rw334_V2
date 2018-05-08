@@ -18,16 +18,16 @@
 
 	var para = document.createElement("P");
 	    		
-
+	
 	var inp = document.createElement("INPUT");		
-
+	var label = document.createElement("LABEL");
 	inp.setAttribute("type","checkbox");
 	inp.setAttribute("class","w3-check");
 	var par = document.createElement("P");
 	var topc = document.createTextNode(topics[i]);
-	inp.value = topics[i];
-	par.appendChild(topc);
-	inp.appendChild(par);
+	label.setAttribute("for","topicc");
+	label.appendChild(topc);
+	inp.insertAfter(label);
 	para.appendChild(inp);    
 	drop.appendChild(para);
     }
@@ -49,7 +49,7 @@
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
 		
 		
-			<h2 class="w3-left-align">Topic: </h2>
+			<h2 class="w3-left-align">Topicc: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click" >
     <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "float:right; clear:left;">Click Me</button>
