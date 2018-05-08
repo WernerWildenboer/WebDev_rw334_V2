@@ -191,7 +191,7 @@ def change_password():
 			password = password_new
 			query ='''MATCH (n:User)
 WHERE n.username='{username}'
-SET n.password = '{password_q}''''
+SET n.password = "{password_q}"''
 			query = query.format(username=session['username'],password_q=password)
 			
 			change_password = graph.run(query)
