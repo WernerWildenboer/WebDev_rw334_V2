@@ -4,7 +4,7 @@
 	function myFunction() {
 		
     var strComma = document.getElementById('topics').innerHTML;
-		alert(strComma);
+		alert(strComma+ "strComma");
 		var topics = str.split(',');
 		var i ;
     for(i = 0; i <= topics.length;i++){
@@ -28,10 +28,10 @@
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
 		
 		
-			<h2 class="w3-left-align" ">Topic: </h2>
+			<h2 class="w3-left-align">Topic: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click" >
-    <button onclick="myFunction()" class="w3-button w3-black" style= "float:right">Click Me!</button>
+    <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "float:right; clear:left;">Click Me</button>
     <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
 <input class="w3-check" type="checkbox" checked="checked">
       <label>News</label></p>
