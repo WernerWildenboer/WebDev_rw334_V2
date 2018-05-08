@@ -7,8 +7,12 @@
 		alert(strComma+ "strComma");
 		var topics = str.split(',');
 		var i ;
+		var drop = document.getElementById("Demo");
     for(i = 0; i <= topics.length;i++){
     	alert(topics[i]);
+	drop.appendChild("<p>
+      <input class="w3-check"type="checkbox" checked="checked">      
+      <label>topics[i]</label></p>");
     }
     var x = document.getElementById("Demo");
     if (x.className.indexOf("w3-show") == -1) {
@@ -33,7 +37,8 @@
   <div class="w3-dropdown-click" >
     <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "float:right; clear:left;">Click Me</button>
     <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
-<input class="w3-check" type="checkbox" checked="checked">
+      <p>
+      <input class="w3-check"type="checkbox" checked="checked">      
       <label>News</label></p>
       <p>
       <input class="w3-check" type="checkbox">
