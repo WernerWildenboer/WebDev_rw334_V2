@@ -9,6 +9,8 @@ $(document).ready(function() {
 			temp.addClass("w3-hide").removeClass("w3-show");
 		 }
 	});
+	
+	//Home Page AJAX functions
 	function replaceTopic() {
 		$.get('/show_topics').done(
 		function(response) {
@@ -26,6 +28,28 @@ $(document).ready(function() {
 	}
 	if ($("#show_suggestions").length) {
 		replaceSuggestions();
+	}
+	
+	// Home Page update questions function
+	function update() {
+		var frm = $("select[name=from]").val();
+		var qa = $("select[name=qa]").val();
+		var order = $("select[name=order]").val();
+		var amount = $("select[name=amount]").val();
+		var url = "/show_questions";
+		if (frm = "main") {
+			url += "/main"
+		}
+		$.get('/show_questions').done(
+		function(response) {
+			$("#show_questions").html(response);
+		});
+	}
+	if ($("#update").length) {
+		update();
+		$("#update").click(function() {
+			update();
+		});
 	}
 });
 
