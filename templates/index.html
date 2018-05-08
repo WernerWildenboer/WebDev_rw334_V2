@@ -10,32 +10,34 @@
 			<!-- maybe add sort by dropdown (ajax) -->
 			<div class="w3-container w3-cell w3-cell-middle">
 				{% if session.username %}
-				<select class="w3-select">
-					<option>All</option>
-					<option>Users</option>
-					<option>Topics</option>
+				<select class="w3-select" name="from">
+					<option value="main">All</option>
+					<option value="users">Users</option>
+					<option value="topics">Topics</option>
 				</select>
 				{% endif %}
-				<select class="w3-select">
-					<option>Q & A</option>
-					<option>Questions</option>
-					<option>Answers</option>
+				<select class="w3-select" name="qa">
+					<option value="qa">Q & A</option>
+					<option value="q">Questions</option>
+					<option value="a">Answers</option>
 				</select>
-				<select class="w3-select">
-					<option>Most Recent</option>
-					<option>Most Upvoted</option>
+				<select class="w3-select" name="order">
+					<option value="Time">Most Recent</option>
+					<option value="Upvote">Most Upvoted</option>
 				</select>
-				<select class="w3-select">
-					<option>10</option>
-					<option>20</option>
-					<option>50</option>
-					<option>100</option>
+				<select class="w3-select" name="amount">
+					<option value="10">10</option>
+					<option value="10">20</option>
+					<option value="10">50</option>
+					<option value="10">100</option>
 				</select>
+				<input id="loggedin" value="{{ session.username }}" type="hidden">
+				<button id="update" class="w3-button">Update</button>
 			</div>
 		</div>
 
 		<!-- show questions -->
-		<div id="show_questions"></div>
+		<div id="show_questions" class="w3-container container"></div>
 		<!-- might be difficult, needs answers as well, but will show question, maybe show answer of person you're following and have title explaining relation -->
 	</div>
 </div>
