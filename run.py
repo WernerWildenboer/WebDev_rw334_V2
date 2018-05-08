@@ -264,8 +264,7 @@ def upload_image():
 		#return render_template('profile.html', title="Profile", username=session.username)
 @app.route('/uplaod_bio', methods=['GET', 'POST']) 
 def upload_image(): 
-	if request.method == 'POST': 
-		bio = request.form['message']	
+	
 
 	
 		
