@@ -19,11 +19,11 @@
 							<input type="submit" value="Upload">
 						</form>
 						
-						<form action="TODO" method=post enctype=multipart/form-data>        
+						<form action="{{ url_for('upload_bio') }} method=post enctype=multipart/form-data>        
                             <h4 class="w3-center">My Bio</h4>
                                     <div class="w3-center">
                                       <input class=" w3-center" style = "width:30%" name="message" type="text" placeholder="Write a short bio">
-                                      <input type = "submit" class="w3-theme-l1 w3-button w3-section  w3-ripple w3-padding">Post
+                                      <input type = "submit" class="w3-theme-l1 w3-button w3-section  w3-ripple w3-padding">
 
                                     
                             <p id = "myProfileBio"><i class="fas fa-pencil-alt w3-margin-right w3-text-theme"></i>Short bio goes here. Change id: myProfileBio, to bio from DB using current session username</p>
