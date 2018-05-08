@@ -306,7 +306,9 @@ def upload_image():
 			upload_image = graph.run(query)
 			return render_template('profile.html', title="Profile",upload_image=upload_image)
 
-        
+@app.route('/change_bio')
+def change_bio():
+	return "please finish me"
 			
 
 @app.route('/uploads/<filename>')
