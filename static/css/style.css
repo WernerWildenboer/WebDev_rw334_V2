@@ -29,3 +29,8 @@ iframe {
 .w3-select {
 	width: auto;
 }
+
+#update {
+	height: 39px;
+	margin-top: -4px;
+}
