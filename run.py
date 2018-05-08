@@ -273,7 +273,7 @@ def upload_image():
 			query = query.format(username=session['username'])
 			session['uploaded'] = "1"
             upload_image = graph.run(query)
-			return render_template('profile.html', title="Profile")
+			return render_template('profile.html', title="Profile",upload_image=upload_image)
 
         
 			
