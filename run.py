@@ -47,7 +47,7 @@ class User:
 	
 	def register(self, email, password):
 		if not self.find():
-			user = Node("User", username=self.username, email=email, password=bcrypt.encrypt(password), Uploaded_pp='0')
+			user = Node("User", username=self.username, email=email, password=bcrypt.encrypt(password), Uploaded_pp="0")
 			graph.create(user)
 			return True
 		else:
@@ -264,7 +264,7 @@ def upload_image():
 		if file and allowed_file(file.filename):
 			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.jpg')
 			file.save(full_filename)
-			#return "successfully uploaded"
+			return "successfully uploaded"
 			
 
 @app.route('/uploads/<filename>')
