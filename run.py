@@ -179,7 +179,6 @@ def add_question():
 			User(session['username']).add_question(text, topics)
 
 	return render_template('add_question.html', topics=topics)
-	)
 	
 @app.route('/logout')
 def logout():
