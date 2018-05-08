@@ -46,13 +46,14 @@
 						<!-- end if -->
 						{% endif %} 
 						
-						{% if session.userbio %}
 						<!-- if have a user bio -->
 						<p id="myProfileBio" class="w3-center">
 						<i class="fas fa-pencil-alt w3-margin-right w3-text-theme"></i>Short bio goes here. Use id: myProfileBio, to change</p>
 						<!-- else : ask for bio upload -->
-						{% else %}
-						<div class="w3-card w3-theme-l4 w3-margin w3-padding w3-round">
+						
+						<button onclick="myProfileChangeBio()" class="w3-button w3-block w3-theme-l1"></button>
+						
+						<div id="myProfileChangeBio" class="w3-card w3-hide w3-theme-l4 w3-margin w3-padding w3-round">
 							<form action="/" method=post enctype=multipart/form-data>
 								<h4 class="w3-center">My Bio</h4>
 								<div class="w3-center">
@@ -62,7 +63,7 @@
 							</form>
 						</div>
 						<!-- end if -->
-						{% endif %}
+						
 					</div>
 					<hr>
 					
