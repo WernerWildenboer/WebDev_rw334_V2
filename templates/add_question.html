@@ -14,7 +14,7 @@
 <div class="w3-container">
 {% set tpcs = "" %}
 {% for topic in topics %}
-{% tpcs = tpcs + topic.name + ',' %}
+{% set tpcs = tpcs + topic.name + ',' %}
 {% endfor %}
   <input id="topics" type="hidden" val="{{ tpcs }}">
 =======
