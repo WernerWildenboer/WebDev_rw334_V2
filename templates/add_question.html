@@ -1,22 +1,36 @@
 {% extends "layout.html" %}
 {% block body %}
 <script>
+	function makeArray(){
+		var checkBoxes = document.getElementsByClassName("w3-check");
+		var checkedArray = [checkBoxes.length];//array of topics selected
+		var checkedVariable ;// string of topics selected seperated by comma
+		for( var i = 0; i < checkBoxes.length;i++){
+			if(checkBoxes[i].checked){
+				checkedArray[i] = checkBoxes[i].name;
+				checkedVariable += checkBoxes[i].name +",";
+			}
+		}
+		checkedVariable = checkedVariable.substring(0,checkedVariable.length - 1);//take away last comma
+		document.getElementById('add_question_form').submit;
+	}
 	function myFunction() {
 		
     var strComma = document.getElementById('topics').innerHTML;
 		var topics = strComma.split(',');
 		
-		
+		/*
 		var i ;
 		var drop = document.getElementById("Demo");
-		
-		
+			
     for(i = 0; i <topics.length;i++){
 	
 	
 	    		
-	//My longlived but unsuccessful attemp at a dropdown list >> only displays blanks
-	/*var inp = document.createElement("INPUT");		
+	//My longlived but unsuccessful attempt at a dropdown list
+	//This displays the checkboxes in the drop down list, but has no text...only blank entries
+	    
+	var inp = document.createElement("INPUT");		
 	var label = document.createElement("LABEL");
 	inp.setAttribute("type","checkbox");
 	inp.setAttribute("class","w3-check");
@@ -26,8 +40,8 @@
 	label.appendChild(topc);
 	inp.appendChild(label); 
 	par.appendChild(inp);
-	drop.appendChild(par);*/
-    }
+	drop.appendChild(par);
+    }*/
     var x = document.getElementById("Demo");
     if (x.className.indexOf("w3-show") == -1) {
         x.className += " w3-show";
@@ -49,31 +63,31 @@
 			<h2 class="w3-left-align">Topic: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click" >
-    <button onclick="myFunction()" class="w3-button w3-black w3-center" style= "width :200%;margin-left: 50%; float:right; clear:left;">Click Me</button>
+    <button onclick="myFunction()" class="w3-button w3-black w3-right" style= "width :200%;margin-left: 100%; float:right; clear:left;">Click Me</button>
     <div id="Demo" class="w3-dropdown-content w3-bar-block w3-border">
       <p>
-      <input class="w3-check"type="checkbox" checked="checked">      
+      <input name= "News" class="w3-check"type="checkbox">      
       <label>News</label></p>
       <p>
-      <input class="w3-check" type="checkbox">
+      <input  name= "Games"class="w3-check" type="checkbox">
       <label>Games</label></p>
       <p>
-      <input class="w3-check" type="checkbox" >
+      <input name= "Friends" class="w3-check" type="checkbox" >
       <label>Friends</label></p>
       <p>
-      <input class="w3-check" type="checkbox" >
+      <input  name= "Food"class="w3-check" type="checkbox" >
       <label>Food</label></p>
       <p>
-      <input class="w3-check" type="checkbox" >
+      <input name= "Art" class="w3-check" type="checkbox" >
       <label>Art</label></p>
 	
     </div>
 </div>
 </div>
-<form class="w3-container w3-card-4" id = "add_question_form" class="form" action="{{ url_for('add_question') }}" method="post">
+<form name ="add_question_form" class="w3-container w3-card-4" id = "add_question_form" class="form" action="{{ url_for('add_question') }}" method="post">
 			<textarea class="w3-input w3-border" rows="4" cols="50" name="add_question_box" form="add_question" resize="none" placeholder="Ask your question"></textarea>
 			
-			<button type="submit" class="w3-button w3-section w3-red w3-ripple"> Ask Question </button>
+			<button type="submit" class="w3-button w3-section w3-red w3-ripple" onclick = "makeArray();"> Ask Question </button>
 		</form>
 </div>
 {% endblock %}
