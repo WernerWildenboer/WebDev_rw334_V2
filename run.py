@@ -52,6 +52,7 @@ class User:
 			return True
 		else:
 			return False
+        
 			
 	def verify_password(self, password):
 		user = self.find()
@@ -102,6 +103,9 @@ class User:
 		graph.create(rel)
 		rel = Relationship(answer, "TO", question)
 		graph.create(rel)
+        
+
+
 		
 	# def get_timeline(self):
 		
@@ -164,6 +168,22 @@ def login():
 			session['uploaded'] = user.properties['Uploaded_pp']
 			flash('Logged in.')
 			return redirect(url_for('index'))
+
+	return render_template('login.html', title="Login")
+
+@app.route('/change_password/w')
+def change_password():
+	
+		password_old = request.form['password_old']
+		password_new = request.form['password_new']
+
+		if not User(username).verify_password(password_old):
+			flash('Invalid login.')
+		else:
+			session['username'] = username
+			user = User(session['username']).find()
+			password = password_new
+			return redirect(url_for('profile'))
 
 	return render_template('login.html', title="Login")
 	
