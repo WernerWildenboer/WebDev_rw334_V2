@@ -160,8 +160,8 @@ def login():
 			flash('Invalid login.')
 		else:
 			session['username'] = username
-			user = User(username).find()
-			session['uploaded'] = user.Uploaded_pp
+			user = User(session['username']).find()
+			session['uploaded'] = user.properties['Uploaded_pp']
 			flash('Logged in.')
 			return redirect(url_for('index'))
 
