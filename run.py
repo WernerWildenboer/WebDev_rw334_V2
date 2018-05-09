@@ -260,7 +260,7 @@ def question(question):
 	return render_template('question.html', title="Question", question=question, answers=answers)
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search/<user>', methods=['GET', 'POST'])
 def search():
 	if request.method == 'POST':
 		search_string = request.form['search_string_from_user']
@@ -354,7 +354,7 @@ def upload_image():
 			return render_template('profile.html', title="Profile")
         
 #================================================================================
-#-- Will do
+
 @app.route('/change_bio')
 def change_bio():
 	if request.method == 'POST':
