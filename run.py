@@ -185,7 +185,7 @@ def change_password():
 		if not User(username).verify_password(password_old):
 			flash('Invalid login.')
 		else:
-			session['username'] = username
+			
 			user = User(session['username']).find()
 			password = password_new
 			query ='''MATCH (n:User)
