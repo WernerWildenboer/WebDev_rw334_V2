@@ -355,7 +355,7 @@ def change_bio():
 		user = User(session['username']).find()
 		user['bio'] = bio
 		user.push()
-	return request.referrer
+	return redirect(request.referrer)
 #================================================================================		
 
 @app.route('/uploads/<filename>')
@@ -439,7 +439,7 @@ def bookmark(question):
 	question = graph.node(int(question))
 	rel = Relationship(user, "BOOKMARK", question)
 	graph.create(rel)
-	return request.referrer
+	return redirect(request.referrer)
 	
 @app.template_filter('ctime')
 def timectime(s):
