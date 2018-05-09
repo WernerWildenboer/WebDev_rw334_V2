@@ -1,21 +1,14 @@
 {% extends "layout.html" %} {% block body %}
-<!-- profile page V7 -->
+<!-- profile page V8 -->
 <!-- TODO: -->
-<!-- if session.userimage -->
-<!-- display the correct picture -->
-<!-- if not userimage, update DB with correct user pic url -->
 
-<!-- if session.userbio -->
-<!-- display the correct user bio form DB -->
-<!-- if not userbio, write submit, so that it sends to DB -->
+<!-- display session.userbio form DB -->
+<!-- allow user to change bio and submit to DB -->
 
 <!-- following users -->
 <!-- followers -->
 <!-- pinned/following topics -->
 <!-- Questions & answers of followed topics & people -->
-
-<!-- op layout verander die picutre na logged in user -->
-
 
 <!-- Page Container -->
 <div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
@@ -47,7 +40,7 @@
 							</form>
 						</div>
 						
-						<!-- if have a user bio -->
+						<!-- user bio -->
 						<div class="w3-center">
 							<h4>My Bio:</h4>
 							<p id="myProfileBio">{{ session.user_bio }}</p>
@@ -63,7 +56,6 @@
 								</div>
 							</form>
 						</div>
-						<!-- end if -->
 						
 					</div>
 					<hr>
