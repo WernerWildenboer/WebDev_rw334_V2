@@ -274,7 +274,7 @@ RETURN n AS user'''
 
 def follow_user(user):	
 	if request.method == 'GET':
-		user_2 ="Werner"
+		user_2 =user
 		query ='''MATCH (a:User),(b:User)
 WHERE a.username = '{user_1}' AND b.username = '{user_2}'
 CREATE (a)-[r:FOLLOWS]->(b)
