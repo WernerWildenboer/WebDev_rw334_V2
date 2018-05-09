@@ -22,6 +22,7 @@ $(document).ready(function() {
 			$("#show_suggestions").html(response);
 		});
 	}
+    
 	function replaceBookmarked() {
              console.log("jirre1");
 		$.get('/show_bookmarked').done(
