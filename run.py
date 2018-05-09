@@ -91,7 +91,7 @@ class User:
 		rel = Relationship(user, "FOLLOWING", topic)
 		graph.create(rel)
         
-	def follow_user(self, name):
+	def follow_user_function(self, name):
 		user1 = self.find()
 		user2 = graph.find_one("User", "username", name)
 		rel = Relationship(user1, "FOLLOWS", user2)
@@ -270,8 +270,18 @@ RETURN n AS user'''
 
 
 #=====================================*_ | Follow | _START_*===================================
-
-	
+@app.route('/search', methods=['GET', 'POST'])
+def follow_user():	
+	if request.method == 'GET':
+		user_2 ="Werner"
+		query ='''MATCH (a:User),(b:User)
+WHERE a.username = '{user_1}' AND b.username = '{user_2}'
+CREATE (a)-[r:FOLLOWS]->(b)
+RETURN type(r)'''
+		query = query.format(user_1=session['username'],user_2=user_2)
+		follows = graph.run(query)
+        
+		return True
 #=====================================*_ | Follow | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
