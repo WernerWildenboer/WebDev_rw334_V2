@@ -25,7 +25,11 @@
 			<a href="{{ url_for('add_question') }}" class="w3-bar-item w3-button w3-theme-d1">Ask Question</a>
 			<div class="w3-dropdown-hover w3-right">
 				<button class="w3-button w3-padding-small">
+					{% if session.uploaded %}
 					<img src="{{ url_for('static', filename='img/'+ session.username +'.jpg') }}" id="pp" class="w3-circle">
+					{% else %}
+					<img src="{{ url_for('static', filename='img/user.jpg') }}" id="pp" class="w3-circle">
+					{% endif %}
 				</button>
 				<div id="navDropdown" class="w3-dropdown-content w3-bar-block w3-card-4">
 					<a href="{{ url_for('profile', username=session.username) }}" class="w3-bar-item w3-button">Profile</a>
