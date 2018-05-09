@@ -318,6 +318,8 @@ ORDER BY upvote DESC
 LIMIT {amount};'''
 		query = query.format(username=session['username'], amount=amount)
 		questions = graph.run(query)
+	
+	# Questions for a single topic ordered by time uploaded (url for ajax: '/show_questions/topicTime/100/qa/<topic>' <topic> == topic name)
 	if (type == 'topicTime'):
 		query = '''MATCH (q:Question)<-[:TAGGED]-(topic:Topic)
 OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)
@@ -327,6 +329,8 @@ ORDER BY question.timestamp DESC
 LIMIT {amount};'''
 		query = query.format(topic=topic, amount=amount)
 		questions = graph.run(query)
+		
+	# Questions for a single topic ordered by upvotes
 	if (type == 'topicUpvote'):
 		query = '''MATCH (q:Question)<-[:TAGGED]-(topic:Topic)
 OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)
@@ -336,6 +340,8 @@ ORDER BY upvote DESC
 LIMIT {amount};'''
 		query = query.format(topic=topic, amount=amount)
 		questions = graph.run(query)
+		
+	# Questions for a single user ordered by time uploaded
 	if (type == 'userTime'):
 		query = '''MATCH (q:Question)<-[r:ASKED|ANSWERED]-(user:User {username:'{username}'})
 OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)
@@ -343,6 +349,8 @@ RETURN DISTINCT q, type(r) AS type, count(answer) as answers
 ORDER BY q.timestamp DESC LIMIT {amount};'''
 		query = query.format(username=topic, amount=amount)
 		questions = graph.run(query)
+		
+	# Questions for a single user ordered by upvotes 
 	if (type == 'userUpvote'):
 		query = '''MATCH (q:Question)<-[r:ASKED|ANSWERED]-(user:User {username:'{username}'})
 OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)
