@@ -253,8 +253,8 @@ def question(question):
 #=====================================*_ | Search | _START_*=====================================
 @app.route('/search')
 def search():
-    search_string = request.form['search_string_from_usersearch_string_from_user']
-	return render_template('search.html', title="Users", search_string=search_stringn)
+	search_string = request.form['search_string_from_usersearch_string_from_user']
+	return render_template('search.html', title="Users", search_string=search_string)
 #=====================================*_ | Search | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
