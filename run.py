@@ -272,6 +272,15 @@ RETURN user_3.username AS name,COUNT(upvotes) AS rank ORDER BY rank DESC;'''
     query = query.format(username=session['username'])
     suggestions = graph.run(query)
     return render_template('show_suggestions.html', suggestions=suggestions)
+
+@app.route('/show_bookmarked')
+def show_bookmarked():
+    suggestions = []
+    query ='''MATCH (user1:User)-[r1:BOOKMARK]->(q:Question)
+    WHERE user1.username='{username}' RETURN q AS bookmarked_q;'''
+    query = query.format(username=session['username'])
+    suggestions = graph.run(query)
+    return render_template('show_bookmarked.html', show_bookmarked=show_bookmarked)
 	
 @app.route('/user')
 def user():
