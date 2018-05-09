@@ -276,7 +276,7 @@ def show_bookmarked():
     query ='''MATCH (user1:User)-[r1:BOOKMARK]->(q:Question)
     WHERE user1.username='{username}' RETURN q AS bookmarked_q;'''
     query = query.format(username=session['username'])
-    suggestions = graph.run(query)
+    bookmarked = graph.run(query)
     return render_template('show_bookmarked.html', bookmarked=bookmarked)
 	
 @app.route('/user')
