@@ -329,11 +329,13 @@ def upload_image():
 			session['uploaded'] = "1"
 			upload_image = graph.run(query)
 			return render_template('profile.html', title="Profile")
-
+        
+#================================================================================
+#-- Will do
 @app.route('/change_bio')
 def change_bio():
 	return "please finish me"
-			
+#================================================================================		
 
 @app.route('/uploads/<filename>')
 def uploaded_file(filename):
