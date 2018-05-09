@@ -247,13 +247,15 @@ def add_answer(question):
 	
 @app.route('/question/<question>')
 def question(question):
-	question = graph.find_one("Question", "id", question)
+	question = graph.find_one("Question", "id",question)
 	return render_template('question.html', title="Question", question=question)
-	
+
+#=====================================*_ | Search | _START_*=====================================
 @app.route('/search')
 def search():
-	return render_template('search.html', title="Search")
-
+    search_string = request.form['search_string_from_usersearch_string_from_user']
+	return render_template('search.html', title="Users", search_string=search_stringn)
+#=====================================*_ | Search | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
 	query = "MATCH ()<-[n:TAGGED]-(topic:Topic) WITH topic.name as name, count(n) AS rank RETURN name, rank ORDER BY rank DESC;"
@@ -270,6 +272,8 @@ RETURN user_3.username AS name,COUNT(upvotes) AS rank ORDER BY rank DESC;'''
     query = query.format(username=session['username'])
     suggestions = graph.run(query)
     return render_template('show_suggestions.html', suggestions=suggestions)
+
+
 
 @app.route('/show_bookmarked')
 def show_bookmarked():
