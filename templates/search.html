@@ -10,10 +10,10 @@
   <ul class="w3-ul">
       {% for usernames in list_usernames %}
     <form class="w3-panel" id = "forgot_form" class="form" action="{{ url_for('follow_user') }}" method="get"> 
-       <!-- <input class="w3-input w3-border" name="username_1" type="text"  value="{{ usernames.user.username }}">-->
+        <input class="w3-input w3-border" name="username_1" type="text"  value="{{ usernames.user.username }}">
     <li class="w3-bar w3-card-4 w3-theme-d1">
      
-          <a href="#" type="submit" onclick="this.parentElement.style.display='none';follow('{{usernames.user.username}}')" 
+          <a href="{{ url_for('search/user', user=usernames.user.username) }}" type="submit" onclick="this.parentElement.style.display='none';follow('{{usernames.user.username}}')" 
                   class="w3-bar-item w3-button w3-white w3-xlarge w3-right " >Follow</a>
       <img src="img_avatar2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
       <div class="w3-bar-item">
