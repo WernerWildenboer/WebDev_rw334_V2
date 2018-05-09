@@ -283,10 +283,10 @@ RETURN n AS user'''
 
 
 #=====================================*_ | Follow | _START_*===================================
-@app.route('/search/<user>', methods=['GET', 'POST'])
+@app.route('/search/<user>')
 
 def follow_user(user):	
-	if request.method == 'GET':
+	if 'GET' == 'GET':
 		user_2 =user
 		query ='''MATCH (a:User),(b:User)
 WHERE a.username = '{user_1}' AND b.username = '{user_2}'
