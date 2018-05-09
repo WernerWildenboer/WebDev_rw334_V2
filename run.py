@@ -253,8 +253,12 @@ def question(question):
 #=====================================*_ | Search | _START_*=====================================
 @app.route('/search')
 def search():
-	search_string = request.form['search_string_from_usersearch_string_from_user']
-	return render_template('search.html', title="Users", search_string=search_string)
+	search_string = request.form['search_string_from_user']
+	query ='''MATCH (n:User)
+WHERE n.username =~ '.*{search_string}.*'
+RETURN n.username'''
+	list_usernames = query.format(search_string=search_string)
+	render_template('search.html', title="Users", list_usernames=list_usernames)
 #=====================================*_ | Search | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
@@ -334,6 +338,7 @@ def topic(topic):
 @app.route('/show_questions/<type>/<amount>/<qa>', defaults={'topic': None})
 @app.route('/show_questions/<type>/<amount>/<qa>/<topic>')
 def show_questions(type, amount, qa, topic):
+<<<<<<< HEAD
 	if (type == 'mainSignedOutTime'):
 		query = "MATCH (q:Question) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User) RETURN distinct q.id as id, q.text as text, count(answer) as answers, count(upvotes) as upvote ORDER BY upvote DESC LIMIT {amount};"
 		query = query.format(amount=amount)
@@ -348,28 +353,91 @@ def show_questions(type, amount, qa, topic):
 		questions = graph.run(query)
 	elif (type == 'mainSignedInUpvote'):
 		query = "MATCH (q:Question)<-[r:ASKED|ANSWERED|TAGGED]-(n)<-[:FOLLOWS]-(me:User) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User) OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me) WHERE me.username = '{username}' RETURN distinct q as question, n as reason, type(r) AS type, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote ORDER BY upvote DESC  LIMIT {amount};"
+=======
+	query = '''MATCH (q:Question)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
+RETURN distinct q.id as id, q.text as text, count(answer) as answers, count(upvotes) as upvote
+ORDER BY upvote DESC
+LIMIT 100;'''
+	questions = graph.run(query)
+	if (type == 'mainSignedOutUpvote'):
+		query = '''MATCH (q:Question)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
+RETURN distinct q as question, count(answer) as answers, count(upvotes) as upvote
+ORDER BY upvote DESC
+LIMIT {amount};'''
+		query = query.format(amount=amount)
+		questions = graph.run(query)
+	if (type == 'mainSignedInTime'):
+		query = '''MATCH (q:Question)<-[r:ASKED|ANSWERED|TAGGED]-(n)<-[:FOLLOWS]-(me:User)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
+OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me)
+WHERE me.username = '{username}'
+RETURN distinct q as question, n as reason, type(r) AS type, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote
+ORDER BY question.timestamp DESC 
+LIMIT {amount};'''
+		query = query.format(username=session['username'], amount=amount)
+		questions = graph.run(query)
+	if (type == 'mainSignedInUpvote'):
+		query = '''MATCH (q:Question)<-[r:ASKED|ANSWERED|TAGGED]-(n)<-[:FOLLOWS]-(me:User)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
+OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me)
+WHERE me.username = '{username}'
+RETURN distinct q as question, n as reason, type(r) AS type, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote
+ORDER BY upvote DESC 
+LIMIT {amount};'''
+>>>>>>> ddf9a3db388f199ab0aca5033146d4cd1b89fa4d
 		query = query.format(username=session['username'], amount=amount)
 		questions = graph.run(query)
 	
 	# Questions for a single topic ordered by time uploaded (url for ajax: '/show_questions/topicTime/100/qa/<topic>' <topic> == topic name)
+<<<<<<< HEAD
 	elif (type == 'topicTime'):
 		query = "MATCH (q:Question)<-[:TAGGED]-(topic:Topic) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer) WHERE topic.name = '{topic}' RETURN distinct q as question, count(answer) as answers ORDER BY question.timestamp DESC LIMIT {amount};"
+=======
+	if (type == 'topicTime'):
+		query = '''MATCH (q:Question)<-[:TAGGED]-(topic:Topic)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)
+WHERE topic.name = '{topic}'
+RETURN distinct q as question, count(answer) as answers
+ORDER BY question.timestamp DESC
+LIMIT {amount};'''
+>>>>>>> ddf9a3db388f199ab0aca5033146d4cd1b89fa4d
 		query = query.format(topic=topic, amount=amount)
 		questions = graph.run(query)
 		
 	# Questions for a single topic ordered by upvotes
+<<<<<<< HEAD
 	elif (type == 'topicUpvote'):
 		query = "MATCH (q:Question)<-[:TAGGED]-(topic:Topic) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer) WHERE topic.name = '{topic}' RETURN distinct q as question, count(answer) as answers ORDER BY upvote DESC LIMIT {amount};"
+=======
+	if (type == 'topicUpvote'):
+		query = '''MATCH (q:Question)<-[:TAGGED]-(topic:Topic)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)
+WHERE topic.name = '{topic}'
+RETURN distinct q as question, count(answer) as answers
+ORDER BY upvote DESC
+LIMIT {amount};'''
+>>>>>>> ddf9a3db388f199ab0aca5033146d4cd1b89fa4d
 		query = query.format(topic=topic, amount=amount)
 		questions = graph.run(query)
 		
 	# Questions for a single user ordered by time uploaded
+<<<<<<< HEAD
 	elif (type == 'userTime'):
 		query = "MATCH (q:Question)<-[r:ASKED|ANSWERED]-(user:User {username:'{username}'}) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer) RETURN DISTINCT q, type(r) AS type, count(answer) as answers ORDER BY q.timestamp DESC LIMIT {amount};"
+=======
+	if (type == 'userTime'):
+		query = '''MATCH (q:Question)<-[r:ASKED|ANSWERED]-(user:User {username:'{username}'})
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)
+RETURN DISTINCT q, type(r) AS type, count(answer) as answers
+ORDER BY q.timestamp DESC LIMIT {amount};'''
+>>>>>>> ddf9a3db388f199ab0aca5033146d4cd1b89fa4d
 		query = query.format(username=topic, amount=amount)
 		questions = graph.run(query)
 		
 	# Questions for a single user ordered by upvotes 
+<<<<<<< HEAD
 	elif (type == 'userUpvote'):
 		query = "MATCH (q:Question)<-[r:ASKED|ANSWERED]-(user:User {username:'{username}'}) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer) OPTIONAL MATCH (q)<-[:TO]-()-[upvotes:UPVOTE]-() RETURN DISTINCT q, type(r) AS type, count(answer) as answers, count(upvotes) as upvote ORDER BY q.timestamp DESC LIMIT {amount};"
 		query = query.format(username=topic, amount=amount)
@@ -388,6 +456,55 @@ def show_questions(type, amount, qa, topic):
 		questions = graph.run(query)
 	elif (type == 'usersUpvote'):
 		query = "MATCH (q:Question)<-[r:ASKED|ANSWERED]-(n:User)<-[:FOLLOWS]-(me:User) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User) OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me) WHERE me.username = '{username}' RETURN distinct q as question, n as reason, type(r) AS type, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote ORDER BY upvote DESC LIMIT {amount};"
+=======
+	if (type == 'userUpvote'):
+		query = '''MATCH (q:Question)<-[r:ASKED|ANSWERED]-(user:User {username:'{username}'})
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)
+OPTIONAL MATCH (q)<-[:TO]-()-[upvotes:UPVOTE]-()
+RETURN DISTINCT q, type(r) AS type, count(answer) as answers, count(upvotes) as upvote
+ORDER BY q.timestamp DESC LIMIT {amount};'''
+		query = query.format(username=topic, amount=amount)
+		questions = graph.run(query)
+	render_template('show_questions.html', questions=questions, qa=qa)
+	if (type == 'topicsTime'):
+		query = '''MATCH (q:Question)<-[:TAGGED]-(topic:Topic)<-[:FOLLOWS]-(me:User)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
+OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me)
+WHERE me.username = '{username}'
+RETURN distinct q as question, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote
+ORDER BY question.timestamp DESC 
+LIMIT {amount};'''
+		query = query.format(amount=amount)
+		questions = graph.run(query)
+	if (type == 'topicsUpvote'):
+		query = '''MATCH (q:Question)<-[:TAGGED]-(topic:Topic)<-[:FOLLOWS]-(me:User)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
+OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me)
+WHERE me.username = '{username}'
+RETURN distinct q as question, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote
+ORDER BY upvote DESC 
+LIMIT {amount};'''
+		query = query.format(amount=amount)
+		questions = graph.run(query)
+	if (type == 'usersTime'):
+		query = '''MATCH (q:Question)<-[r:ASKED|ANSWERED]-(n:User)<-[:FOLLOWS]-(me:User)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
+OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me)
+WHERE me.username = '{username}'
+RETURN distinct q as question, n as reason, type(r) AS type, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote
+ORDER BY question.timestamp DESC 
+LIMIT {amount};'''
+		query = query.format(username=session['username'], amount=amount)
+		questions = graph.run(query)
+	if (type == 'usersUpvote'):
+		query = '''MATCH (q:Question)<-[r:ASKED|ANSWERED]-(n:User)<-[:FOLLOWS]-(me:User)
+OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
+OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me)
+WHERE me.username = '{username}'
+RETURN distinct q as question, n as reason, type(r) AS type, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote
+ORDER BY upvote DESC 
+LIMIT {amount};'''
+>>>>>>> ddf9a3db388f199ab0aca5033146d4cd1b89fa4d
 		query = query.format(username=session['username'], amount=amount)
 		questions = graph.run(query)
 	return render_template('show_questions.html', questions=questions, qa=qa)
