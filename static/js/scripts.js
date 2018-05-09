@@ -24,9 +24,9 @@ $(document).ready(function() {
 	}
     
 	function replaceBookmarked() {
-             console.log("jirre1");
+        console.log("jirre1");
 		$.get('/show_bookmarked').done(
-                 console.log("jirre2");
+        console.log("jirre2");
 		function(response) {
 			$("#show_bookmarked").html(response);
                  console.log("jirre3");
@@ -38,18 +38,18 @@ $(document).ready(function() {
 	if ($("#show_suggestions").length) {
 		replaceSuggestions();
 	}
-    	if ($("#show_bookmarked").length) {
-            console.log("jirre");
+    if ($("#show_bookmarked").length) {
+        console.log("jirre");
 		replaceBookmarked();
 	}
 	function dropDownTopics() {
-    var x = document.getElementById("Demo");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-    } else { 
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
+		var x = document.getElementById("Demo");
+		if (x.className.indexOf("w3-show") == -1) {
+			x.className += " w3-show";
+		} else { 
+			x.className = x.className.replace(" w3-show", "");
+		}
+	}
 	// Home Page update questions function
 	function update(first) {
 		var url = "/show_questions";
@@ -83,7 +83,7 @@ $(document).ready(function() {
 		});
 	}
 	if ($("#update").length) {
-		update(true);
+		//update(true);
 		$("#update").click(function() {
 			update(false);
 		});
