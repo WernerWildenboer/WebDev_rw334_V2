@@ -27,19 +27,17 @@
 				</select>
 				<select class="w3-select" name="amount">
 					<option value="10">10</option>
-					<option value="10">20</option>
-					<option value="10">50</option>
-					<option value="10">100</option>
+					<option value="20">20</option>
+					<option value="50">50</option>
+					<option value="100">100</option>
 				</select>
 				<input id="loggedin" value="{{ session.username }}" type="hidden">
 				<button id="update" class="w3-button w3-light-gray w3-round">Update</button>
 			</div>
 		</div>
 
-		<!-- show questions -->
-		<div id="show_questions" class="w3-container container"></div>
-		<!-- might be difficult, needs answers as well, but will show question, maybe show answer of person you're following and have title explaining relation -->
-	</div>
+		</div>
+	<div id="show_questions" class="w3-container"></div>
 </div>
 
 <div class="w3-panel w3-third">
