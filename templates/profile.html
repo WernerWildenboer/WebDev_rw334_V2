@@ -29,32 +29,29 @@
                     
 					<div class="w3-center">
 
-						{% if session.uploaded == "1" %}
 						<!-- if have a user image -->
-						<img src="{{ url_for('static', filename='img/' + session.username + '.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px"> 
+						<!-- document.getElementById("imageid").src="../template/save.png"; -->
+						<!-- {{ url_for('static', filename='img/' + session.username + '.jpg') }} -->
+						<!-- {{ url_for('static', filename='img/user.jpg') }} -->
 						
-						<!-- else : ask for image upload -->
-						{% else %}
-						<div class="w3-card w3-theme-l4 w3-margin w3-padding w3-round">
-							<img src="{{ url_for('static', filename='img/user.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:106px;width:106px">
+						<img src="{{ url_for('static', filename='img/' + session.username + '.jpg') }}" alt="user_profile.png" class="w3-circle" style="height:116px;width:116px"> 
+						<br>
+						<br>
+						<button onclick="myProfileFunction('myProfilePictureUpload')" class="w3-button w3-theme-l1">Change profile picutre</button>
+						
+						<div id="myProfilePictureUpload" class="w3-card w3-hide w3-theme-l4 w3-margin w3-padding w3-round">
 							<h3>Please upload profile picture</h3>
 							<form action="{{ url_for('upload_image') }}" method=post enctype=multipart/form-data>
 								<input type="file" name="file">
-								<input type="submit" value="Upload">
+								<input type="submit" value="upload">
 							</form>
 						</div>
-						<!-- end if -->
-						{% endif %} 
 						
 						<!-- if have a user bio -->
 						<div class="w3-center">
-							<h4>My Bio</h4>
+							<h4>My Bio:</h4>
 							<p id="myProfileBio">{{ session.user_bio }}</p>
-						</div>
-						
-						<!--<p id="myProfileBio" class="w3-center">
-						<i class="fas fa-pencil-alt w3-margin-right w3-text-theme"></i>Short bio goes here. Use id: myProfileBio, to change</p>-->
-						
+						</div>						
 						<button onclick="myProfileFunction('myProfileChangeBio')" class="w3-button w3-theme-l1">Change Bio</button>
 						
 						<div id="myProfileChangeBio" class="w3-card w3-hide w3-theme-l4 w3-margin w3-padding w3-round">
