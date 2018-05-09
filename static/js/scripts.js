@@ -34,6 +34,9 @@ $(document).ready(function() {
 	if ($("#show_suggestions").length) {
 		replaceSuggestions();
 	}
+    	if ($("#show_bookmarked").length) {
+		replaceBookmarked();
+	}
 	function dropDownTopics() {
     var x = document.getElementById("Demo");
     if (x.className.indexOf("w3-show") == -1) {
