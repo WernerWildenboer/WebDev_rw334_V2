@@ -359,7 +359,6 @@ def uploaded_file(filename):
 
 @app.route('/topic/<topic>')
 def topic(topic):
-	#questions = get_questions(topic)
 	return render_template('topic.html', topic=topic)
 	
 @app.route('/show_questions/<type>/<amount>/<qa>', defaults={'topic': None})

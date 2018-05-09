@@ -4,8 +4,8 @@
 <div class="w3-container w3-theme w3-third">
 <h2>{{ topic }}</h2>
 </div>
-<div class="w3-container w3-theme w3-third">
-<div onClick="followTopic({{ topic }})" class="w3-button w3-white w3-round w3-large">follow</h2>
+<div class="w3-container w3-theme w3-twothird">
+<a href="{{ url_for('followTopic', topic=topic) }}" class="w3-button w3-white w3-round w3-large">follow</h2>
 </div>
 
 <div id="show_questions_topic" class="w3-container">{{ topic }}</div>
