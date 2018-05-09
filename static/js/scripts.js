@@ -100,3 +100,7 @@ function myProfileFunction(id) {
 			x.previousElementSibling.className.replace(" w3-theme-d1", "");
 	}
 }
+
+function follow(username) {
+	
+}
