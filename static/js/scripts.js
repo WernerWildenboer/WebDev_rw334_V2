@@ -95,6 +95,14 @@ $(document).ready(function() {
 			$("#show_questions_profile").html(response);
 		});
 	}
+	
+	if ($("#show_questions_topic").length) {
+		var username = $("#show_questions_topic").html();
+		$.get('/show_questions/topicTime/1000/qa/'+ username).done(
+		function(response) {
+			$("#show_questions_topic").html(response);
+		});
+	}
 });
 
 function myProfileFunction(id) {
