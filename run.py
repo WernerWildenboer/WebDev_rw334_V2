@@ -90,6 +90,12 @@ class User:
 		topic = graph.find_one("Topic", "name", name)
 		rel = Relationship(user, "FOLLOWING", topic)
 		graph.create(rel)
+        
+	def follow_user(self, name):
+		user1 = self.find()
+		user2 = graph.find_one("User", "username", name)
+		rel = Relationship(user1, "FOLLOWS", user2)
+		graph.create(rel)        
 		
 	def answer_question(self, question, answer):
 		user = self.find()
@@ -108,7 +114,6 @@ class User:
 		rel = Relationship(answer, "TO", question)
 		graph.create(rel)
         
-
 
 		
 	# def get_timeline(self):
