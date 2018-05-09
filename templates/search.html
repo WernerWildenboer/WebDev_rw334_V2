@@ -1,22 +1,29 @@
 {% extends "layout.html" %}
 {% block body %}
-<!--{% for user in user %}-->
-<div class="w3-container">
+{% for list_usernames in list_usernames %}
+    <div class="w3-container w3-quarter w3-round-xlarge ">
+        </div>
+<div class="w3-container w3-half w3-round-xlarge ">
+    <u><h2 class="w3-center">User List</h2></u>
+  <p class="w3-center">You can click on the follow button to follow a user :</p>
+  
   <ul class="w3-ul w3-card-4">
+      
+    <form class="w3-container w3-card-4" id = "forgot_form" class="form" action="search_user" method="post">  
     <li class="w3-bar">
-      <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">Follow</span>
+     
+          <button type="submit" onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right w3-theme-d1">Follow</button>
       <img src="img_avatar2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
       <div class="w3-bar-item">
-        <span class="w3-large">Mike</span><br>
+        <span class="w3-large">{{ list_usernames }}</span><br>
         <span>Web Designer</span>
       </div>
     </li>
+        
+    </form>        
   </ul>
+    
 </div>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<p>fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
 <!--{% endfor %}-->
 
 
