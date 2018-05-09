@@ -332,7 +332,7 @@ def topic(topic):
 def show_questions(type, amount, qa, topic):
 	query = '''MATCH (q:Question)
 OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
-RETURN distinct q as question, count(answer) as answers, count(upvotes) as upvote
+RETURN distinct q.id as id, q.text as text, count(answer) as answers, count(upvotes) as upvote
 ORDER BY upvote DESC
 LIMIT 100;'''
 	questions = graph.run(query)
