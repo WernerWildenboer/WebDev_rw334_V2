@@ -2,6 +2,7 @@
 {% block body %}
 <script>
 	function makeArray(){
+		var topicsList = document.getElementById("topicsList");
 		var checkBoxes = document.getElementsByClassName("w3-check");
 		var checkedArray = [checkBoxes.length];//array of topics selected
 		var checkedVariable = "";// string of topics selected seperated by comma
@@ -12,7 +13,7 @@
 			}
 		}
 		checkedVariable = checkedVariable.substring(0,checkedVariable.length - 1);//take away last comma
-		alert(checkedVariable);
+		topicsList.value = checkedVariable;
 		document.getElementById('add_question_form').submit;
 	}
 	function myFunction() {
@@ -61,7 +62,7 @@
 	<div class="w3-container w3-half w3-round-xlarge w3-display-middle" >
 		
 		
-			<h2 class="w3-left-align">Topicc: </h2>
+			<h2 class="w3-left-align">Topic: </h2>
 			<div class="w3-container">
   <div class="w3-dropdown-click w3-right" >
     <button onclick="myFunction()" class="w3-button w3-black w3-right" style= "width :200%;margin-left: 100%; float:right; clear:left;">Click Me</button>
@@ -86,8 +87,13 @@
 </div>
 </div>
 <form name ="add_question_form" class="w3-container w3-card-4" id = "add_question_form" class="form" action="{{ url_for('add_question') }}" method="post">
-	</br><textarea class="w3-input w3-border" rows="3" cols="50" name="add_question_box" form="add_question" resize="none" placeholder="Ask your question"></textarea>
+<<<<<<< HEAD
+	</br><textarea class="w3-input w3-border" rows="3" cols="50" name="add_question_box" form="add_question_form" resize="none" placeholder="Ask your question"></textarea>
 			
+=======
+	</br><textarea class="w3-input w3-border" rows="3" cols="50" name="add_question_box" form="add_question" resize="none" placeholder="Ask your question"></textarea>
+			 <input id="topicsList" name="topics" type="hidden" val=" ">
+>>>>>>> 14699036623a8d92988b132d3437e512de14cccb
 			<button type="submit" class="w3-button w3-section w3-red w3-ripple" onclick = "makeArray();"> Ask Question </button>
 		</form>
 </div>
