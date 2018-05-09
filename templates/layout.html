@@ -39,12 +39,14 @@
 			{% else %}
 			<a href="{{ url_for('login') }}" id="login" class="w3-bar-item w3-button w3-right">Login</a>
 			{% endif %}
-			<form action="{{ url_for('search') }}">
+            
+			<form action="{{ url_for('search') }}" method="post">
 				<button type="submit" class="w3-bar-item w3-button w3-theme-d1 w3-right">
 					<i class="fa fa-search w3-large"></i>
 				</button>
 				<input type="text" class="w3-bar-item w3-input w3-right" name="search_string_from_user" placeholder="Search users...">
 			</form>
+            
 		</div>
 	</div>
 
