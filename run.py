@@ -277,7 +277,7 @@ def follow_user():
 		query ='''MATCH (a:User),(b:User)
 WHERE a.username = '{user_1}' AND b.username = '{user_2}'
 CREATE (a)-[r:FOLLOWS]->(b)
-RETURN type(r)'''
+RETURN a,b,r;'''
 		query = query.format(user_1=session['username'],user_2=user_2)
 		follows = graph.run(query)
 		  
