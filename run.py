@@ -347,7 +347,7 @@ def upload_image():
         
 #================================================================================
 #-- Will do
-@app.route('/change_bio')
+@app.route('/change_bio', methods=['POST'])
 def change_bio():
 	if request.method == 'POST':
 		bio = request.form['bio']
