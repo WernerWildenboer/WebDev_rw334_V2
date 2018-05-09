@@ -227,8 +227,6 @@ def logout():
 	flash('Logged out.')
 	return redirect(url_for('index'))
 	
-
-
 @app.route('/forgotPassword')
 def forgotPassword():
 	return render_template('forgot_password.html', title="Forgot Password")
@@ -401,14 +399,14 @@ def show_questions(type, amount, qa, topic):
 		
 	# Questions for a single user ordered by time uploaded
 	elif (type == 'userTime'):
-		query = "MATCH (q:Question)<-[r:{qa}]-(user:User {username:'{username}'}) OPTIONAL MATCH (q)<-[:TAGGED]-(tpc:Topic) OPTIONAL MATCH (q)<-[:ASKED]-(askedby:User) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer) RETURN DISTINCT ID(q) as id, q.text as text, q.timestamp as timestamp, collect(tpc) as topics, askedby.username as askedby, type(r) AS type, count(answer) as answers ORDER BY timestamp DESC LIMIT {amount};"
-		query = query.format(username=topic, amount=amount, qa=qa)
+		query = "MATCH (q:Question)<-[r:{qa}]-(user:User) OPTIONAL MATCH (q)<-[:TAGGED]-(tpc:Topic) OPTIONAL MATCH (q)<-[:ASKED]-(askedby:User) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer) WHERE user.username = '{topic}' RETURN DISTINCT ID(q) as id, q.text as text, q.timestamp as timestamp, collect(tpc) as topics, askedby.username as askedby, type(r) AS type, count(answer) as answers ORDER BY timestamp DESC LIMIT {amount};"
+		query = query.format(topic=topic, amount=amount, qa=qa)
 		questions = graph.run(query)
 		
 	# Questions for a single user ordered by upvotes
 	elif (type == 'userUpvote'):
-		query = "MATCH (q:Question)<-[r:{qa}]-(user:User {username:'{username}'}) OPTIONAL MATCH (q)<-[:TAGGED]-(tpc:Topic) OPTIONAL MATCH (q)<-[:ASKED]-(askedby:User) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer) OPTIONAL MATCH (q)<-[:TO]-()-[upvotes:UPVOTE]-() RETURN DISTINCT ID(q) as id, q.text as text, q.timestamp as timestamp, collect(tpc) as topics, askedby.username as askedby, type(r) AS type, count(answer) as answers, count(upvotes) as upvote ORDER BY upvote DESC LIMIT {amount};"
-		query = query.format(username=topic, amount=amount, qa=qa)
+		query = "MATCH (q:Question)<-[r:{qa}]-(user:User) OPTIONAL MATCH (q)<-[:TAGGED]-(tpc:Topic) OPTIONAL MATCH (q)<-[:ASKED]-(askedby:User) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer) OPTIONAL MATCH (q)<-[:TO]-()-[upvotes:UPVOTE]-() WHERE user.username = '{topic}' RETURN DISTINCT ID(q) as id, q.text as text, q.timestamp as timestamp, collect(tpc) as topics, askedby.username as askedby, type(r) AS type, count(answer) as answers, count(upvotes) as upvote ORDER BY upvote DESC LIMIT {amount};"
+		query = query.format(topic=topic, amount=amount, qa=qa)
 		questions = graph.run(query)
 	elif (type == 'topicsTime'):
 		query = "MATCH (q:Question)<-[:TAGGED]-(topic:Topic)<-[:FOLLOWS]-(me:User) OPTIONAL MATCH (q)<-[:TAGGED]-(tpc:Topic) OPTIONAL MATCH (q)<-[:ASKED]-(askedby:User) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User) OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me) WHERE me.username = '{username}' RETURN distinct ID(q) as id, q.text as text, q.timestamp as timestamp, collect(tpc) as topics, askedby.username as askedby, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote ORDER BY timestamp DESC LIMIT {amount};"
