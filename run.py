@@ -266,9 +266,9 @@ def show_suggestions():
     suggestions = []
     query ='''MATCH a=((user_1:User)-[r1:FOLLOWS]->(user_2:User)-[r2:FOLLOWS]->(user_3:User))
 WHERE user_1.username<>user_3.username
-AND NOT (user_1)-[:FOLLOWS]->(user_3) AND user_1.username='{username}'
+AND NOT (user_1)-[:FOLLOWS]->(user_3) AND user_1.username='User2'
 MATCH (user_3)-[:WROTE]->()<-[upvotes:UPVOTE]-()
-RETURN user_3.username AS name,COUNT(upvotes) AS rank ORDER BY Rank DESC;'''
+RETURN user_3.username AS name,COUNT(upvotes) AS rank ORDER BY rank DESC;'''
     query = query.format(username=session['username'])
     suggestions = graph.run(query)
     return render_template('show_suggestions.html', suggestions=suggestions)
