@@ -88,7 +88,7 @@ class User:
 	def follow_topic(self, name):
 		user = self.find()
 		topic = graph.find_one("Topic", "name", name)
-		rel = Relationship(user, "FOLLOWING", topic)
+		rel = Relationship(user, "FOLLOWS", topic)
 		graph.create(rel)
         
 	def follow_user_function(self, name):
@@ -431,7 +431,7 @@ def bookmark(question):
 	question = graph.node(int(question))
 	rel = Relationship(user, "BOOKMARK", question)
 	graph.create(rel)
-	return render_template('')
+	return request.referrer
 	
 @app.template_filter('ctime')
 def timectime(s):
