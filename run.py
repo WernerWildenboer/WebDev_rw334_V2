@@ -415,6 +415,10 @@ def bookmark(question):
 	graph.create(rel)
 	return render_template('')
 	
+@app.template_filter('ctime')
+def timectime(s):
+    return time.ctime(s)
+	
 ###################################  Run app  ###################################
 
 
