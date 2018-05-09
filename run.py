@@ -258,7 +258,8 @@ def search():
 		query ='''MATCH (n:User)
 WHERE n.username =~ '.*{search_string}.*'
 RETURN n AS user'''
-		list_usernames = query.format(search_string=search_string)
+		query = query.format(search_string=search_string)
+		list_usernames = graph.run(query)
 		return render_template('search.html', title="Users", list_usernames=list_usernames)
 	
 #=====================================*_ | Search | _END_*=====================================
