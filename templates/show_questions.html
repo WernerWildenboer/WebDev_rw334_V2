@@ -1,5 +1,31 @@
 {% for question in questions %}
 	<div class="w3-panel w3-card">
-		<div class="w3"
+		<div class="w3-container w3-theme-l4 w3-cell-row">
+			<div class="w3-container w3-cell">
+				Topics: 
+				{% for topic in question.topics %}
+				<a href="{{ url_for('topic', topic=topic.name) }}"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ topic.name }} <span class="w3-tag w3-round w3-deep-orange">{{ topic.rank }}</span></div></a>
+				{% endfor %}
+			</div>
+			<div class="w3-container w3-cell w3-align-right">
+				Asked by: {{ question.askedby }}
+			</div>
+			<div class="w3-container w3-cell w3-align-right">
+				<a href="{{ url_for('bookmark', question=question.id) }}">bookmark</a>
+			</div>
+		</div>
+		<a href="{{ url_for('question', question=question.id) }}" class="w3-container">
+			<h2>{{ question.text }}</h2>
+		</a>
+		<div class="w3-container w3-cell-row">
+			<div class="w3-container w3-cell">
+				<a href="">
+					{{ question.answers }} Answers
+				</a>
+			</div>
+			<div class="w3-container w3-cell w3-align-right">
+				{{ question.timestamp }}
+			</div>
+		</div>
 	</div>
 {% endfor %}
