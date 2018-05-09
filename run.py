@@ -266,7 +266,7 @@ RETURN n AS user'''
 		query = query.format(search_string=search_string)
 		list_usernames = graph.run(query)
 		return render_template('search.html', title="Users", list_usernames=list_usernames)
-	
+	return render_template('search.html', title="Users", list_usernames=list_usernames)	
 
 
 #=====================================*_ | Follow | _START_*===================================
