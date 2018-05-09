@@ -104,4 +104,5 @@ function myProfileFunction(id) {
 
 function follow(username) {
 	console.log(username);
+    
 }
