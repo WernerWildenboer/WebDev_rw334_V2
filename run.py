@@ -385,7 +385,6 @@ def show_questions(type, amount, qa, topic):
 		query = query.format(username=session['username'], amount=amount)
 		questions = graph.run(query)
 	
-	# Questions for a single topic ordered by time uploaded (url for ajax: '/show_questions/topicTime/100/qa/<topic>' <topic> == topic name)
 	elif (type == 'topicTime'):
 		query = "MATCH (q:Question)<-[:TAGGED]-(topic:Topic) OPTIONAL MATCH (q)<-[:TAGGED]-(tpc:Topic) OPTIONAL MATCH (q)<-[:ASKED]-(askedby:User) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer) WHERE topic.name = '{topic}' RETURN distinct ID(q) as id, q.text as text, q.timestamp as timestamp, collect(tpc) as topics, askedby.username as askedby, count(answer) as answers ORDER BY timestamp DESC LIMIT {amount};"
 		query = query.format(topic=topic, amount=amount)
