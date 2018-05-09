@@ -259,8 +259,8 @@ def search():
 WHERE n.username =~ '.*{search_string}.*'
 RETURN n.username'''
 		list_usernames = query.format(search_string=search_string)
-		return redirect(url_for('index'))
-	render_template('search.html', title="Users", list_usernames=list_usernames)
+		render_template('search.html', title="Users", list_usernames=list_usernames)
+	
 #=====================================*_ | Search | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
