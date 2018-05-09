@@ -1,5 +1,6 @@
 {% set rows = questions.data() %}
 {{ rows }}
+{{ questions.dump() }}
 {% for question in questions %}
 	<div class="w3-container">{{ question.text }}</div>
 {% endfor %}
