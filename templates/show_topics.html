@@ -1,3 +1,4 @@
 {% for tpc in topics %}
-	<a href="{{ url_for('topic', topic=tpc.name) }}"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ tpc.name }} <span class="w3-tag w3-round w3-deep-orange">{{ tpc.rank }}</span></div></a>
+	<a href="{{ url_for('topic', topic=tpc.name) }}"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">
+        {{ tpc.name }} <span class="w3-tag w3-round w3-deep-orange">{{ tpc.rank }}</span></div></a>
 {% endfor %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block body %}
+<!--Display For every question that has been answered-->
+{% for question in questions %}
+<div class="w3-container w3-card-4 w3-theme-l4 w3-round w3-margin">
+  <h4 id ="asked_by">Asked by: John Doe</h4>
+  <hr class="w3-clear">
+  <!--This element will be replaced using 'innerHTML' with the actual question asked-->
+  <p id= "question">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+  <div class="w3-container w3-card w3-theme-l3 w3-round w3-margin-bottom">
+    <h3>Replies: </h3>
+    <div class="w3-container w3-theme-l2 w3-round w3-margin-bottom">
+      <h4 id = "answer_by">JEFF</h4>
+      <!--This element will be replaced using 'innerHTML' with the corresponding answer-->
+
+      <p id = "answer">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+  <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom">
+    <i class="fas fa-reply"></i> reply </button>
+    <!--This button will be used to bookmark the question/answer combination-->
+
+  <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom">
+      <i class="fas fa-reply"></i> bookmark </button>
+</div>
+{% endfor %}
+
+{% endblock %}

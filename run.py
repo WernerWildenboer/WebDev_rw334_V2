@@ -52,6 +52,7 @@ class User:
 			return True
 		else:
 			return False
+        
 			
 	def verify_password(self, password):
 		user = self.find()
@@ -59,6 +60,10 @@ class User:
 			return bcrypt.verify(password, user['password'])
 		else:
 			return False
+        
+     
+        
+      
 			
 	def add_question(self, text, topics):
 		user = self.find()
@@ -102,6 +107,9 @@ class User:
 		graph.create(rel)
 		rel = Relationship(answer, "TO", question)
 		graph.create(rel)
+        
+
+
 		
 	# def get_timeline(self):
 		
@@ -166,6 +174,32 @@ def login():
 			return redirect(url_for('index'))
 
 	return render_template('login.html', title="Login")
+
+#================================================================================
+@app.route('/change_password',methods=['GET', 'POST'])
+def change_password():
+	if request.method == 'POST':
+		password_old = request.form['password_old']
+		password_new = request.form['password_new']
+		username = session['username']
+
+		if not User(username).verify_password(password_old):
+			flash('Invalid login.')
+		else:
+			
+			
+			password = password_new
+			query ='''MATCH (n:User)
+            WHERE n.username='{username}'
+            SET n.password = "{password_q}"'''
+			query = query.format(username=session['username'],password_q=password)
+			
+			change_password = graph.run(query)
+			return redirect(url_for('index'))
+        
+	return render_template('change_password.html', title="Change Password")
+
+#================================================================================
 	
 @app.route('/add_question', methods=['GET', 'POST'])
 def add_question():
@@ -188,9 +222,7 @@ def logout():
 	flash('Logged out.')
 	return redirect(url_for('index'))
 	
-@app.route('/changePassword')
-def changePassword():
-	return render_template('change_password.html', title="Change Password")
+
 
 @app.route('/forgotPassword')
 def forgotPassword():
@@ -236,10 +268,19 @@ def show_suggestions():
 WHERE user_1.username<>user_3.username
 AND NOT (user_1)-[:FOLLOWS]->(user_3) AND user_1.username='{username}'
 MATCH (user_3)-[:WROTE]->()<-[upvotes:UPVOTE]-()
-RETURN user_3.username AS Username,COUNT(upvotes) AS Rank ORDER BY Rank DESC;'''
+RETURN user_3.username AS name,COUNT(upvotes) AS rank ORDER BY rank DESC;'''
     query = query.format(username=session['username'])
     suggestions = graph.run(query)
     return render_template('show_suggestions.html', suggestions=suggestions)
+
+@app.route('/show_bookmarked')
+def show_bookmarked():
+    bookmarked = []
+    query ='''MATCH (user1:User)-[r1:BOOKMARK]->(q:Question)
+    WHERE user1.username='{username}' RETURN q AS bookmarked_q;'''
+    query = query.format(username=session['username'])
+    suggestions = graph.run(query)
+    return render_template('show_bookmarked.html', bookmarked=bookmarked)
 	
 @app.route('/user')
 def user():
@@ -264,10 +305,20 @@ def upload_image():
 			return redirect(request.url)
 
 		if file and allowed_file(file.filename):
-			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], 'userTemp.jpg')
+			
+			temp = session['username'] + ".jpg"
+			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], temp)
 			file.save(full_filename)
-            session['uploaded'] = "1"
-			return "successfully uploaded"
+
+			query ='''MATCH (n:User) WHERE n.username='{username}' SET n.Uploaded_pp = 1;'''
+			query = query.format(username=session['username'])
+			session['uploaded'] = "1"
+			upload_image = graph.run(query)
+			return render_template('profile.html', title="Profile",upload_image=upload_image)
+
+@app.route('/change_bio')
+def change_bio():
+	return "please finish me"
 			
 
 @app.route('/uploads/<filename>')
@@ -407,4 +458,5 @@ LIMIT {amount};'''
 
 port = int(os.environ.get('PORT', 5000))
 app.secret_key = os.urandom(24)
+
 app.run(host='0.0.0.0', port=port, debug=True)

@@ -1,3 +1,4 @@
 {% for suggestions in suggestions %}
-	<div class="w3-button w3-round w3-red">{{ suggestions.name }} <span class="w3-dark-red w3-right">{{ suggestions.rank }}</span></div>
+	<a href="#"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">
+        {{ suggestions.name }} <span class="w3-tag w3-round w3-deep-orange">{{ suggestions.rank }}</span></div></a>
 {% endfor %}

@@ -1,7 +1,7 @@
-{% extends "layout.html" %}
-{% block body %}
-<!--{% for user in user %}-->
-<div class="w3-container">
+    {% extends "layout.html" %}
+    {% block body %}
+{% for user in user %}
+	<div class="w3-container">
   <ul class="w3-ul w3-card-4">
     <li class="w3-bar">
       <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">Follow</span>
@@ -14,10 +14,5 @@
   </ul>
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-<p>fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff</p>
-<!--{% endfor %}-->
-
-
+{% endfor %}
 {% endblock %}

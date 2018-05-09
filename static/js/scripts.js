@@ -7,16 +7,7 @@ $(document).ready(function() {
     	function getTopics() {
 
 		}
-	
-	//show dropdown on home page.
-	$("#dropdownBtn").click(function() {
-		 var temp = this.id;
-		 if( !temp.hasClass("w3-show") ) {
-			temp.addClass("w3-show").removeClass("w3-hide");
-		 } else {
-			temp.addClass("w3-hide").removeClass("w3-show");
-		 }
-	});
+
 	
 	//Home Page AJAX functions
 	function replaceTopic() {
@@ -31,11 +22,25 @@ $(document).ready(function() {
 			$("#show_suggestions").html(response);
 		});
 	}
+    
+	function replaceBookmarked() {
+             console.log("jirre1");
+		$.get('/show_bookmarked').done(
+                 console.log("jirre2");
+		function(response) {
+			$("#show_bookmarked").html(response);
+                 console.log("jirre3");
+		});
+	}
 	if ($("#show_topics").length) {
 		replaceTopic();
 	}
 	if ($("#show_suggestions").length) {
 		replaceSuggestions();
+	}
+    	if ($("#show_bookmarked").length) {
+            console.log("jirre");
+		replaceBookmarked();
 	}
 	function dropDownTopics() {
     var x = document.getElementById("Demo");
@@ -84,8 +89,6 @@ $(document).ready(function() {
 		});
 	}
 });
-
-
 
 function myProfileFunction(id) {
 	var x = document.getElementById(id);
