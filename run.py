@@ -280,8 +280,9 @@ CREATE (a)-[r:FOLLOWS]->(b)
 RETURN type(r)'''
 		query = query.format(user_1=session['username'],user_2=user_2)
 		follows = graph.run(query)
-        
+           
 		return True
+	return True
 #=====================================*_ | Follow | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
