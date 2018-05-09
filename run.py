@@ -256,7 +256,7 @@ def search():
 	if request.method == 'POST':
 		search_string = request.form['search_string_from_user']
 		query ='''MATCH (n:User)
-WHERE n.username =~ '.*{search_string}.*'
+WHERE n.username =~ toLower('.*{search_string}.*')
 RETURN n AS user'''
 		query = query.format(search_string=search_string)
 		list_usernames = graph.run(query)
