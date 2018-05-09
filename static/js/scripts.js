@@ -101,6 +101,7 @@ function myProfileFunction(id) {
 	}
 }
 
+
 function follow(username) {
 	console.log("hello");
 }
