@@ -256,17 +256,15 @@ def search():
 
 @app.route('/show_topics')
 def show_topics():
-	topics = []
 	query = "MATCH ()<-[n:TAGGED]-(topic:Topic) WITH topic.name as name, count(n) AS rank RETURN name, rank ORDER BY rank DESC;"
 	topics = graph.run(query)
 	return render_template('show_topics.html', topics=topics)
 	
 @app.route('/show_suggestions')
 def show_suggestions():
-    suggestions = []
     query ='''MATCH a=((user_1:User)-[r1:FOLLOWS]->(user_2:User)-[r2:FOLLOWS]->(user_3:User))
-WHERE user_1.username<>user_3.username
-AND NOT (user_1)-[:FOLLOWS]->(user_3) AND user_1.username='{username}'
+WHERE user_1.username <> user_3.username
+AND NOT (user_1)-[:FOLLOWS]->(user_3) AND user_1.username = '{username}'
 MATCH (user_3)-[:WROTE]->()<-[upvotes:UPVOTE]-()
 RETURN user_3.username AS name,COUNT(upvotes) AS rank ORDER BY rank DESC;'''
     query = query.format(username=session['username'])
@@ -275,7 +273,6 @@ RETURN user_3.username AS name,COUNT(upvotes) AS rank ORDER BY rank DESC;'''
 
 @app.route('/show_bookmarked')
 def show_bookmarked():
-    bookmarked = []
     query ='''MATCH (user1:User)-[r1:BOOKMARK]->(q:Question)
     WHERE user1.username='{username}' RETURN q AS bookmarked_q;'''
     query = query.format(username=session['username'])
@@ -451,7 +448,7 @@ ORDER BY upvote DESC
 LIMIT {amount};'''
 		query = query.format(username=session['username'], amount=amount)
 		questions = graph.run(query)
-	render_template('show_questions.html', questions=questions, qa=qa)
+	return render_template('show_questions.html', questions=questions, qa=qa)
 	
 ###################################  Run app  ###################################
 
