@@ -1,49 +1,51 @@
 {% extends "layout.html" %}
 {% block body %}
-			<div class="w3-panel w3-card w3-padding">
-				<div class="w3-container w3-cell-row">
-					<div class="w3-container w3-cell">
-						Topics: 
-						{% for topic in question.topics %}
-						<a href="{{ url_for('topic', topic=topic.name) }}"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ topic.name }} <span class="w3-tag w3-round w3-deep-orange">{{ topic.rank }}</span></div></a>
-						{% endfor %}
-					</div>
-					<div class="w3-container w3-cell w3-right-align">
-						Asked by: {{ question.askedby }}
-					</div>
-					<div class="w3-container w3-cell w3-right-align">
-						<a href="{{ url_for('bookmark', question=question.id) }}">bookmark</a>
-					</div>
-				</div>
-				<a href="{{ url_for('question', question=question.id) }}" class="w3-container">
-					<h2>{{ question.text }}</h2>
-				</a>
-				<div class="w3-container w3-cell-row">
-					<div class="w3-container w3-cell">
-						<a href="">
-							{{ question.answers }} Answers 
-						</a>[{{ question.upvote }} upvotes]
-					</div>
-					<div class="w3-container w3-cell w3-right-align">
-						{{ question.timestamp | ctime }}
-					</div>
-				</div>
-				
-				{% for answer in answers %}
-				<div class="w3-panel w3-card">
-					<div class="w3-container w3-half">
-						Answer by {{ answer.wrote }}
-					</div>
-					<div class="w3-container w3-half w3-right-align">
-						Upvotes: {{ answer.upvote }}
-						<br>
-						On: {{ answer.timestamp | ctime }}
-					</div>
-					<div class="w3-container">
-						{{ answer.text }}
-					</div>
-				</div>
+{% for question in question %}
+	<div class="w3-panel w3-card w3-padding">
+		<div class="w3-container w3-cell-row">
+			<div class="w3-container w3-cell">
+				Topics: 
+				{% for topic in question.topics %}
+				<a href="{{ url_for('topic', topic=topic.name) }}"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ topic.name }} <span class="w3-tag w3-round w3-deep-orange">{{ topic.rank }}</span></div></a>
 				{% endfor %}
-				<a href="{{ url_for('add_answer', question=question.id) }}" class="w3-button w3-theme">Add Answer</a>
 			</div>
+			<div class="w3-container w3-cell w3-right-align">
+				Asked by: {{ question.askedby }}
+			</div>
+			<div class="w3-container w3-cell w3-right-align">
+				<a href="{{ url_for('bookmark', question=question.id) }}">bookmark</a>
+			</div>
+		</div>
+		<a href="{{ url_for('question', question=question.id) }}" class="w3-container">
+			<h2>{{ question.text }}</h2>
+		</a>
+		<div class="w3-container w3-cell-row">
+			<div class="w3-container w3-cell">
+				<a href="">
+					{{ question.answers }} Answers 
+				</a>[{{ question.upvote }} upvotes]
+			</div>
+			<div class="w3-container w3-cell w3-right-align">
+				{{ question.timestamp | ctime }}
+			</div>
+		</div>
+		
+		{% for answer in answers %}
+		<div class="w3-panel w3-card">
+			<div class="w3-container w3-half">
+				Answer by {{ answer.wrote }}
+			</div>
+			<div class="w3-container w3-half w3-right-align">
+				Upvotes: {{ answer.upvote }}
+				<br>
+				On: {{ answer.timestamp | ctime }}
+			</div>
+			<div class="w3-container">
+				{{ answer.text }}
+			</div>
+		</div>
+		{% endfor %}
+		<a href="{{ url_for('add_answer', question=question.id) }}" class="w3-button w3-theme">Add Answer</a>
+	</div>
+{% endfor %}
 {% endblock %}
