@@ -1,31 +1,118 @@
 {% for question in questions %}
-	<div class="w3-panel w3-card w3-padding">
-		<div class="w3-container w3-cell-row">
-			<div class="w3-container w3-cell">
-				Topics: 
-				{% for topic in question.topics %}
-				<a href="{{ url_for('topic', topic=topic.name) }}"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ topic.name }} <span class="w3-tag w3-round w3-deep-orange">{{ topic.rank }}</span></div></a>
-				{% endfor %}
+	{% if qa is 'qa' %}
+		<div class="w3-panel w3-card w3-padding">
+			{% if question.type is 'ANSWERED' %}
+				<div class="w3-container w3-theme-l2">Answered by {{ question.reason.username }}</div>
+			{% elif question.type is 'ASKED' %}
+				<div class="w3-container w3-theme-l2">Asked by {{ question.reason.username }}</div>
+			{% elif question.type is 'TAGGED' %}
+				<div class="w3-container w3-theme-l2">Part of topic {{ question.reason.name }}</div>
+			{% endif %}
+			<div class="w3-container w3-cell-row">
+				<div class="w3-container w3-cell">
+					Topics: 
+					{% for topic in question.topics %}
+					<a href="{{ url_for('topic', topic=topic.name) }}"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ topic.name }} <span class="w3-tag w3-round w3-deep-orange">{{ topic.rank }}</span></div></a>
+					{% endfor %}
+				</div>
+				<div class="w3-container w3-cell w3-right-align">
+					Asked by: {{ question.askedby }}
+				</div>
+				<div class="w3-container w3-cell w3-right-align">
+					<a href="{{ url_for('bookmark', question=question.id) }}">bookmark</a>
+				</div>
 			</div>
-			<div class="w3-container w3-cell w3-right-align">
-				Asked by: {{ question.askedby }}
-			</div>
-			<div class="w3-container w3-cell w3-right-align">
-				<a href="{{ url_for('bookmark', question=question.id) }}">bookmark</a>
+			<a href="{{ url_for('question', question=question.id) }}" class="w3-container">
+				<h2>{{ question.text }}</h2>
+			</a>
+			<div class="w3-container w3-cell-row">
+				<div class="w3-container w3-cell">
+					<a href="">
+						{{ question.answers }} Answers 
+					</a>[{{ question.upvote }} upvotes]
+				</div>
+				<div class="w3-container w3-cell w3-right-align">
+					{{ question.timestamp | ctime }}
+				</div>
 			</div>
 		</div>
-		<a href="{{ url_for('question', question=question.id) }}" class="w3-container">
-			<h2>{{ question.text }}</h2>
-		</a>
-		<div class="w3-container w3-cell-row">
-			<div class="w3-container w3-cell">
-				<a href="">
-					{{ question.answers }} Answers 
-				</a>[{{ question.upvote }} upvotes]
+	{% elif qa is 'q' %}
+		{% if question.type is 'ASKED' or question.type is 'TAGGED' %}
+			<div class="w3-panel w3-card w3-padding">
+				{% if question.type is 'ANSWERED' %}
+					<div class="w3-container w3-theme-l2">Answered by {{ question.reason.username }}</div>
+				{% elif question.type is 'ASKED' %}
+					<div class="w3-container w3-theme-l2">Asked by {{ question.reason.username }}</div>
+				{% elif question.type is 'TAGGED' %}
+					<div class="w3-container w3-theme-l2">Part of topic {{ question.reason.name }}</div>
+				{% endif %}
+				<div class="w3-container w3-cell-row">
+					<div class="w3-container w3-cell">
+						Topics: 
+						{% for topic in question.topics %}
+						<a href="{{ url_for('topic', topic=topic.name) }}"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ topic.name }} <span class="w3-tag w3-round w3-deep-orange">{{ topic.rank }}</span></div></a>
+						{% endfor %}
+					</div>
+					<div class="w3-container w3-cell w3-right-align">
+						Asked by: {{ question.askedby }}
+					</div>
+					<div class="w3-container w3-cell w3-right-align">
+						<a href="{{ url_for('bookmark', question=question.id) }}">bookmark</a>
+					</div>
+				</div>
+				<a href="{{ url_for('question', question=question.id) }}" class="w3-container">
+					<h2>{{ question.text }}</h2>
+				</a>
+				<div class="w3-container w3-cell-row">
+					<div class="w3-container w3-cell">
+						<a href="">
+							{{ question.answers }} Answers 
+						</a>[{{ question.upvote }} upvotes]
+					</div>
+					<div class="w3-container w3-cell w3-right-align">
+						{{ question.timestamp | ctime }}
+					</div>
+				</div>
 			</div>
-			<div class="w3-container w3-cell w3-right-align">
-				{{ question.timestamp | ctime }}
+		{% endif %}
+	{% elif qa is 'a' %}
+		{% if question.type is 'ANSWERED' %}
+			<div class="w3-panel w3-card w3-padding">
+				{% if question.type is 'ANSWERED' %}
+					<div class="w3-container w3-theme-l2">Answered by {{ question.reason.username }}</div>
+				{% elif question.type is 'ASKED' %}
+					<div class="w3-container w3-theme-l2">Asked by {{ question.reason.username }}</div>
+				{% elif question.type is 'TAGGED' %}
+					<div class="w3-container w3-theme-l2">Part of topic {{ question.reason.name }}</div>
+				{% endif %}
+				<div class="w3-container w3-cell-row">
+					<div class="w3-container w3-cell">
+						Topics: 
+						{% for topic in question.topics %}
+						<a href="{{ url_for('topic', topic=topic.name) }}"><div class="tag w3-tag w3-round w3-orange w3-margin-small w3-padding-small">{{ topic.name }} <span class="w3-tag w3-round w3-deep-orange">{{ topic.rank }}</span></div></a>
+						{% endfor %}
+					</div>
+					<div class="w3-container w3-cell w3-right-align">
+						Asked by: {{ question.askedby }}
+					</div>
+					<div class="w3-container w3-cell w3-right-align">
+						<a href="{{ url_for('bookmark', question=question.id) }}">bookmark</a>
+					</div>
+				</div>
+				<a href="{{ url_for('question', question=question.id) }}" class="w3-container">
+					<h2>{{ question.text }}</h2>
+				</a>
+				<div class="w3-container w3-cell-row">
+					<div class="w3-container w3-cell">
+						<a href="">
+							{{ question.answers }} Answers 
+						</a>[{{ question.upvote }} upvotes]
+					</div>
+					<div class="w3-container w3-cell w3-right-align">
+						{{ question.timestamp | ctime }}
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
+		{% endif %}
+	{% endif %}
 {% endfor %}
