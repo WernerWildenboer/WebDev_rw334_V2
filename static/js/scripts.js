@@ -22,6 +22,12 @@ $(document).ready(function() {
 			$("#show_suggestions").html(response);
 		});
 	}
+	function replaceBookmarked() {
+		$.get('/show_bookmarked').done(
+		function(response) {
+			$("#show_bookmarked").html(response);
+		});
+	}
 	if ($("#show_topics").length) {
 		replaceTopic();
 	}
