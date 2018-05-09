@@ -192,7 +192,7 @@ def change_password():
 			query ='''MATCH (n:User)
             WHERE n.username='{username}'
             SET n.password = "{password_q}"'''
-			query = query.format(username=session['username'],password_q=password)
+			query = query.format(username=session['username'],password_q=bcrypt.encrypt(password))
 			
 			change_password = graph.run(query)
 			return redirect(url_for('index'))
