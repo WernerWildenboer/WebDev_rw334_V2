@@ -1,4 +1,5 @@
-<div class="w3-container">{{ questions.fetchall() }}</div>
+{% set rows = questions.fetchall() %}
+<div class="w3-container">{{ rows }}</div>
 {% for question in questions %}
 	<div class="w3-container">random</div>
 {% endfor %}
