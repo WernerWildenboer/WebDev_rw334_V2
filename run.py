@@ -297,7 +297,7 @@ RETURN a,b,r;'''
 		  
 		return render_template('search.html', title="Users", follows =follows )
     
-	return render_template('search.html', title="Users" )
+	return render_template('search.html', title="Users", follows =follows )
 #=====================================*_ | Follow | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
