@@ -253,7 +253,7 @@ def question(question):
 #=====================================*_ | Search | _START_*=====================================
 @app.route('/search')
 def search():
-	search_string = request.form['search_string_from_usersearch_string_from_user']
+	search_string = request.form['search_string_from_user']
 	query ='''MATCH (n:User)
 WHERE n.username =~ '.*{search_string}.*'
 RETURN n.username'''
