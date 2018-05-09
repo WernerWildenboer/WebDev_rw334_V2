@@ -9,7 +9,7 @@
   
   <ul class="w3-ul">
       {% for usernames in list_usernames %}
-    <form class="w3-panel" id = "forgot_form" class="form"  method="post">  
+    <!--<form class="w3-panel" id = "forgot_form" class="form" action="/" method="post"> --> 
     <li class="w3-bar w3-card-4 w3-theme-d1">
      
           <button type="submit" onclick="this.parentElement.style.display='none';follow({{ usernames.user.username }})" class="w3-bar-item w3-button w3-white w3-xlarge w3-right ">Follow</button>
@@ -25,7 +25,7 @@
       </div>
     </li>
         
-    </form>        
+  <!--  </form>   -->       
  
 
 {% endfor %}
