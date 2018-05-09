@@ -254,7 +254,7 @@ def question(question):
 @app.route('/search')
 def search():
 	search_string = request.form['search_string_from_usersearch_string_from_user']
-		query ='''MATCH (n:User)
+	query ='''MATCH (n:User)
 WHERE n.username =~ '.*{search_string}.*'
 RETURN n.username'''
 	list_usernames = query.format(search_string=search_string)
