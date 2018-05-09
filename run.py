@@ -269,7 +269,7 @@ RETURN n AS user'''
 
 
 #=====================================*_ | Follow | _START_*===================================
-@app.route('/search/<user>', methods=['GET', 'POST'])
+@app.route('/search/user/<user>', methods=['GET', 'POST'])
 def follow_user(user):	
 	if request.method == 'GET':
 		user_2 =user
