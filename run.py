@@ -250,7 +250,21 @@ def question(question):
 	question = graph.find_one("Question", "id",question)
 	return render_template('question.html', title="Question", question=question)
 
-#=====================================*_ | Search | _START_*=====================================
+#=====================================*_ | Search | _START_*===================================
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+	if request.method == 'POST':
+		search_string = request.form['search_string_from_user']
+		query ='''MATCH (n:User)
+WHERE n.username =~ '.*{search_string}.*'
+RETURN n AS user'''
+		query = query.format(search_string=search_string)
+		list_usernames = graph.run(query)
+		return render_template('search.html', title="Users", list_usernames=list_usernames)
+	
+#=====================================*_ | Search | _END_*=====================================
+
+#=====================================*_ | Search | _START_*===================================
 @app.route('/search', methods=['GET', 'POST'])
 def search():
 	if request.method == 'POST':
