@@ -237,8 +237,7 @@ def profile(username):
 	
 @app.route('/followTopic/<topic>')
 def followTopic(topic):
-	if has_key(session['username']):
-		User(session['username']).follow_topic(topic)
+	User(session['username']).follow_topic(topic)
 	return redirect(request.referrer)
 	
 @app.route('/add_answer/<question>', methods=['GET', 'POST'])
