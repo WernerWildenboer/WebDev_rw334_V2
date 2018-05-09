@@ -255,7 +255,7 @@ def question(question):
 	return render_template('question.html', title="Question", question=question)
 
 
-@app.route('/search,<user>', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET', 'POST'])
 def search():
 	if request.method == 'POST':
 		search_string = request.form['search_string_from_user']
@@ -269,7 +269,7 @@ RETURN n AS user'''
 
 
 #=====================================*_ | Follow | _START_*===================================
-@app.route('/search/<user>', methods=['GET', 'POST'])
+@app.route('/search/user/<user>', methods=['GET', 'POST'])
 def follow_user(user):	
 	if request.method == 'GET':
 		user_2 =user
