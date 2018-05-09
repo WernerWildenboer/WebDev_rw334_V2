@@ -47,7 +47,7 @@ class User:
 	
 	def register(self, email, password):
 		if not self.find():
-			user = Node("User", username=self.username, email=email, password=bcrypt.encrypt(password), Uploaded_pp="0", bio='')
+			user = Node("User", username=self.username, email=email, password=bcrypt.encrypt(password), Uploaded_pp="0")
 			graph.create(user)
 			return True
 		else:
@@ -270,11 +270,13 @@ RETURN n AS user'''
 		query = query.format(search_string=search_string)
 		list_usernames = graph.run(query)
 		return render_template('search.html', title="Users", list_usernames=list_usernames)
-	return render_template('search.html', title="Users")	
+	return render_template('search.html', title="Users")
+
 
 
 #=====================================*_ | Follow | _START_*===================================
-@app.route('/search/user/<user>', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET', 'POST'])
+
 def follow_user(user):	
 	if request.method == 'GET':
 		user_2 =user
@@ -286,6 +288,7 @@ RETURN a,b,r;'''
 		follows = graph.run(query)
 		  
 		return render_template('search.html', title="Users", follows =follows )
+    
 	return render_template('search.html', title="Users" )
 #=====================================*_ | Follow | _END_*=====================================
 @app.route('/show_topics')
@@ -352,7 +355,7 @@ def upload_image():
         
 #================================================================================
 #-- Will do
-@app.route('/change_bio', methods=['POST'])
+@app.route('/change_bio')
 def change_bio():
 	if request.method == 'POST':
 		bio = request.form['bio']
