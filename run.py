@@ -286,7 +286,7 @@ RETURN n AS user'''
 @app.route('/search/<user>')
 #@app.route('/search?user=<user>')
 def follow_user(user):	
-	
+	if 1=1:
 		user_2 =user
 		query ='''MATCH (a:User),(b:User)
 WHERE a.username = '{user_1}' AND b.username = '{user_2}'
@@ -297,7 +297,7 @@ RETURN a,b,r;'''
 		  
 		return render_template('search.html', title="Users", follows =follows )
     
-	return render_template('search.html', title="Users", follows =follows )
+	return render_template('search.html', title="Users" )
 #=====================================*_ | Follow | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
