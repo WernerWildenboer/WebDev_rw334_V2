@@ -268,7 +268,7 @@ def upvote(answer):
 	graph.create(rel)
 	return redirect(request.referrer)
 
-@app.route('/search/<user>', methods=['GET', 'POST'])
+@app.route('/search', methods=['GET', 'POST'])
 def search():
 	if request.method == 'POST':
 		search_string = request.form['search_string_from_user']
