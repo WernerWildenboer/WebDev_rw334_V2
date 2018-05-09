@@ -247,7 +247,7 @@ def add_answer(question):
 	
 @app.route('/question/<question>')
 def question(question):
-	question = graph.find_one("Question", "id",, question)
+	question = graph.find_one("Question", "id",question)
 	return render_template('question.html', title="Question", question=question)
 
 #=====================================*_ | Search | _START_*=====================================
