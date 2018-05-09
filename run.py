@@ -330,15 +330,13 @@ def topic(topic):
 @app.route('/show_questions/<type>/<amount>/<qa>', defaults={'topic': None})
 @app.route('/show_questions/<type>/<amount>/<qa>/<topic>')
 def show_questions(type, amount, qa, topic):
-	questions = []
-	if (type == 'mainSignedOutTime'):
-		query = '''MATCH (q:Question)
+	query = '''MATCH (q:Question)
 OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
 RETURN distinct q as question, count(answer) as answers, count(upvotes) as upvote
 ORDER BY upvote DESC
 LIMIT {amount};'''
-		query = query.format(amount=amount)
-		questions = graph.run(query)
+	query = query.format(amount=amount)
+	questions = graph.run(query)
 	if (type == 'mainSignedOutUpvote'):
 		query = '''MATCH (q:Question)
 OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
