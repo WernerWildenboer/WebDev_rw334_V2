@@ -175,7 +175,7 @@ def login():
 
 	return render_template('login.html', title="Login")
 
-#================================================User(session['username']).answer_question(question, answer)
+#================================================================================
 @app.route('/change_password',methods=['GET', 'POST'])
 def change_password():
 	if request.method == 'POST':
@@ -199,7 +199,7 @@ def change_password():
         
 	return render_template('change_password.html', title="Change Password")
 
-#==============================================================================================================	
+#================================================================================
 	
 @app.route('/add_question', methods=['GET', 'POST'])
 def add_question():
