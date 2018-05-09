@@ -88,7 +88,7 @@ class User:
 	def follow_topic(self, name):
 		user = self.find()
 		topic = graph.find_one("Topic", "name", name)
-		rel = Relationship(user, "FOLLOWING", topic)
+		rel = Relationship(user, "FOLLOWS", topic)
 		graph.create(rel)
         
 	def follow_user_function(self, name):
@@ -237,8 +237,7 @@ def profile(username):
 #========================================================================	
 @app.route('/followTopic/<topic>')
 def followTopic(topic):
-	if has_key(session['username']):
-		User(session['username']).follow_topic(topic)
+	User(session['username']).follow_topic(topic)
 	return redirect(request.referrer)
 #=====================================================================	
 @app.route('/add_answer/<question>', methods=['GET', 'POST'])
@@ -304,7 +303,7 @@ RETURN user_3.username AS name,COUNT(upvotes) AS rank ORDER BY rank DESC;'''
 @app.route('/show_bookmarked')
 def show_bookmarked():
     query ='''MATCH (user1:User)-[r1:BOOKMARK]->(q:Question)
-    WHERE user1.username='{username}' RETURN q AS bookmarked_q;'''
+    WHERE user1.username='{username}' RETURN q AS bookmarked_q, ID(q) as id;'''
     query = query.format(username=session['username'])
     bookmarked = graph.run(query)
     return render_template('show_bookmarked.html', bookmarked=bookmarked)
@@ -362,6 +361,7 @@ def topic(topic):
 @app.route('/show_questions/<type>/<amount>/<qa>', defaults={'topic': None})
 @app.route('/show_questions/<type>/<amount>/<qa>/<topic>')
 def show_questions(type, amount, qa, topic):
+	japie = qa
 	if (qa == 'qa'):
 		qa = 'ASKED|ANSWERED|TAGGED'
 	elif (qa == 'q'):
@@ -423,7 +423,7 @@ def show_questions(type, amount, qa, topic):
 		query = "MATCH (q:Question)<-[r:{qa}]-(n:User)<-[:FOLLOWS]-(me:User) OPTIONAL MATCH (q)<-[:TAGGED]-(tpc:Topic) OPTIONAL MATCH (q)<-[:ASKED]-(askedby:User) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User) OPTIONAL MATCH (q)<-[bookmarked:BOOKMARKED]-(me) WHERE me.username = '{username}' RETURN distinct ID(q) as id, q.text as text, q.timestamp as timestamp, collect(tpc) as topics, askedby.username as askedby, n as reason, type(r) AS type, count(answer) as answers, count(bookmarked) as bookmark, count(upvotes) as upvote ORDER BY upvote DESC LIMIT {amount};"
 		query = query.format(username=session['username'], amount=amount, qa=qa)
 		questions = graph.run(query)
-	return render_template('show_questions.html', questions=questions, type=type, qa=qa)
+	return render_template('show_questions.html', questions=questions, type=type, qa=japie)
 	
 @app.route('/bookmark/<question>')
 def bookmark(question):
@@ -431,7 +431,7 @@ def bookmark(question):
 	question = graph.node(int(question))
 	rel = Relationship(user, "BOOKMARK", question)
 	graph.create(rel)
-	return render_template('')
+	return request.referrer
 	
 @app.template_filter('ctime')
 def timectime(s):
