@@ -270,7 +270,21 @@ RETURN n AS user'''
 
 
 #=====================================*_ | Follow | _START_*===================================
+@app.route('/search', methods=['GET', 'POST'])
 
+def follow_user(user):	
+	if request.method == 'GET':
+		user_2 ="Werner"
+		query ='''MATCH (a:User),(b:User)
+WHERE a.username = '{user_1}' AND b.username = '{user_2}'
+CREATE (a)-[r:FOLLOWS]->(b)
+RETURN a,b,r;'''
+		query = query.format(user_1=session['username'],user_2=user_2)
+		follows = graph.run(query)
+		  
+		return render_template('search.html', title="Users", follows =follows )
+    
+	return render_template('search.html', title="Users" )
 #=====================================*_ | Follow | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
