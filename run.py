@@ -266,7 +266,7 @@ RETURN n AS user'''
 		query = query.format(search_string=search_string)
 		list_usernames = graph.run(query)
 		return render_template('search.html', title="Users", list_usernames=list_usernames)
-	return render_template('search.html', title="Users", list_usernames=list_usernames)	
+	return render_template('search.html', title="Users")	
 
 
 #=====================================*_ | Follow | _START_*===================================
@@ -282,7 +282,7 @@ RETURN a,b,r;'''
 		follows = graph.run(query)
 		  
 		return render_template('search.html', title="Users", follows =follows )
-	return render_template('search.html', title="Users", follows =follows )
+	return render_template('search.html', title="Users" )
 #=====================================*_ | Follow | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
