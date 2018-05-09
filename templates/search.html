@@ -1,6 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
-{% for list_usernames in list_usernames %}
+
     <div class="w3-container w3-quarter w3-round-xlarge ">
         </div>
 <div class="w3-container w3-half w3-round-xlarge ">
@@ -8,25 +8,28 @@
   <p class="w3-center">You can click on the link to follow a users :</p>
   
   <ul class="w3-ul w3-card-4">
-      
+      {% for usernames in list_usernames %}
     <form class="w3-container w3-card-4" id = "forgot_form" class="form" action="/" method="post">  
     <li class="w3-bar">
      
           <button type="submit" onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right w3-theme-d1">Follow</button>
       <img src="img_avatar2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px">
       <div class="w3-bar-item">
-        <span class="w3-large">{{ list_usernames }}</span><br>
-          <span class="w3-large">{{ list_usernames.username }}</span><br>
-          <span class="w3-large">{{ list_usernames.user }}</span><br>
-        <span>Web Designer</span>
+
+         
+          <span class="w3-large">{{ usernames.user.username }}</span><br>
+       
+        <span>Bio : {{ usernames.user.bio }}</span>
+        <span>Email : {{ usernames.user.Email }}</span>
+          
       </div>
     </li>
         
     </form>        
+ 
+
+{% endfor %}
   </ul>
     
 </div>
-
-{% endfor %}
-
 {% endblock %}
