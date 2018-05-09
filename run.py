@@ -319,15 +319,16 @@ def upload_image():
 
 		if file and allowed_file(file.filename):
 			
-			temp = session['username'] + ".jpg"
+			userSession = session['username']
+			temp = userSession + ".jpg"
 			full_filename = os.path.join(app.config['UPLOAD_FOLDER'], temp)
 			file.save(full_filename)
 
-			query ='''MATCH (n:User) WHERE n.username='{username}' SET n.Uploaded_pp = 1;'''
-			query = query.format(username=session['username'])
+			query ='''MATCH (n:User) WHERE n.username='{usernameQry}' SET n.Uploaded_pp = 1;'''
+			query = query.format(usernameQry=userSession)
 			session['uploaded'] = "1"
 			upload_image = graph.run(query)
-			return render_template('profile.html', title="Profile",upload_image=upload_image)
+			return render_template('profile.html', title="Profile")
 
 @app.route('/change_bio')
 def change_bio():
