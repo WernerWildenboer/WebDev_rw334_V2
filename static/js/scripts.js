@@ -82,7 +82,7 @@ $(document).ready(function() {
 		});
 	}
 	if ($("#update").length) {
-		//update(true);
+		update(true);
 		$("#update").click(function() {
 			update(false);
 		});
