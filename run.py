@@ -255,7 +255,7 @@ def question(question):
 	return render_template('question.html', title="Question", question=question)
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search/<user>', methods=['GET', 'POST'])
 def search():
 	if request.method == 'POST':
 		search_string = request.form['search_string_from_user']
@@ -265,12 +265,7 @@ RETURN n AS user'''
 		query = query.format(search_string=search_string)
 		list_usernames = graph.run(query)
 		return render_template('search.html', title="Users", list_usernames=list_usernames)
-	return render_template('search.html', title="Users")	
-
-
-#=====================================*_ | Follow | _START_*===================================
-@app.route('/search/user/<user>', methods=['GET', 'POST'])
-def follow_user(user):	
+	return render_template('search.html', title="Users")
 	if request.method == 'GET':
 		user_2 =user
 		query ='''MATCH (a:User),(b:User)
@@ -281,7 +276,12 @@ RETURN a,b,r;'''
 		follows = graph.run(query)
 		  
 		return render_template('search.html', title="Users", follows =follows )
+    
 	return render_template('search.html', title="Users" )
+
+
+#=====================================*_ | Follow | _START_*===================================
+
 #=====================================*_ | Follow | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
