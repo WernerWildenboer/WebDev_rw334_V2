@@ -251,8 +251,13 @@ def add_answer(question):
 	
 @app.route('/question/<question>')
 def question(question):
-	question = graph.node(int(question))
-	return render_template('question.html', title="Question", question=question)
+	query = "MATCH (q:Question) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User) OPTIONAL MATCH (q)<-[:TAGGED]-(tpc:Topic) OPTIONAL MATCH (q)<-[:ASKED]-(askedby:User) WHERE ID(q) = {question} RETURN distinct ID(q) as id, q.text as text, q.timestamp as timestamp, count(answer) as answers, collect(tpc) as topics, askedby.username as askedby, count(upvotes) as upvote ORDER BY timestamp DESC LIMIT 1;"
+	query = query.format(question=question)
+	question = graph.evaluate(query)
+	query = "MATCH (q:Question)<-[:TO]-(answer:Answer)<-[:WROTE]-(user:User) OPTIONAL MATCH (answer)<-[upvotes:UPVOTE]-() WHERE ID(q) = {question} RETURN answer.text As text, answer.timestamp as timestamp, count(upvotes) as upvote, user.username as wrote ORDER BY upvote DESC LIMIT 1;"
+	query = query.format(question=question)
+	answers = graph.evaluate(query)
+	return render_template('question.html', title="Question", question=question, answers=answers)
 
 
 @app.route('/search', methods=['GET', 'POST'])
