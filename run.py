@@ -283,7 +283,7 @@ RETURN n AS user'''
 
 
 #=====================================*_ | Follow | _START_*===================================
-@app.route('/search/<user>')
+@app.route('/follow_user/<user>')
 def follow_user(user):	
 	if 1 :
 		query ='''MATCH (a:User),(b:User)
