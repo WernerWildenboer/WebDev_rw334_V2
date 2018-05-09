@@ -446,6 +446,7 @@ ORDER BY upvote DESC
 LIMIT {amount};'''
 		query = query.format(username=session['username'], amount=amount)
 		questions = graph.run(query)
+	questions = list(questions)
 	return render_template('show_questions.html', questions=questions, qa=qa)
 	
 ###################################  Run app  ###################################
