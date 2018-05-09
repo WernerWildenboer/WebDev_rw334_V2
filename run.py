@@ -253,7 +253,7 @@ def question(question):
 	return render_template('question.html', title="Question", question=question)
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search,<user>', methods=['GET', 'POST'])
 def search():
 	if request.method == 'POST':
 		search_string = request.form['search_string_from_user']
