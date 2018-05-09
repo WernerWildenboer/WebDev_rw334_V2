@@ -23,9 +23,12 @@ $(document).ready(function() {
 		});
 	}
 	function replaceBookmarked() {
+             console.log("jirre1");
 		$.get('/show_bookmarked').done(
+                 console.log("jirre2");
 		function(response) {
 			$("#show_bookmarked").html(response);
+                 console.log("jirre3");
 		});
 	}
 	if ($("#show_topics").length) {
@@ -35,6 +38,7 @@ $(document).ready(function() {
 		replaceSuggestions();
 	}
     	if ($("#show_bookmarked").length) {
+            console.log("jirre");
 		replaceBookmarked();
 	}
 	function dropDownTopics() {
