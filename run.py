@@ -257,7 +257,7 @@ def search():
 		search_string = request.form['search_string_from_user']
 		query ='''MATCH (n:User)
 WHERE n.username =~ '.*{search_string}.*'
-RETURN n.username'''
+RETURN n AS user'''
 		list_usernames = query.format(search_string=search_string)
 		return render_template('search.html', title="Users", list_usernames=list_usernames)
 	
