@@ -1,11 +1,11 @@
 {% for question in questions %}
-	{% if qa is 'qa' %}
+	{% if qa == 'qa' %}
 		<div class="w3-panel w3-card w3-padding">
-			{% if question.type is 'ANSWERED' %}
+			{% if question.type == 'ANSWERED' %}
 				<div class="w3-container w3-theme-l2">Answered by {{ question.reason.username }}</div>
-			{% elif question.type is 'ASKED' %}
+			{% elif question.type == 'ASKED' %}
 				<div class="w3-container w3-theme-l2">Asked by {{ question.reason.username }}</div>
-			{% elif question.type is 'TAGGED' %}
+			{% elif question.type == 'TAGGED' %}
 				<div class="w3-container w3-theme-l2">Part of topic {{ question.reason.name }}</div>
 			{% endif %}
 			<div class="w3-container w3-cell-row">
@@ -36,14 +36,14 @@
 				</div>
 			</div>
 		</div>
-	{% elif qa is 'q' %}
-		{% if question.type is 'ASKED' or question.type is 'TAGGED' %}
+	{% elif qa == 'q' %}
+		{% if question.type == 'ASKED' or question.type == 'TAGGED' %}
 			<div class="w3-panel w3-card w3-padding">
-				{% if question.type is 'ANSWERED' %}
+				{% if question.type == 'ANSWERED' %}
 					<div class="w3-container w3-theme-l2">Answered by {{ question.reason.username }}</div>
-				{% elif question.type is 'ASKED' %}
+				{% elif question.type == 'ASKED' %}
 					<div class="w3-container w3-theme-l2">Asked by {{ question.reason.username }}</div>
-				{% elif question.type is 'TAGGED' %}
+				{% elif question.type == 'TAGGED' %}
 					<div class="w3-container w3-theme-l2">Part of topic {{ question.reason.name }}</div>
 				{% endif %}
 				<div class="w3-container w3-cell-row">
@@ -75,14 +75,14 @@
 				</div>
 			</div>
 		{% endif %}
-	{% elif qa is 'a' %}
-		{% if question.type is 'ANSWERED' %}
+	{% elif qa == 'a' %}
+		{% if question.type == 'ANSWERED' %}
 			<div class="w3-panel w3-card w3-padding">
-				{% if question.type is 'ANSWERED' %}
+				{% if question.type == 'ANSWERED' %}
 					<div class="w3-container w3-theme-l2">Answered by {{ question.reason.username }}</div>
-				{% elif question.type is 'ASKED' %}
+				{% elif question.type == 'ASKED' %}
 					<div class="w3-container w3-theme-l2">Asked by {{ question.reason.username }}</div>
-				{% elif question.type is 'TAGGED' %}
+				{% elif question.type == 'TAGGED' %}
 					<div class="w3-container w3-theme-l2">Part of topic {{ question.reason.name }}</div>
 				{% endif %}
 				<div class="w3-container w3-cell-row">
