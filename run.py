@@ -255,11 +255,18 @@ def question(question):
 	query = "MATCH (q:Question) OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User) OPTIONAL MATCH (q)<-[:TAGGED]-(tpc:Topic) OPTIONAL MATCH (q)<-[:ASKED]-(askedby:User) WHERE ID(q) = {question} RETURN distinct ID(q) as id, q.text as text, q.timestamp as timestamp, count(answer) as answers, collect(tpc) as topics, askedby.username as askedby, count(upvotes) as upvote ORDER BY timestamp DESC LIMIT 1;"
 	query = query.format(question=question)
 	question = graph.run(query)
-	query = "MATCH (q:Question)<-[:TO]-(answer:Answer)<-[:WROTE]-(user:User) OPTIONAL MATCH (answer)<-[upvotes:UPVOTE]-() WHERE ID(q) = {question} RETURN answer.text As text, answer.timestamp as timestamp, count(upvotes) as upvote, user.username AS username ORDER BY upvote DESC LIMIT 1000;"
+	query = "MATCH (q:Question)<-[:TO]-(answer:Answer)<-[:WROTE]-(user:User) OPTIONAL MATCH (answer)<-[upvotes:UPVOTE]-() WHERE ID(q) = {question} RETURN answer.text As text, ID(answer) as id, answer.timestamp as timestamp, count(upvotes) as upvote, user.username AS username ORDER BY upvote DESC LIMIT 1000;"
 	query = query.format(question=id)
 	answers = graph.run(query)
 	return render_template('question.html', title="Question", question=question, answers=answers)
 
+@app.route('/upvote/<answer>')
+def upvote(answer):
+	user = User(session['username']).find()
+	answer = graph.node(int(answer))
+	rel = Relationship(user, "UPVOTE", answer)
+	graph.create(rel)
+	return redirect(request.referrer)
 
 @app.route('/search', methods=['GET', 'POST'])
 def search():
