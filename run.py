@@ -270,8 +270,8 @@ RETURN n AS user'''
 
 
 #=====================================*_ | Follow | _START_*===================================
-@app.route('/search/<username>', methods=['GET', 'POST'])
-def follow_user(username):	
+@app.route('/search', methods=['GET', 'POST'])
+def follow_user():	
 	if request.method == 'GET':
 		user_2 =request.form['username']
 		query ='''MATCH (a:User),(b:User)
