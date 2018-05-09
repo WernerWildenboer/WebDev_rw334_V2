@@ -270,10 +270,10 @@ RETURN n AS user'''
 
 
 #=====================================*_ | Follow | _START_*===================================
-@app.route('/search', methods=['GET', 'POST'])
-def follow_user():	
+@app.route('/search/<username>', methods=['GET', 'POST'])
+def follow_user(username):	
 	if request.method == 'GET':
-		user_2 ="Werner"
+		user_2 =request.form['username']
 		query ='''MATCH (a:User),(b:User)
 WHERE a.username = '{user_1}' AND b.username = '{user_2}'
 CREATE (a)-[r:FOLLOWS]->(b)
