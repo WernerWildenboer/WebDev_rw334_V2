@@ -1,11 +1,13 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<div class="w3-container w3-theme w3-third">
+<div class="w3-cell-row">
+<div class="w3-cell w3-container w3-theme w3-third">
 <h2>{{ topic }}</h2>
 </div>
-<div class="w3-container w3-theme w3-twothird">
+<div class="w3-cell w3-cell-middle w3-container w3-theme w3-twothird">
 <a href="{{ url_for('followTopic', topic=topic) }}" class="w3-button w3-white w3-round w3-large">follow</h2>
+</div>
 </div>
 
 <div id="show_questions_topic" class="w3-container">{{ topic }}</div>
