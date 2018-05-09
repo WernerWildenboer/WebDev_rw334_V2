@@ -55,7 +55,7 @@ $(document).ready(function() {
 		if (first) {
 			var loggedin = $('#loggedin').val();
 			if (loggedin) {
-				url += "mainSignedInTime/10/qa";
+				url += "/mainSignedInTime/10/qa";
 			} else {
 				url += "/mainSignedOutTime/10/qa";
 			}
