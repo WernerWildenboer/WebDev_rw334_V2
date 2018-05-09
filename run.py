@@ -1,7 +1,7 @@
 ####################################  Setup  ####################################
 
 from flask import Flask, request, session, redirect, url_for, render_template, flash
-import os
+import os, time
 
 #UPLOAD_FOLDER = 'app/static/img'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
