@@ -181,7 +181,7 @@ def change_password():
 	if request.method == 'POST':
 		password_old = request.form['password_old']
 		password_new = request.form['password_new']
-        username = session['username']
+		username = session['username']
 
 		if not User(username).verify_password(password_old):
 			flash('Invalid login.')
