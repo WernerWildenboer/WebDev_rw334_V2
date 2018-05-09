@@ -87,6 +87,14 @@ $(document).ready(function() {
 			update(false);
 		});
 	}
+	
+	if ($("#show_questions_profile").length) {
+		var username = $("#show_questions_profile").html();
+		$.get('/show_questions/userTime/1000/qa/'+ username).done(
+		function(response) {
+			$("#show_questions_profile").html(response);
+		});
+	}
 });
 
 function myProfileFunction(id) {
