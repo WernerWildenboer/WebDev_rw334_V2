@@ -83,9 +83,9 @@ $(document).ready(function() {
 		});
 	}
 	if ($("#update").length) {
-		update(True);
+		update(true);
 		$("#update").click(function() {
-			update(False);
+			update(false);
 		});
 	}
 });
