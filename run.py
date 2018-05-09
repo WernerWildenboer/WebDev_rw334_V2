@@ -281,8 +281,8 @@ RETURN a,b,r;'''
 		query = query.format(user_1=session['username'],user_2=user_2)
 		follows = graph.run(query)
 		  
-		
-	return redirect(url_for('index'))
+		return render_template('search.html', title="Users", follows =follows )
+	return render_template('search.html', title="Users", follows =follows )
 #=====================================*_ | Follow | _END_*=====================================
 @app.route('/show_topics')
 def show_topics():
