@@ -65,7 +65,7 @@
 				</a>
 				<div class="w3-container w3-cell-row">
 					<div class="w3-container w3-cell">
-						<a href="">
+						<a href="{{ url_for('question', question=question.id) }}">
 							{{ question.answers }} Answers 
 						</a>[{{ question.upvote }} upvotes]
 					</div>
