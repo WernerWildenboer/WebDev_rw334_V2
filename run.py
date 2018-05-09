@@ -233,6 +233,8 @@ def forgotPassword():
 
 @app.route('/profile/<username>')
 def profile(username):
+	user = User(username).find()
+	session['bio'] = user.properties['bio']
 	return render_template('profile.html', title="Profile", username=username)
 	
 @app.route('/followTopic/<topic>')
@@ -347,7 +349,13 @@ def upload_image():
 #-- Will do
 @app.route('/change_bio')
 def change_bio():
-	return "please finish me"
+	if request.method == 'POST':
+		bio = request.form['bio']
+		session['bio'] = bio
+		user = User(session['username']).find()
+		user['bio'] = bio
+		user.push()
+	return request.referrer
 #================================================================================		
 
 @app.route('/uploads/<filename>')

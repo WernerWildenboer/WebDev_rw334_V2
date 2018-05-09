@@ -43,7 +43,7 @@
 						<!-- user bio -->
 						<div class="w3-center">
 							<h4>My Bio:</h4>
-							<p id="myProfileBio">{{ session.user_bio }}</p>
+							<p id="myProfileBio">{{ session.bio }}</p>
 						</div>						
 						<button onclick="myProfileFunction('myProfileChangeBio')" class="w3-button w3-theme-l1">Change Bio</button>
 						
@@ -51,7 +51,7 @@
 							<form action="{{ url_for('change_bio') }}" method=post enctype=multipart/form-data>
 								<h4>Change bio here</h4>
 								<div class="w3-center">
-									<input class="w3-center" style="width:30%" type="text" placeholder="Write a short bio">
+									<input class="w3-center" style="width:30%" type="text" name="bio" placeholder="Write a short bio">
 									<input type="submit" class="w3-theme-l1 w3-button w3-section w3-ripple w3-padding">
 								</div>
 							</form>
