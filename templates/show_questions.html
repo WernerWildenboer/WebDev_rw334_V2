@@ -1,5 +1,4 @@
-{% set rows = questions.data() %}
-<div class="w3-container">{{ rows }}</div>
+<div class="w3-container">{{ questions.dump() }}</div>
 {% for question in questions %}
 	<div class="w3-container">random</div>
 {% endfor %}
