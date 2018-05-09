@@ -236,12 +236,12 @@ def profile(username):
 	user = User(username).find()
 	session['bio'] = user.properties['bio']
 	return render_template('profile.html', title="Profile", username=username)
-	
+#========================================================================	
 @app.route('/followTopic/<topic>')
 def followTopic(topic):
 	User(session['username']).follow_topic(topic)
 	return redirect(request.referrer)
-	
+#=====================================================================	
 @app.route('/add_answer/<question>', methods=['GET', 'POST'])
 def add_answer(question):
 	if request.method == 'POST':
@@ -255,7 +255,7 @@ def question(question):
 	return render_template('question.html', title="Question", question=question)
 
 
-@app.route('/search', methods=['GET', 'POST'])
+@app.route('/search,<user>', methods=['GET', 'POST'])
 def search():
 	if request.method == 'POST':
 		search_string = request.form['search_string_from_user']
@@ -269,10 +269,10 @@ RETURN n AS user'''
 
 
 #=====================================*_ | Follow | _START_*===================================
-@app.route('/search', methods=['GET', 'POST'])
-def follow_user():	
+@app.route('/search/<user>', methods=['GET', 'POST'])
+def follow_user(user):	
 	if request.method == 'GET':
-		user_2 =request.form['username_1']
+		user_2 =user
 		query ='''MATCH (a:User),(b:User)
 WHERE a.username = '{user_1}' AND b.username = '{user_2}'
 CREATE (a)-[r:FOLLOWS]->(b)
