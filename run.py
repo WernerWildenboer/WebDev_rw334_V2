@@ -330,6 +330,7 @@ def topic(topic):
 @app.route('/show_questions/<type>/<amount>/<qa>', defaults={'topic': None})
 @app.route('/show_questions/<type>/<amount>/<qa>/<topic>')
 def show_questions(type, amount, qa, topic):
+	questions = []
 	if (type == 'mainSignedOutTime'):
 		query = '''MATCH (q:Question)
 OPTIONAL MATCH (q)<-[:TO]-(answer:Answer)<-[upvotes:UPVOTE]-(:User)
